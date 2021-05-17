@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
-
-class User extends Authenticatable
+use App\Notifications\PasswordResetNotification;
+use App\Models\LinkedSocialAccount;
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasApiTokens;
 
@@ -19,8 +20,17 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'last_name',
+        'first_name',
+        'profile_pic',
+        'status',
+        'salary_range_id',
+        'salary_range_id',
+        'user_type',
+        'email_verified_at'
     ];
 
     /**
@@ -42,10 +52,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function country(){
-        return $this->belongsTo(Country::class);
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token));
     }
     public function state(){
         return $this->belongsTo(States::class);
+    }
+
+    public function linkedSocialAccounts()
+    {
+        return $this->hasMany(LinkedSocialAccount::class);
     }
 }

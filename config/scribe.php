@@ -244,8 +244,8 @@ INTRO
     /*
      * The base URL to be used in examples. If this is empty, Scribe will use the value of config('app.url').
      */
-    //'base_url' => 'http://161.35.185.193:10012',
-      'base_url' => 'http://127.0.0.1:8000',
+    'base_url' => 'https://app.tvpfundhk.com',
+
 
     /*
      * Generate a Postman collection (v2.1.0) in addition to HTML docs.

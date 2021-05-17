@@ -17,13 +17,14 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->string('email')->unique();
-            $table->string('profile_pic')->nullable();
+            $table->longText('profile_pic')->nullable();
             $table->string('sex',40)->comments('Male','Female');
-            $table->integer('industry_id');
-            $table->integer('salary_range_id');
+            $table->integer('industry_id')->nullable();
+            $table->integer('salary_range_id')->nullable();
             $table->string('referral_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->tinyInteger('status')->default(1);
+            $table->string('password')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

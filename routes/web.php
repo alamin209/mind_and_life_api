@@ -39,3 +39,7 @@ Route::get('/', function () {
 
     // return Country::with('states')->get()->toJson();
 })->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
