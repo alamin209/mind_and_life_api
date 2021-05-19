@@ -41,9 +41,14 @@ class ArticleUserlogController extends Controller
 
 
 
+
+
         $article_user = ArticleUser::with('article','user')->where('user_id', $request->user_id)->where('article_id', $request->article_id)->first();
 
         $article = Article::find($request->article_id);
+
+        $article_user1='';
+        $update_article_user=0;
 
         if (!$article_user) {
 
@@ -60,18 +65,19 @@ class ArticleUserlogController extends Controller
             $new_article_user->user_like             = $request->user_like;
             $new_article_user->user_bookmark         = $request->user_bookmark;
             $new_article_user->save();
-
             $update_article_user  = $new_article_user->id;
-        }
+
+        
+        }        
 
         if (isset($article_user)) {
+            if ($request->filled('user_like')) {
             if ($article_user->user_like == 1) {
                 $article_user1 = ArticleUser::with('article','user')->where('user_id', $request->user_id)->where('article_id', $request->article_id)->first();
                 $article1 = Article::find($request->article_id);
 
                 $article_user1->user_like = null;
                 $article_user1->save();
-
 
                 $new_total_like            = $article1->total_like - $request->user_like;
                 $article1->total_like       =  $new_total_like;
@@ -89,7 +95,9 @@ class ArticleUserlogController extends Controller
                 $article1->total_like       =  $new_total_like;
                 $article1->save();
             }
+        }
 
+        if ($request->filled('user_bookmark')) {
             if ($article_user->user_bookmark == 1) {
                 $article_user1 = ArticleUser::where('user_id', $request->user_id)->where('article_id', $request->article_id)->first();
                 $article1 = Article::find($request->article_id);
@@ -114,6 +122,7 @@ class ArticleUserlogController extends Controller
                 $article1->total_bookmark       =  $new_total_bookmark;
                 $article1->save();
             }
+        }
 
             if ($request->filled('user_share')) {
 
@@ -131,10 +140,29 @@ class ArticleUserlogController extends Controller
 
             }
 
+            if($article_user1){
+
+                $article_user1 = ArticleUser::with('article','user')->where('id', $article_user1->id)->where('article_id', $request->article_id)->first();
+
+                $article_user =  $article_user1;
+             }
+
+    
+
             if ($request->filled('user_share')) {
                 $article_user = $article_link;
             }
         }
+
+        if (!$article_user) {
+            if($update_article_user){
+
+                $article_user1 = ArticleUser::with('article','user')->where('id', $update_article_user)->first();
+
+                $article_user =  $article_user1;
+            }
+        }
+        
         return WebApiResponse::success(201, $article_user, 'Article log ');
         
     }
