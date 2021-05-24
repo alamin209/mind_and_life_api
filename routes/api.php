@@ -86,8 +86,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::apiResource('videos', VideController::class);
 
     // =================== video Tag  route =====================//
-    Route::get('article-tag/list', [ArticleTagController::class, 'list']);
-    Route::get('video-tag/list', [ArticleTagController::class, 'list']);
+    Route::get('article-tag/list', [ArticleTagController::class, 'article_list']);
+    Route::get('video-tag/list', [ArticleTagController::class, 'video_list']);
+    Route::get('article-video-tag/list', [ArticleTagController::class, 'video_article_tag_list']);
 });
 
 
