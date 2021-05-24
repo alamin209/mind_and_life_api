@@ -16,6 +16,7 @@ use App\Http\Controllers\UserManagement\UserController;
 use App\Http\Controllers\UserManagement\SalaryController;
 use App\Http\Controllers\UserManagement\IndustryController;
 use App\Http\Controllers\Api\VideController;
+use App\Http\Controllers\Api\ArticleTagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,10 @@ Route::group(['middleware' => 'api'], function () {
     // =================== video  route =====================//
     Route::get('videos/list', [VideController::class, 'list']);
     Route::apiResource('videos', VideController::class);
+
+    // =================== video Tag  route =====================//
+    Route::get('article-tag/list', [ArticleTagController::class, 'list']);
+    Route::get('video-tag/list', [ArticleTagController::class, 'list']);
 });
 
 

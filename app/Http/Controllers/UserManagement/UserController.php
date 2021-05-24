@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Passport\Passport;
+
 class UserController extends Controller
 {
     /**
@@ -169,7 +170,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
 
             'email'            => 'required|email|unique:users,email,'.$id,
-            'username'         => 'required|string|unique:users,username'.$id,
+            'username'         => 'required|string|unique:users,username,'.$id,
              'sex'             =>'required',
             'industry_id'      => 'required|integer',
             'salary_range_id'  => 'required|integer',
