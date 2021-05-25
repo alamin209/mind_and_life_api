@@ -30,7 +30,7 @@ class VideUserLogController extends Controller
 
         $data = $request->validate([
             'user_id'        => 'required|integer',
-            'video_id'     => 'required|integer',
+            'video_id'        => 'required|integer',
             'user_like'      => 'nullable | integer',
             'user_bookmark'  => 'nullable | integer',
             'user_share'     => 'nullable | integer',

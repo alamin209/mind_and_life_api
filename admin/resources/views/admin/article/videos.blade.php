@@ -4,7 +4,7 @@
 
 @section('css')
     <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
@@ -55,15 +55,15 @@
                 <div class="card-body" style="height:630px;  overflow-y: auto;">
                     <table class="table video-dt">
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Category </th>
-                                <th>Author </th>
-                                <th>Title </th>
-                                <th>Video </th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>Category</th>
+                            <th>Author</th>
+                            <th>Title</th>
+                            <th>Video</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
                         </tbody>
@@ -76,7 +76,7 @@
 
 
     <div id="updatecategory" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-        aria-labelledby="myLargeModalLabel" aria-hidden="true">
+         aria-labelledby="myLargeModalLabel" aria-hidden="true">
 
         {{-- <div id="updatecategory"   class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> --}}
         <div class="modal-dialog modal-lg">
@@ -95,16 +95,16 @@
     {{-- <script src="{{ URL::asset('public/js/pages/table-responsive.init.js')}}"></script> --}}
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var table = $('.video-dt').DataTable({
                 processing: true,
                 serverSide: true,
 
                 ajax: "{{ route('videos.index') }}",
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
                     {
                         data: 'category_name',
                         name: 'category_name'
@@ -122,10 +122,16 @@
                         data: 'video',
                         name: 'video',
 
-                           "render": function (data) {
-                            //    console.log(data);
-                           return '<video width="160" height="120" controls><source src="' + data + '" type="video/mp4"></video>';
-                       }
+                        "render": function (video, type, row) {
+                            let rendered = '';
+                            if (row.type === 'link') {
+                                const youtubeLink = row.video.replace('watch?v=', 'embed/').replace('youtu.be', 'youtube.com/embed');
+                                rendered = `<iframe width="160" height="120" src="` + youtubeLink + `" title="Video of ` + row.category_name + `" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+                            } else {
+                                rendered = `<video width="160" height="120" controls><source src="` + row.video + `" type="video/mp4"></video>`;
+                            }
+                            return rendered;
+                        }
                     },
 
                     {
@@ -156,7 +162,7 @@
                 url: "{{ url('videos') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
-                success: function(data) {
+                success: function (data) {
                     $('#txtHint').html(data);
                 }
             });
@@ -164,7 +170,7 @@
 
 
         function delete_ad(x) {
-            if (confirm("are you sure to delete this article?")) {
+            if (confirm("are you sure to delete this video?")) {
 
                 $.ajaxSetup({
                     headers: {
@@ -176,15 +182,14 @@
 
                 $.ajax({
                     type: 'DELETE',
-                    url: "{{ url('article') }}/" + x,
+                    url: "{{ url('videos') }}/" + x,
                     data: {
                         id: btn
                     },
                     cache: false,
-                    success: function(data) {
-                        alert(' Selected  Article  deleted Successfully');
+                    success: function (data) {
+                        alert(' Selected  Video  deleted Successfully');
                         location.reload();
-
                     }
                 });
             }
