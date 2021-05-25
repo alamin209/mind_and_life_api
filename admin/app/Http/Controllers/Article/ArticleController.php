@@ -158,8 +158,6 @@ class ArticleController extends Controller
     public function show($id)
     {
 
-
-        $category =   Category::find($id);
         $title = ' Article';
         $categories = Category::where('type', 'article')->where('status', 1)->get();
         $users     = User::whereNotNull('user_type')->get();
