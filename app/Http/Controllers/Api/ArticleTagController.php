@@ -102,12 +102,14 @@ class ArticleTagController extends Controller
         ];
         $whereClause = $request->whereClause ?? [];
 
-        $article_tag =  ArticleTag::where('video_id',null)->query();
-        $video_tag = $article_tag->with('article','article.author', 'article.article_category', 'article.user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->article_limit ?? 6)->toArray();
+        $article_tag =  ArticleTag::query();
+
+        $all_article_tag = $article_tag->where('video_id',null)->with('article','article.author', 'article.article_category', 'article.user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->article_limit ?? 6)->toArray();
 
 
-        $article_tag =  ArticleTag::where('article_id',null)->query();
-        $video_tage = $video_tag->with( 'video','video.author', 'video.video_category','video.user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->video_limit ?? 4)->toArray();
+        dd($all_article_tag);
+        // $article_tag =  ArticleTag::where('article_id',null)->query();
+        // $video_tage = $video_tag->with( 'video','video.author', 'video.video_category','video.user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->video_limit ?? 4)->toArray();
 
         $data = [
              'articles_tag'         => $article_tag,

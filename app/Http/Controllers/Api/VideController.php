@@ -53,45 +53,42 @@ class VideController extends Controller
 
     public function list(Request $request)
     {
-
-
-        $queryParams = [
-            'limit'         =>  $request->limit ?? 10,
-            'sortBy'        =>  $request->sortBy ?? 'id',
-            'orderBy'       =>  in_array($request->orderBy, ['ASC', 'DESC']) ? $request->orderBy : 'DESC',
-        ];
-        $whereClause = $request->whereClause ?? [];
-
-        $query =  Video::query();
-        $user =auth()->guard('api')->user();
-        $article = $query->with('author', 'video_category','video_tags','user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($queryParams['limit'])->toArray();
-
-
-        $advertise = Advertisement::inRandomOrder()->get()->toArray();
-        $total_article= [];
-
-         foreach ( $article['data'] as $key => $value) {
-
-
-                if($key>0){
-                    if($key % 5 == 0){
-                        $ad_length = count($advertise);
-
-                        $index = ($key / 5) - 1;
-                        $ad = $advertise[AdRecursionHelper::recursion($index, $ad_length)];
-                        $value['advertise'] = $ad;
-                    }
-                array_push($total_article,$value);
-            }
-        }
-
-        $article['data'] = $total_article;
-
         try {
+            $queryParams = [
+                'limit'         =>  $request->limit ?? 10,
+                'sortBy'        =>  $request->sortBy ?? 'id',
+                'orderBy'       =>  in_array($request->orderBy, ['ASC', 'DESC']) ? $request->orderBy : 'DESC',
+            ];
+            $whereClause = $request->whereClause ?? [];
 
-            return WebApiResponse::success(200, $article, trans('messages.success_show_all'));
+            //$user =auth()->guard('api')->user();
+
+            $articles = Video::query()
+            ->with('author', 'video_category','video_tags','user_log_details')
+            ->where('status', 1)
+            ->orderBy($queryParams['sortBy'], $queryParams['orderBy'])
+            ->where($whereClause)
+            ->paginate($queryParams['limit'])
+            ->toArray();
+
+            $advertises = Advertisement::inRandomOrder()->get()->toArray();
+
+            $return = [];
+            $subArticles  = array_chunk($articles['data'], 5);
+            foreach ($subArticles as $key => $value) {
+                foreach ($value as $subKey => $subValue) {
+                    array_push($return, $subValue);
+                }
+                $ad_length = count($advertises);
+                $ad = $advertises[AdRecursionHelper::recursion($key, $ad_length)];
+                $ad['is_ad'] = true;
+                array_push($return, $ad);
+            }
+
+            $articles['data'] = $return;
+            return WebApiResponse::success(200, $articles, trans('messages.success_show_all'));
         } catch (\Throwable $th) {
-            return WebApiResponse::error(404, $errors = [], trans('messages.faild_show_all'));
+            return WebApiResponse::error(404, $errors = [], trans('messages.failed_show_all'));
         }
     }
 
