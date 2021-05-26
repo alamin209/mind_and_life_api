@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Article;
+use App\Models\Video;
 class ArticleTag extends Model
 {
     use HasFactory;
@@ -12,10 +13,10 @@ class ArticleTag extends Model
 
     public function article(){
 
-        return $this->belongsTo(Article::class ,'article_id','id');
+        return $this->belongsTo(Article::class ,'id','article_id');
     }
     public function video(){
 
-        return $this->belongsTo(Article::class ,'article_id','id');
+        return $this->belongsTo(Video::class ,'id','video_id');
     }
 }

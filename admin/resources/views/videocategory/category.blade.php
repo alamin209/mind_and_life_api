@@ -14,7 +14,7 @@
 
 @section('content')
     @component('common-components.breadcrumb')
-        @slot('title') <strong style="color: red"> Global Category List(Article and Video) </strong>    @endslot
+        @slot('title') Video Category List    @endslot
         @slot('li_1')   @endslot
     @endcomponent
 
@@ -61,7 +61,6 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
-                            <th>Type</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -91,7 +90,7 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="{{  route('category.store') }}" method="Post"
+                                    <form action="{{  route('article-category.store') }}" method="Post"
                                           class="custom-validation">
                                         @csrf
                                         <div class="form-group">
@@ -100,14 +99,7 @@
                                                 <input type="text" name="name" class="form-control"
                                                        placeholder="Category name">
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label">Select Type</label>
-                                                <select class="form-control select2" name="type" required>
-                                                    <option value=" "> Select Type</option>
-                                                    <option value="article">Article</option>
-                                                    <option value="video">Video</option>
-                                                </select>
-                                            </div>
+                                            <input type="hidden" name="type" value="video">
                                         </div>
 
                                 </div>
@@ -151,7 +143,7 @@
                 processing: true,
                 serverSide: true,
 
-                ajax: "{{ route('category.index') }}",
+                ajax: "{{ route('video-category.index') }}",
                 columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex'
@@ -159,10 +151,6 @@
                     {
                         data: 'name',
                         name: 'name'
-                    },
-                    {
-                        data: 'type',
-                        name: 'type'
                     },
                     {
                         data: 'status',
@@ -187,7 +175,7 @@
             });
             $.ajax({
                 type: 'get',
-                url: "{{ url('category') }}/" + x,
+                url: "{{ url('video-category') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
                 success: function (data) {

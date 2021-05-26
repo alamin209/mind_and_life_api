@@ -17,7 +17,7 @@ class VideoCategoryController extends Controller
     public function index(Request $request)
     {
 
-        $title = 'Category List';
+        $title = 'Video Category List';
 
         if ($request->ajax()) {
 

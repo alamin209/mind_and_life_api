@@ -68,12 +68,15 @@ Route::post('login-status', 'QovexController@checkStatus');
         Route::resource('ip-addresslist','Ipaddress\IpAddressController');
 
         Route::resource('category','Category\CategoryController');
+        Route::resource('article-category','Category\ArticleCategoryController');
         Route::resource('video-category','Category\VideoCategoryController');
 
         Route::resource('article','Article\ArticleController');
 
         Route::resource('advertisement','Advertisement\AdvertisementController');
         Route::resource('videos','Video\VideoController');
+
+        Route::resource('coupon','Coupon\CouponController');
 
         Route::resource('permission','Permission\PermissionController');
         Route::resource('roles', 'Permission\\RoleController');

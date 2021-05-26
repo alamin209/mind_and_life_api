@@ -27,10 +27,11 @@ class ArticleTagController extends Controller
      */
 
     public function article_list(Request $request){
+
         $query= ArticleTag::query();
 
-        if ($request->filled('video_id')) {
-            $query->where('video_id',  $request->video_id);
+        if ($request->filled('article_id')) {
+            $query->where('article_id',  $request->article_id);
         }
         if ($request->filled('tag_name')) {
             $query->where('tag_name', 'like', '%' . $request->tag_name . '%');
@@ -70,7 +71,7 @@ class ArticleTagController extends Controller
         }
 
         try {
-            $video_list = ArticleTag::with('video')->where('status',1)->get()->toArray();
+            $video_list =  $query->with('video')->get()->toArray();
             return WebApiResponse::success(200, $video_list, trans('messages.success_show_all'));
 
         } catch (\Throwable $th) {

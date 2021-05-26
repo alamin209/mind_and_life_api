@@ -4,24 +4,21 @@ namespace App\Http\Controllers\Category;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use DataTables;
 use Illuminate\Http\Request;
+use DataTables;
 
-class CategoryController extends Controller
+class ArticleCategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $title = 'All Category List';
+        $title = 'Article Category List';
         if ($request->ajax()) {
 
-            $data = Category::get();
+            $data = Category::where('type', 'article')->get();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {
                     return $row->name ?? '';
-                })
-                ->addColumn('type', function ($row) {
-                    return $row->type ?? '';
                 })
                 ->addColumn('status', function ($row) {
                     if ($row->status == 1) {
@@ -48,7 +45,7 @@ class CategoryController extends Controller
                 ->make(true);
         }
 
-        return view('admin/category/category', compact('title'));
+        return view('admin/articlecategory/category', compact('title'));
     }
 
 
@@ -57,13 +54,13 @@ class CategoryController extends Controller
 
         $data = $request->validate([
             'name' => 'required|max:255 |unique:categories',
-            'status' => 'nullable|integer',
             'type' => 'required|string',
+            'status' => 'nullable|integer',
         ]);
 
         try {
             Category::create($data);
-            $this->successfullymessage('Category  Added successfully ');
+            $this->successfullymessage('Category  Addedd successfully ');
             return redirect()->back();
         } catch (\Exception $e) {
             $this->failmessage($e->getMessage());
@@ -82,7 +79,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
 
-        return view('admin/category/update', compact('category'));
+        return view('admin/articlecategory/update', compact('category'));
     }
 
 
@@ -99,6 +96,7 @@ class CategoryController extends Controller
             'name' => 'required|max:255 |unique:categories,name,' . $id,
             'status' => 'required|integer',
             'type' => 'required|string',
+
         ]);
 
         $category = Category::findOrFail($id);

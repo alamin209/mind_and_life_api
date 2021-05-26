@@ -1,4 +1,4 @@
-<form action="{{ url('category/'.$category->id ) }}" method="Post" class="custom-validation">
+<form action="{{ url('article-category/'.$category->id ) }}" method="Post" class="custom-validation">
     <div class="modal-header">
         <h5 class="modal-title mt-0" id="myModalLabel">Update Categroty </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,22 +22,10 @@
                                        class="form-control" required="" placeholder="Give IP address">
                             </div>
                         </div>
+                        <input type="hidden" name="type" value="article">
 
                         <div class="form-group">
-                            <label class="control-label">Select Type</label>
-                            <select class="form-control select2" name="type" required>
-                                <option value=" "> Select Type</option>
-                                <option @if($category->type == 'article') selected="selected" @endif  value="article">
-                                    Article
-                                </option>
-                                <option @if($category->type == 'video') selected="selected" @endif  value="video">
-                                    Video
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label">Select Status</label>
+                            <label class="control-label">Sleect Status</label>
                             <select class="form-control select2" name="status" required>
                                 <option value=" "> Select Status</option>
                                 <option @if($category->status ==1) selected="selected" @endif  value="1">Active</option>

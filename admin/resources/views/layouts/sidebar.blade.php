@@ -86,14 +86,14 @@
 
                 </li>
 
-                  <li>
-                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                         <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
+                 <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
                         <span>Magazin </span>
-                     </a>
+                    </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('category.index') }}">Categroy </a></li>
+                        <li><a href="{{ route('article-category.index') }}">Categroy </a></li>
                     </ul>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('article.index') }} ">Article</a></li>
@@ -112,6 +112,20 @@
                        <li><a href="{{ route('videos.index') }} ">Video</a></li>
                    </ul>
                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
+                        <span>Coupon </span>
+                    </a>
+
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('category.index') }}">Categroy </a></li>
+                    </ul>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('coupon.index') }} ">Coupon</a></li>
+                    </ul>
+                </li>
 
 
                 <li>
