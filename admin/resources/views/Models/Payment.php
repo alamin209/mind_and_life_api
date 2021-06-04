@@ -8,13 +8,15 @@ class Payment extends Model
 {
     protected $guarded = [];
 
-    public function application(){
+    public function application()
+    {
         return $this->belongsTo(Application::class);
     }
 
-    public function invoice(){
+    public function invoice()
+    {
 
-     return $this->belongsTo(Invoice::class);
+        return $this->belongsTo(Invoice::class);
     }
 
 }

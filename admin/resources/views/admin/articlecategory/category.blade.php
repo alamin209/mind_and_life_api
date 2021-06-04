@@ -61,6 +61,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Image</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -91,7 +92,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form action="{{  route('article-category.store') }}" method="Post"
-                                          class="custom-validation">
+                                          class="custom-validation" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group">
                                             <label>Name </label>
@@ -100,6 +101,16 @@
                                                        placeholder="Category name">
                                             </div>
                                             <input type="hidden" name="type" value="article">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Photo </label>
+                                            <div>
+                                                <input type="file" name="image_path" accept="image/*"
+                                                       onchange="preview_quiz_image(event)"
+                                                       class="form-control" >
+                                                <img id="quiz_image_path" style="margin-top:10px ;margin -left:20px" />
+                                            </div>
                                         </div>
 
                                 </div>
@@ -138,6 +149,17 @@
     {{-- <script src="{{ URL::asset('public/js/pages/table-responsive.init.js')}}"></script> --}}
 
     <script type="text/javascript">
+        function preview_quiz_image(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('quiz_image_path');
+                output.style.width =   "180px";
+                output.style.height = "180px";
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
         $(function () {
             var table = $('.yajra-dt').DataTable({
                 processing: true,
@@ -151,6 +173,13 @@
                     {
                         data: 'name',
                         name: 'name'
+                    },
+                    {
+                        data: 'image_path',
+                        name: 'image_path',
+                        render: function (data, type, full, meta) {
+                            return "<img src=\"" + data + "\"  alt=\"Quiz Type Image \"/ height=\"100px\"/ width=\"100px\"/>";
+                        }
                     },
                     {
                         data: 'status',

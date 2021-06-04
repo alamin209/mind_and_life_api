@@ -5,24 +5,25 @@
             <div class="navbar-brand-box">
                 <a href="index" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('public/images/logo-sm-dark.png')}}" alt="" height="20">
+                        <img src="{{ URL::asset('public/images/logo-sm-dark.png')}}" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('public/images/logo-dark.png') }}" alt="" height="18">
+                        <img src="{{ URL::asset('public/images/logo-dark.png') }}" alt="" height="28">
                     </span>
                 </a>
 
                 <a href="index" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ URL::asset('public/images/logo-sm-dark.png') }}" alt="" height="20">
+                        <img src="{{ URL::asset('public/images/logo-sm-dark.png') }}" alt="" height="30">
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ URL::asset('public/images/logo-light.png') }}" alt="" height="18">
+                        <img src="{{ URL::asset('public/images/logo-light.png') }}" alt="" height="28">
                     </span>
                 </a>
             </div>
 
-            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                    data-toggle="collapse" data-target="#topnav-menu-content">
                 <i class="fa fa-fw fa-bars"></i>
             </button>
 
@@ -32,8 +33,10 @@
                     <div class="collapse navbar-collapse" id="topnav-menu-content">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Dashboard <div class="arrow-down"></div>
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-dashboard"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Dashboard
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-dashboard">
                                     <a href="index" class="dropdown-item">Dashboard 1</a>
@@ -42,11 +45,14 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    UI Elements <div class="arrow-down"></div>
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-components"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    UI Elements
+                                    <div class="arrow-down"></div>
                                 </a>
 
-                                <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl" aria-labelledby="topnav-components">
+                                <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-xl"
+                                     aria-labelledby="topnav-components">
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div>
@@ -85,15 +91,20 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Apps <div class="arrow-down"></div>
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Apps
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
                                     <a href="calendar" class="dropdown-item">Calendar</a>
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Email <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Email
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-email">
                                             <a href="email-inbox" class="dropdown-item">Inbox</a>
@@ -102,8 +113,11 @@
                                     </div>
 
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-task" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Tasks <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-task"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Tasks
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-task">
                                             <a href="tasks-list" class="dropdown-item">Task List</a>
@@ -116,13 +130,18 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-charts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Components <div class="arrow-down"></div>
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-charts" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Components
+                                    <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-charts">
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Forms <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-form"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Forms
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-form">
                                             <a href="form-elements" class="dropdown-item">Form Elements</a>
@@ -137,8 +156,11 @@
                                         </div>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Tables <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Tables
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-table">
                                             <a href="tables-basic" class="dropdown-item">Basic Tables</a>
@@ -148,8 +170,11 @@
                                         </div>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Charts <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Charts
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-table">
                                             <a href="charts-apex" class="dropdown-item">Apex charts</a>
@@ -160,8 +185,11 @@
                                         </div>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Icons <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-table"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Icons
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-table">
                                             <a href="icons-boxicons" class="dropdown-item">Boxicons</a>
@@ -171,8 +199,11 @@
                                         </div>
                                     </div>
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-map" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Maps <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-map"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Maps
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-map">
                                             <a href="maps-google" class="dropdown-item">Google Maps</a>
@@ -181,8 +212,11 @@
                                     </div>
 
                                     <div class="dropdown">
-                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-layouts" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Layouts <div class="arrow-down"></div>
+                                        <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-layouts"
+                                           role="button" data-toggle="dropdown" aria-haspopup="true"
+                                           aria-expanded="false">
+                                            Layouts
+                                            <div class="arrow-down"></div>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="topnav-layouts">
                                             <a href="index" class="dropdown-item">Vertical</a>
@@ -197,11 +231,15 @@
                             </li>
 
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Pages  <div class="arrow-down"></div>
+                                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Pages
+                                    <div class="arrow-down"></div>
                                 </a>
 
-                                <div class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-lg dropdown-menu-right" aria-labelledby="topnav-pages">
+                                <div
+                                    class="dropdown-menu mega-dropdown-menu px-2 dropdown-mega-menu-lg dropdown-menu-right"
+                                    aria-labelledby="topnav-pages">
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <div>
@@ -240,17 +278,21 @@
 
         <div class="d-flex">
             <div class="dropdown d-inline-block d-lg-none ml-2">
-                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="mdi mdi-magnify"></i>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-search-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                     aria-labelledby="page-header-search-dropdown">
 
                     <form class="p-3">
                         <div class="form-group m-0">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search ..." aria-label="Recipient's username">
+                                <input type="text" class="form-control" placeholder="Search ..."
+                                       aria-label="Recipient's username">
                                 <div class="input-group-append">
-                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -259,29 +301,34 @@
             </div>
 
             <div class="dropdown d-none d-sm-inline-block">
-                <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item waves-effect" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                     <img class="" src="images/flags/us.jpg" alt="Header Language" height="16">
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
+                        <img src="images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Spanish</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">German</span>
+                        <img src="images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/italy.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Italian</span>
+                        <img src="images/flags/italy.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Italian</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Russian</span>
+                        <img src="images/flags/russia.jpg" alt="user-image" class="mr-1" height="12"> <span
+                            class="align-middle">Russian</span>
                     </a>
                 </div>
             </div>
@@ -293,11 +340,14 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn header-item noti-icon waves-effect"
+                        id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                     <i class="mdi mdi-bell-outline"></i>
                     <span class="badge badge-danger badge-pill">3</span>
                 </button>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                     aria-labelledby="page-header-notifications-dropdown">
                     <div class="p-3">
                         <div class="row align-items-center">
                             <div class="col">
@@ -327,7 +377,8 @@
                         </a>
                         <a href="" class="text-reset notification-item">
                             <div class="media">
-                                <img src="images/users/avatar-3.jpg" class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                                <img src="{{ URL::asset('public/images/users/avatar-3.png') }}" class="mr-3 rounded-circle avatar-xs"
+                                     alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">James Lemire</h6>
                                     <div class="font-size-12 text-muted">
@@ -356,7 +407,8 @@
 
                         <a href="" class="text-reset notification-item">
                             <div class="media">
-                                <img src="images/users/avatar-4.jpg" class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                                <img src="{{ URL::asset('public/images/users/avatar-4.png') }}"
+                                     class="mr-3 rounded-circle avatar-xs" alt="user-pic">
                                 <div class="media-body">
                                     <h6 class="mt-0 mb-1">Salena Layfield</h6>
                                     <div class="font-size-12 text-muted">
@@ -376,19 +428,25 @@
             </div>
 
             <div class="dropdown d-inline-block">
-                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="images/users/avatar-2.jpg" alt="Header Avatar">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user"
+                         src="{{ URL::asset('public/images/users/avatar-2.png') }}" alt="Header Avatar">
                     <span class="d-none d-xl-inline-block ml-1">Patrick</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
                     <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My Wallet</a>
-                    <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i> Lock screen</a>
+                    <a class="dropdown-item" href="#"><i class="bx bx-wallet font-size-16 align-middle mr-1"></i> My
+                        Wallet</a>
+                    <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i
+                            class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings</a>
+                    <a class="dropdown-item" href="#"><i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
+                        Lock screen</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                    <a class="dropdown-item text-danger" href="#"><i
+                            class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
                 </div>
             </div>
 

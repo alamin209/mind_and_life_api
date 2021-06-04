@@ -22,7 +22,7 @@ class CreateCouponsTable extends Migration
             $table->string('offer_brand');
             $table->date('expire_date');
             $table->integer('download_limit');
-            $table->integer('total_download');
+            $table->integer('total_download')->nullable();
             $table->float('price');
             $table->longText('term_condition');
             $table->timestamps();

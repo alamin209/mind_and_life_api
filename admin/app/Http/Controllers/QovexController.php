@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\LoginHistory;
+use App\User;
 class QovexController extends Controller
 {
     /**
@@ -15,7 +16,10 @@ class QovexController extends Controller
     public function index(Request $request)
     {
         if(view()->exists($request->path())){
-            return view($request->path());
+
+            $total_user = User::where('is_api',0)->count();
+
+            return view($request->path(),compact('total_user'));
         }
         return view('pages-404');
     }

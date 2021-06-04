@@ -1,6 +1,6 @@
-// 
+//
 // _header.scss
-// 
+//
 
 #page-topbar {
     position: fixed;
@@ -9,7 +9,7 @@
     left: 0;
     z-index: 1002;
     background-color: $header-bg;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.075);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
 }
 
 .navbar-header {
@@ -60,6 +60,7 @@
         box-shadow: none;
         border-radius: 7px;
     }
+
     span {
         position: absolute;
         z-index: 10;
@@ -74,10 +75,11 @@
 // Mega menu
 
 .megamenu-list {
-    li{
+    li {
         position: relative;
         padding: 5px 0px;
-        a{
+
+        a {
             color: $dropdown-color;
         }
     }
@@ -183,9 +185,10 @@
 
 body[data-topbar="dark"],
 body[data-topbar="colored"] {
-    #page-topbar { 
+    #page-topbar {
         background-color: $header-dark-bg;
     }
+
     .navbar-header {
         .dropdown.show {
             .header-item {
@@ -208,7 +211,7 @@ body[data-topbar="colored"] {
 
     .header-item {
         color: $header-dark-item-color;
-    
+
         &:hover {
             color: $header-dark-item-color;
         }
@@ -217,7 +220,7 @@ body[data-topbar="colored"] {
     .header-profile-user {
         background-color: rgba($white, 0.25);
     }
-    
+
     .noti-icon {
         i {
             color: $header-dark-item-color;
@@ -233,20 +236,21 @@ body[data-topbar="colored"] {
     }
 
     .app-search {
-    
+
         .form-control {
-            background-color: rgba($topbar-search-bg,0.07);
+            background-color: rgba($topbar-search-bg, 0.07);
             color: $white;
         }
+
         span,
         input.form-control::-webkit-input-placeholder {
-            color: rgba($white,0.5);
+            color: rgba($white, 0.5);
         }
     }
 }
 
 body[data-topbar="colored"] {
-    #page-topbar{
+    #page-topbar {
         background: $header-bg;
     }
 

@@ -3,29 +3,30 @@
 @section('title') Responsive Table @endsection
 
 @section('css')
-<!-- Responsive Table css -->
-<link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Responsive Table css -->
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 
 @section('content')
 
     @component('common-components.breadcrumb')
-         @slot('title') Responsive Table @endslot
-         @slot('li_1') Tables  @endslot
-     @endcomponent
+        @slot('title') Responsive Table @endslot
+        @slot('li_1') Tables  @endslot
+    @endcomponent
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
-                <h4 class="card-title">Example</h4>
-                <p class="card-title-desc">This is an experimental awesome solution for responsive tables with complex data.</p>
+                    <h4 class="card-title">Example</h4>
+                    <p class="card-title-desc">This is an experimental awesome solution for responsive tables with
+                        complex data.</p>
 
-                <div class="table-rep-plugin">
-                    <div class="table-responsive mb-0" data-pattern="priority-columns">
-                        <table id="tech-companies-1" class="table table-striped">
-                            <thead>
+                    <div class="table-rep-plugin">
+                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                            <table id="tech-companies-1" class="table table-striped">
+                                <thead>
                                 <tr>
                                     <th>Company</th>
                                     <th data-priority="1">Last Trade</th>
@@ -37,8 +38,8 @@
                                     <th data-priority="6">Ask</th>
                                     <th data-priority="6">1y Target Est</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 <tr>
                                     <th>GOOG <span class="co-name">Google Inc.</span></th>
                                     <td>597.74</td>
@@ -428,28 +429,28 @@
                                     <td>15.80 x 17000</td>
                                     <td>18.16</td>
                                 </tr>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
 
                 </div>
-
             </div>
         </div>
+        <!-- end col -->
     </div>
-    <!-- end col -->
-</div>
-<!-- end row -->
+    <!-- end row -->
 
 @endsection
 
 @section('script')
 
-<!-- Responsive Table js -->
-<script src="{{ URL::asset('/libs/jquery-vectormap/jquery-vectormap.min.js')}}"></script>
-<script src="{{ URL::asset('/libs/rwd-table/rwd-table.min.js')}}"></script>
+    <!-- Responsive Table js -->
+    <script src="{{ URL::asset('/libs/jquery-vectormap/jquery-vectormap.min.js')}}"></script>
+    <script src="{{ URL::asset('/libs/rwd-table/rwd-table.min.js')}}"></script>
 
-<!-- Init js -->
-<script src="{{ URL::asset('/js/pages/table-responsive.init.js')}}"></script>
+    <!-- Init js -->
+    <script src="{{ URL::asset('/js/pages/table-responsive.init.js')}}"></script>
 
 @endsection

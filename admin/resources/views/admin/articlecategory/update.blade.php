@@ -1,4 +1,4 @@
-<form action="{{ url('article-category/'.$category->id ) }}" method="Post" class="custom-validation">
+<form action="{{ url('article-category/'.$category->id ) }}" method="Post" class="custom-validation" enctype="multipart/form-data">
     <div class="modal-header">
         <h5 class="modal-title mt-0" id="myModalLabel">Update Categroty </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -22,6 +22,18 @@
                                        class="form-control" required="" placeholder="Give IP address">
                             </div>
                         </div>
+                        <div class="form-group">
+                                <label>Photo </label>
+                                <div>
+                                    <input type="file" name="image_path" accept="image/*"
+                                           onchange="preview_update_quiz_image(event)"
+                                           class="form-control">
+
+                                    <img width="100" height="auto" id="update_quiz_image_path"
+                                         src="{{asset($category->image_path)}}" style="margin-top:10px ; margin-left:97px;" />
+                                </div>
+                            </div>
+
                         <input type="hidden" name="type" value="article">
 
                         <div class="form-group">
@@ -45,3 +57,16 @@
         <button type="Submit" class="btn btn-primary waves-effect waves-light"> Update</button>
     </div>
 </form>
+
+<script type="text/javascript">
+    function preview_update_quiz_image(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('update_quiz_image_path');
+            output.style.width = "180px";
+            output.style.height = "auto";
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

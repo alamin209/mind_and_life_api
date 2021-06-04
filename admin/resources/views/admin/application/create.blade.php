@@ -3,9 +3,9 @@
 @section('title') {{  $title }} @endsection
 
 @section('css')
-<!-- Responsive Table css -->
-<link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css" />
-<link href="{{ URL::asset('public/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Responsive Table css -->
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{ URL::asset('public/libs/select2/select2.min.css')}}" rel="stylesheet" type="text/css"/>
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
@@ -14,20 +14,20 @@
 
 
 @section('content')
-@component('common-components.breadcrumb')
-         @slot('title') Application  List    @endslot
-         @slot('li_1')   @endslot
-     @endcomponent
+    @component('common-components.breadcrumb')
+        @slot('title') Application  List    @endslot
+        @slot('li_1')   @endslot
+    @endcomponent
 
-<div class="row" >
+    <div class="row">
         @if(session()->has('message'))
 
-        <div class="alert alert-{{ session('type')  }} alert-dismissible fade show" role="alert">
-            {{ session('message')  }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
-        </div>
+            <div class="alert alert-{{ session('type')  }} alert-dismissible fade show" role="alert">
+                {{ session('message')  }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
 
         @endif
 
@@ -48,12 +48,12 @@
 
         <div class="col-md-12 col-lg-12 ">
             <div class="card">
-                <div class="card-body"   style="overflow-y: auto;"  >
+                <div class="card-body" style="overflow-y: auto;">
                     <form method="POST" action="{{ route('applications.store') }}">
                         @csrf
                         <div class="form-group">
                             <label class="control-label">Select Project </label>
-                            <select name="project_id" class="form-control select2"  required>
+                            <select name="project_id" class="form-control select2" required>
                                 <option value="">Select Project</option>
                                 @foreach($projects as $project)
                                     <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -63,25 +63,30 @@
 
                         <div class="form-group">
                             <label class="control-label">Select Vendor </label>
-                            <select name="vendor_id" class="form-control select2"  required>
+                            <select name="vendor_id" class="form-control select2" required>
                                 <option value="">Select Vendor</option>
                                 @foreach($vendors as $vendor)
-                                    <option value="{{ $vendor->id }}">{{ $vendor->company_name }} ({{ $vendor->contact_name }})</option>
+                                    <option value="{{ $vendor->id }}">{{ $vendor->company_name }}
+                                        ({{ $vendor->contact_name }})
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Quotation No </label>
-                            <input class="form-control" name="quotation_no" type="text" placeholder="Enter Quotation" required>
+                            <input class="form-control" name="quotation_no" type="text" placeholder="Enter Quotation"
+                                   required>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Quotation Details </label>
-                            <textarea name="project_details" id="project_details" rows="30" class="form-control">{{ $detailsTemplate }}</textarea>
+                            <textarea name="project_details" id="project_details" rows="30"
+                                      class="form-control">{{ $detailsTemplate }}</textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Total Amount </label>
-                            <input class="form-control" name="sub_total" type="text" placeholder="Enter Amount" required>
+                            <input class="form-control" name="sub_total" type="text" placeholder="Enter Amount"
+                                   required>
                         </div>
 
                         <div class="form-group">
@@ -96,8 +101,8 @@
                 </div>
             </div>
         </div>
-    <!-- end col -->
-</div>
+        <!-- end col -->
+    </div>
 @endsection
 
 @section('script')

@@ -4,20 +4,20 @@
 
 @section('content')
 
-@component('common-components.breadcrumb')
-         @slot('title') Task List @endslot
-         @slot('li_1') Pages  @endslot
-     @endcomponent
+    @component('common-components.breadcrumb')
+        @slot('title') Task List @endslot
+        @slot('li_1') Pages  @endslot
+    @endcomponent
 
 
-<div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Upcoming</h4>
-                <div class="table-responsive">
-                    <table class="table table-nowrap table-centered mb-0">
-                        <tbody>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Upcoming</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-centered mb-0">
+                            <tbody>
                             <tr>
                                 <td style="width: 60px;">
                                     <div class="custom-control custom-checkbox">
@@ -26,16 +26,19 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a Qovex Dashboard UI</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            Mind & Life Dashboard UI</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member">
-                                            <img src="/images/users/avatar-2.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-2.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member">
-                                            <img src="/images/users/avatar-1.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-1.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
@@ -53,16 +56,19 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a New Landing UI</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            New Landing UI</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-4.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-4.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-5.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-5.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
@@ -89,7 +95,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a Qovex Logo</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            Mind & Life Logo</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
@@ -108,18 +115,18 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">In Progress</h4>
-                <div class="table-responsive">
-                    <table class="table table-nowrap table-centered mb-0">
-                        <tbody>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">In Progress</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-centered mb-0">
+                            <tbody>
                             <tr>
                                 <td style="width: 60px;">
                                     <div class="custom-control custom-checkbox">
@@ -128,12 +135,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Brand logo design</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Brand logo
+                                            design</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-7.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-7.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
@@ -152,7 +161,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a Blog Template UI</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            Blog Template UI</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
@@ -165,11 +175,13 @@
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-8.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-8.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-1.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-1.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                     </div>
@@ -180,18 +192,18 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Completed</h4>
-                <div class="table-responsive">
-                    <table class="table table-nowrap table-centered mb-0">
-                        <tbody>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Completed</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-centered mb-0">
+                            <tbody>
                             <tr>
                                 <td style="width: 60px;">
                                     <div class="custom-control custom-checkbox">
@@ -200,12 +212,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Redesign - Landing page</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Redesign -
+                                            Landing page</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-6.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-6.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
                                             <div class="avatar-xs">
@@ -230,12 +244,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Multipurpose Landing</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Multipurpose
+                                            Landing</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-7.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-7.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
@@ -254,12 +270,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a Blog Template UI</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            Blog Template UI</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-4.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-4.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
@@ -271,7 +289,8 @@
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-2.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-2.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
@@ -281,45 +300,48 @@
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end col -->
+        <!-- end col -->
 
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-3">Tasks</h4>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-3">Tasks</h4>
 
-                <div id="task-chart" class="apex-charts"></div>
+                    <div id="task-chart" class="apex-charts"></div>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Recent Tasks</h4>
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Recent Tasks</h4>
 
-                <div class="table-responsive">
-                    <table class="table table-nowrap table-centered mb-0">
-                        <tbody>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-centered mb-0">
+                            <tbody>
                             <tr>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Brand logo design</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Brand logo
+                                            design</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-7.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-7.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a Blog Template UI</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Create a
+                                            Blog Template UI</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
@@ -332,11 +354,13 @@
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-8.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-8.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-1.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-1.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
 
                                     </div>
@@ -344,36 +368,39 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Redesign - Landing page</a></h5>
+                                    <h5 class="text-truncate font-size-14 m-0"><a href="#" class="text-dark">Redesign -
+                                            Landing page</a></h5>
                                 </td>
                                 <td>
                                     <div class="team">
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-7.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-7.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                         <a href="javascript: void(0);" class="team-member d-inline-block">
-                                            <img src="/images/users/avatar-4.jpg" class="rounded-circle avatar-xs m-1" alt="">
+                                            <img src="{{ URL::asset('public/images/users/avatar-4.png') }}"
+                                                 class="rounded-circle avatar-xs m-1" alt="">
                                         </a>
                                     </div>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- end table responsive -->
                 </div>
-                <!-- end table responsive -->
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
-<!-- end row -->
+    <!-- end row -->
 @endsection
 
 @section('script')
 
-<!-- apexcharts -->
-<script src="{{ URL::asset('/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <!-- apexcharts -->
+    <script src="{{ URL::asset('/libs/apexcharts/apexcharts.min.js')}}"></script>
 
-<script src="{{ URL::asset('/js/pages/tasklist.init.js')}}"></script>
+    <script src="{{ URL::asset('/js/pages/tasklist.init.js')}}"></script>
 
 @endsection

@@ -15,6 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
+// Cache Clear
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+});
 
 
 Route::get('/clear-permission-cache', function() {
@@ -56,6 +63,7 @@ Route::get('pages-lock-screen-2', 'QovexController@index');
 Route::get('pages-404', 'QovexController@index');
 Route::get('pages-500', 'QovexController@index');
 Route::get('pages-maintenance', 'QovexController@index');
+Route::get('pages-maintenance', 'QovexController@index');
 Route::get('pages-comingsoon', 'QovexController@index');
 Route::post('login-status', 'QovexController@checkStatus');
 
@@ -63,7 +71,13 @@ Route::post('login-status', 'QovexController@checkStatus');
  // You can also use auth middleware to prevent unauthenticated users
     Route::group(['middleware' => 'auth'], function () {
 
+
+        Route::get('app-user','Usermanagement\UserController@appuser')->name('userlist.appuser');
         Route::resource('userlist','Usermanagement\UserController');
+
+        Route::resource('quiz-type','Quiz\QuizTypeController');
+        Route::resource('quiz','Quiz\QuizController');
+        Route::resource('quiz-question','Quiz\QuizQuestionController');
 
         Route::resource('ip-addresslist','Ipaddress\IpAddressController');
 
@@ -71,19 +85,28 @@ Route::post('login-status', 'QovexController@checkStatus');
         Route::resource('article-category','Category\ArticleCategoryController');
         Route::resource('video-category','Category\VideoCategoryController');
 
+
+
+        Route::get('article/pending','Article\ArticleController@pending')->name('article.pending');
+        Route::get('article/status/{id}','Article\ArticleController@status')->name('article.status');
         Route::resource('article','Article\ArticleController');
+        Route::get('/article-image-delete', 'Article\ArticleController@articleImageDelete')->name('article-image.delete');
 
         Route::resource('advertisement','Advertisement\AdvertisementController');
+
+        Route::get('video-pending','Video\VideoController@pending')->name('videos.pending');
         Route::resource('videos','Video\VideoController');
 
         Route::resource('coupon','Coupon\CouponController');
+        Route::resource('point','Point\PointController');
+
 
         Route::resource('permission','Permission\PermissionController');
         Route::resource('roles', 'Permission\\RoleController');
         Route::resource('login-history','Usermanagement\LoginHistoryController');
         Route::get('/activity-history', 'Usermanagement\LoginHistoryController@allActivity')->name('activity-history');
-
         Route::get('{any}', 'QovexController@index');
+
 
     });
 // }]);

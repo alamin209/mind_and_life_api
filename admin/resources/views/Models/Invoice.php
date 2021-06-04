@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Invoice extends Model
 {
     protected $guarded = [];
-    
-    public function application(){
+
+    public function application()
+    {
         return $this->belongsTo(Application::class);
     }
 }

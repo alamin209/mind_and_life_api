@@ -7,6 +7,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 use App\User;
 use App\Models\Category;
 use App\Models\ArticleTag;
+use App\Models\ArticleImages;
 class Article extends Model
 {
     use  LogsActivity;
@@ -23,6 +24,10 @@ class Article extends Model
         return "This Ip Address   has been {$eventName}";
     }
 
+
+    public function articleImages(){
+        return $this->hasMany(ArticleImage::class ,'article_id','id');
+    }
 
     public function author(){
         return $this->belongsTo(User::class ,'user_id','id');

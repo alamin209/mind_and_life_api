@@ -116,7 +116,8 @@
 
                         <div class="form-group">
                             <label class="control-label">Terms and Condition </label>
-                            <textarea name="term_condition" id="project_details" rows="5" class="form-control"></textarea>
+                            <textarea name="term_condition" id="project_details" rows="5"
+                                      class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">

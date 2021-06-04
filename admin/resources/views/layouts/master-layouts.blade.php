@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title> @yield('title') | Qovex - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta charset="utf-8"/>
+    <title> @yield('title') | Mind & Life</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description"/>
+    <meta content="Themesbrand" name="author"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <!-- App favicon -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="shortcut icon" href="{{ URL::asset('public/images/favicon.ico')}}">
@@ -20,8 +20,8 @@
 <!-- Begin page -->
 <div class="container-fluid">
     <div id="layout-wrapper">
-        @include('layouts.hor-menu')
-        <!-- ============================================================== -->
+    @include('layouts.hor-menu')
+    <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
         <div class="main-content">

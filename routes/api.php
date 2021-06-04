@@ -40,10 +40,17 @@ Route::group(['middleware' => 'auth:api'], function () {
     // Route::post('/change', [AuthController::class, 'login']);
     Route::post('change-password', [AuthController::class, 'changePassword'])->name('changePassword');
     // User Management Routes
+
+
+
+    Route::post('video-user-log/store', [VideUserLogController::class, 'store']);
+
+    Route::post('user-occupation', [UserController::class, 'user_occupation']);
     Route::apiResource('users', UserController::class)->except(['store']);
 
     // ================ Category list =======================/
 
+    Route::post('user-category-log', [CategoryController::class, 'user_category_log']);
     Route::get('category/list', [CategoryController::class, 'list']);
 
    // ================ Article list =======================/
@@ -75,6 +82,10 @@ Route::group(['middleware' => 'api'], function () {
     // =================== Industry  route =====================//
     Route::get('industry/list', [IndustryController::class, 'list']);
     Route::apiResource('industry', IndustryController::class);
+
+     // =================== Category  route =====================//
+
+    Route::get('all-category/list', [CategoryController::class, 'article_video_category']);
 
     // =================== article  route =====================//
     Route::get('article/list', [ArticleController::class, 'list']);

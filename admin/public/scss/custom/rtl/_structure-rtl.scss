@@ -1,22 +1,21 @@
-// 
+//
 // structure-rtl.scss
 //
 
 // topbar.scss
 
-.navbar-header{
+.navbar-header {
     padding: 0 0 0 calc(#{$grid-gutter-width} / 2);
 }
 
 
-.main-content{
+.main-content {
     margin-left: 0px;
     margin-right: $sidebar-width;
 }
 
 
-
-.footer{
+.footer {
     left: 0px;
     right: 0;
 }
@@ -24,16 +23,17 @@
 // Sidebar
 
 #sidebar-menu {
-    .has-arrow{
-        &:after{
+    .has-arrow {
+        &:after {
             float: left;
         }
     }
+
     ul {
         li {
-            ul.sub-menu{
+            ul.sub-menu {
                 li {
-                    a{
+                    a {
                         padding: .4rem 3.5rem .4rem 1.5rem;
                     }
                 }
@@ -43,41 +43,41 @@
 }
 
 .vertical-collpsed {
-    .main-content{
+    .main-content {
         margin-left: 0px;
         margin-right: $sidebar-collapsed-width;
     }
 
-    .footer{
+    .footer {
         left: 0px;
         right: $sidebar-collapsed-width;
     }
-    
+
     .vertical-menu {
-        #sidebar-menu{
-            >ul{
-                >li{
-                    >a {
-                        i{
+        #sidebar-menu {
+            > ul {
+                > li {
+                    > a {
+                        i {
                             margin-left: 0;
                             margin-right: 4px;
                         }
 
-                        span{
+                        span {
                             padding-right: 25px;
                             padding-left: 0;
                         }
                     }
 
-                    &:hover{
-                        >ul{
+                    &:hover {
+                        > ul {
                             left: 0;
                             right: 70px;
                         }
                     }
                 }
 
-                ul li:hover>ul{
+                ul li:hover > ul {
                     left: auto;
                     right: 190px;
                 }
@@ -125,32 +125,31 @@
 // detached
 
 body[data-layout=detached] {
-    .main-content{
+    .main-content {
         margin-right: 0;
     }
-    .navbar-brand-box{
-    float: right;
-    text-align: right;
-    margin-left: 24px;
-    margin-right: 0;
+
+    .navbar-brand-box {
+        float: right;
+        text-align: right;
+        margin-left: 24px;
+        margin-right: 0;
     }
 
 
-    
 }
 
 
 // Detached layout
 
-body[data-layout="detached"]{
+body[data-layout="detached"] {
     @include media-breakpoint-up(lg) {
-        .page-content{
+        .page-content {
             padding-right: 24px;
             padding-left: 12px;
         }
     }
 }
-
 
 
 // Compact sidebar
@@ -160,7 +159,7 @@ body[data-sidebar-size=small] {
         ul {
             li {
                 ul.sub-menu {
-                    li a{
+                    li a {
                         padding-right: 1.5rem;
                     }
                 }
@@ -170,7 +169,7 @@ body[data-sidebar-size=small] {
 
     &.vertical-collpsed {
         .vertical-menu {
-            #sidebar-menu{
+            #sidebar-menu {
                 text-align: right;
             }
         }
@@ -189,12 +188,12 @@ body[data-sidebar-size=small] {
 // Horizontal layout
 
 body[data-layout=horizontal] {
-    .main-content{
-        margin-right: 0!important;
+    .main-content {
+        margin-right: 0 !important;
     }
 
     .footer {
-        right: 0!important;
+        right: 0 !important;
     }
 }
 
@@ -216,7 +215,7 @@ body[data-layout=horizontal] {
 @include media-breakpoint-up(lg) {
     .topnav {
         .dropdown {
-            .dropdown-menu{
+            .dropdown-menu {
                 right: 0px;
                 left: auto;
             }
@@ -224,20 +223,20 @@ body[data-layout=horizontal] {
     }
 }
 
-.arrow-down{
-    &:after{
+.arrow-down {
+    &:after {
         margin-left: 0px;
         margin-right: 10px;
     }
 }
 
 .navbar-nav {
-    .dropdown-menu{
+    .dropdown-menu {
         text-align: right;
     }
 }
 
-@media (min-width: 992px){
+@media (min-width: 992px) {
     .topnav {
         .dropdown {
             .dropdown-menu {
@@ -248,7 +247,7 @@ body[data-layout=horizontal] {
                 }
 
                 .dropdown {
-                    .dropdown-menu{
+                    .dropdown-menu {
                         right: 100%;
                         left: auto;
                     }
@@ -258,7 +257,7 @@ body[data-layout=horizontal] {
     }
 }
 
-@media (max-width: 991.98px){
+@media (max-width: 991.98px) {
     .topnav {
         .dropdown {
             .dropdown-menu {

@@ -22,8 +22,8 @@ var vHeight = 202,
 function initCroppie() {
     var avatar = $('#avatar');
     var width = $(".avatar-wrapper").width(),
-        bWidth = width * 82/100,
-        vWidth = bWidth * 53/100;
+        bWidth = width * 82 / 100,
+        vWidth = bWidth * 53 / 100;
 
     if (vWidth > 160) {
         vWidth = 160;
@@ -76,8 +76,7 @@ function readFile(input) {
         showSpinner();
 
         reader.readAsDataURL(input.files[0]);
-    }
-    else {
+    } else {
         swal("Sorry - you're browser doesn't support the FileReader API");
     }
 }
@@ -162,7 +161,9 @@ function updateAvatarFromSource(url, imageUrl) {
         .submit();
 }
 
-$('#avatar-upload').on('change', function () { readFile(this); });
+$('#avatar-upload').on('change', function () {
+    readFile(this);
+});
 
 $(".source-external img").click(function () {
     var imageUrl = $(this).attr('src');

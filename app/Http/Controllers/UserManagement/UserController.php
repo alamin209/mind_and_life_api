@@ -84,9 +84,10 @@ class UserController extends Controller
         $userObj->referral_code          = $request->referral_code;
         $userObj->password               = bcrypt($request->password);
         $userObj->user_type              =  0;
+        $userObj->is_api                 =  0;
+        $userObj->occupation_id          = null;
 
         $user = $userObj->save();
-
 
         $profile_uploaded_path ='';
         if($user){
@@ -194,6 +195,8 @@ class UserController extends Controller
         $userObj->salary_range_id        = $request->salary_range_id;
         $userObj->referral_code          = $request->referral_code;
         $userObj->password               = bcrypt($request->password);
+        $userObj->is_api                 = 0;
+        $userObj->occupation_id          = null;
 
         if($request->filled('password')){
             $user->password     = bcrypt($request->password);
@@ -214,13 +217,46 @@ class UserController extends Controller
 
         }
 
-
         $userData = new UserResource($user);
         return WebApiResponse::success(201, $userData, 'User Updated');
-
-
     }
 
+
+
+
+
+    /**
+     * Create New Occupation Store
+     * @group  User Occupation
+     * @bodyParam user_id  Integer required User Id. Example: 1
+     * @bodyParam industry_id  Integer required industry means occupation   Id. Example: 1
+     * @return \Illuminate\Http\Response
+     * @response 200
+     *{"status":"Success","message":"messages.success_created","code":200,"data":{"user_id":"1","categories":[1,2,3],"updated_at":"2021-06-04T10:49:52.000000Z","created_at":"2021-06-04T10:49:52.000000Z","id":4}}
+     */
+
+    public function user_occupation(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'user_id'             =>    'required|integer',
+            'industry_id'         =>    'required|integer',
+
+        ]);
+        if ($validator->fails()) {
+            return WebApiResponse::validationError($validator, $request);
+        }
+        try {
+
+            $user = User::find($request->user_id);
+            $user->industry_id = $request->industry_id;
+            $user->save();
+
+            return WebApiResponse::success(200, $user->toArray(), trans('messages.success_created'));
+        } catch (\Throwable $th) {
+            return WebApiResponse::error(404, $errors = [$th->getMessage()],  trans('messages.success_created_faild'));
+        }
+    }
     /**
      * Remove the specified User.
      * @group User Management
@@ -231,18 +267,18 @@ class UserController extends Controller
      *
      * @response 200 {"status":"Success","message":"User Deleted","code":200,"data":[]}
      */
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
+    // public function destroy($id)
+    // {
+    //     $user = User::findOrFail($id);
 
-        $user->linkedSocialAccounts->delete();
+    //     $user->linkedSocialAccounts->delete();
 
-        try {
-            $user->delete();
-            return WebApiResponse::success(200, [], 'User Deleted');
-        } catch (\Throwable $th) {
-            $errors = $th->getMessage();
-            return WebApiResponse::error(500, [$errors], 'Something Went Wrong');
-        }
-    }
+    //     try {
+    //         $user->delete();
+    //         return WebApiResponse::success(200, [], 'User Deleted');
+    //     } catch (\Throwable $th) {
+    //         $errors = $th->getMessage();
+    //         return WebApiResponse::error(500, [$errors], 'Something Went Wrong');
+    //     }
+    // }
 }

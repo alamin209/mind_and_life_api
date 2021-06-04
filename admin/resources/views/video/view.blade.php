@@ -22,9 +22,15 @@
 <h4 style="text-align: center"> Video
 
     @if ($video->type == 'link')
-        <iframe width="100%" height="150" src="{{str_replace('youtu.be', 'youtube.com/embed',str_replace('watch?v=','embed/',$video->youtube_link))}}" title="{{$video->category_name}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="100%" height="150"
+                src="{{str_replace('youtu.be', 'youtube.com/embed',str_replace('watch?v=','embed/',$video->youtube_link))}}"
+                title="{{$video->category_name}}" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
     @else
-        <video width="100%" height="150" controls><source src="{{$video->video_path}}" type="video/mp4"></video>
+        <video width="100%" height="150" controls>
+            <source src="{{$video->video_path}}" type="video/mp4">
+        </video>
     @endif
 </h4>
 

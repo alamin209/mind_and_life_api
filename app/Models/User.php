@@ -30,7 +30,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'salary_range_id',
         'salary_range_id',
         'user_type',
-        'email_verified_at'
+        'email_verified_at',
+        'phone',
+        'is_api',
+        'occupation_id'
     ];
 
     /**

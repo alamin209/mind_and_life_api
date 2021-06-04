@@ -1,13 +1,3 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Version: 1.0.0
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Main RTL Css File
-*/
-
-
 //Fonts
 @import "custom/fonts/fonts";
 
@@ -36,7 +26,6 @@ File: Main RTL Css File
 @import "custom/components/demos";
 @import "custom/components/print";
 
-
 // Plugins
 @import "custom/plugins/custom-scrollbar";
 @import "custom/plugins/calendar";
@@ -59,7 +48,6 @@ File: Main RTL Css File
 @import "custom/plugins/sparkline-chart";
 @import "custom/plugins/google-map";
 @import "custom/plugins/vector-maps";
-
 
 // Pages
 @import "custom/pages/authentication";

@@ -104,10 +104,10 @@
                             <input class="form-control" name="download_limit" type="number" required>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="control-label">Total Download</label>
                             <input class="form-control" name="total_download" type="number" required>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label class="control-label">Description </label>
@@ -116,7 +116,8 @@
 
                         <div class="form-group">
                             <label class="control-label">Terms and Condition </label>
-                            <textarea name="term_condition" id="project_details" rows="5" class="form-control"></textarea>
+                            <textarea name="term_condition" id="project_details" rows="5"
+                                      class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">

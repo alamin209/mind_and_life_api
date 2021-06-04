@@ -1,16 +1,8 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Form edittor
-*/
-
 $(document).ready(function () {
-    if($("#elm1").length > 0){
+    if ($("#elm1").length > 0) {
         tinymce.init({
             selector: "textarea#elm1",
-            height:300,
+            height: 300,
             plugins: [
                 "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
                 "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",

@@ -12,10 +12,9 @@ class Ipaddress extends Model
     use  LogsActivity;
 
     protected static $logUnguarded = true;
-     protected static $logFillable = true;
+    protected static $logFillable = true;
     protected static $logName = 'Ip Address';
-    protected $guarded=[];
-
+    protected $guarded = [];
 
 
     public function getDescriptionForEvent(string $eventName): string
@@ -24,7 +23,8 @@ class Ipaddress extends Model
     }
 
 
-    public function user(){
+    public function user()
+    {
 
         return $this->belongsTo(User::class);
     }

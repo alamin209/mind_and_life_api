@@ -8,15 +8,18 @@ class Client extends Model
 {
     protected $guarded = [];
 
-    public function getNameAttribute(){
+    public function getNameAttribute()
+    {
         return $this->first_name . ' ' . $this->last_name;
     }
 
-    public function projects(){
+    public function projects()
+    {
         return $this->hasMany(Project::class);
     }
 
-    public function country(){
-        return $this->belongsTo(Country::class,'country_id','id');
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id', 'id');
     }
 }

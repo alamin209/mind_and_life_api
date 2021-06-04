@@ -1,13 +1,3 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Version: 1.0.0
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Main Js File
-*/
-
-
 (function ($) {
 
     'use strict';
@@ -48,7 +38,7 @@ File: Main Js File
     function initMenuItem() {
         $(".navbar-nav a").each(function () {
             var pageUrl = window.location.href.split(/[?#]/)[0];
-            if (this.href == pageUrl) { 
+            if (this.href == pageUrl) {
                 $(this).addClass("active");
                 $(this).parent().addClass("active");
                 $(this).parent().parent().addClass("active");
@@ -81,9 +71,10 @@ File: Main Js File
                 }
             }
         });
-        document.addEventListener('fullscreenchange', exitHandler );
+        document.addEventListener('fullscreenchange', exitHandler);
         document.addEventListener("webkitfullscreenchange", exitHandler);
         document.addEventListener("mozfullscreenchange", exitHandler);
+
         function exitHandler() {
             if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
                 console.log('pressed');
@@ -109,17 +100,17 @@ File: Main Js File
     }
 
     function initDropdownMenu() {
-        $('.dropdown-menu a.dropdown-toggle').on('click', function(e) {
+        $('.dropdown-menu a.dropdown-toggle').on('click', function (e) {
             if (!$(this).next().hasClass('show')) {
-              $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
             }
             var $subMenu = $(this).next(".dropdown-menu");
             $subMenu.toggleClass('show');
-    
+
             return false;
-        });   
+        });
     }
-    
+
     function initComponents() {
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
@@ -131,7 +122,7 @@ File: Main Js File
     }
 
     function initPreloader() {
-        $(window).on('load', function() {
+        $(window).on('load', function () {
             $('#status').fadeOut();
             $('#preloader').delay(350).fadeOut('slow');
         });
@@ -145,30 +136,30 @@ File: Main Js File
                 updateThemeSetting(false, true, true);
             } else {
                 $(".right-bar input:checkbox").prop('checked', false);
-                $("#"+alreadyVisited).prop('checked', true);
-                $("#"+alreadyVisited).trigger("change");
-                if(alreadyVisited === "light-mode-switch") {
+                $("#" + alreadyVisited).prop('checked', true);
+                $("#" + alreadyVisited).trigger("change");
+                if (alreadyVisited === "light-mode-switch") {
                     updateThemeSetting(false, true, true);
-                } else if(alreadyVisited === "dark-mode-switch") {
+                } else if (alreadyVisited === "dark-mode-switch") {
                     updateThemeSetting(true, false, true);
-                } else if(alreadyVisited === "rtl-mode-switch") {
+                } else if (alreadyVisited === "rtl-mode-switch") {
                     updateThemeSetting(false, true, false);
                 }
             }
         }
 
-        $("#light-mode-switch, #dark-mode-switch, #rtl-mode-switch").on("change", function(e) {
-            if(e.target.id === "light-mode-switch" && $(this).prop("checked")) {
+        $("#light-mode-switch, #dark-mode-switch, #rtl-mode-switch").on("change", function (e) {
+            if (e.target.id === "light-mode-switch" && $(this).prop("checked")) {
                 $("#dark-mode-switch").prop("checked", false);
                 $("#rtl-mode-switch").prop("checked", false);
                 updateThemeSetting(false, true, true);
                 sessionStorage.setItem("is_visited", e.target.id);
-            } else if(e.target.id === "dark-mode-switch" && $(this).prop("checked")) {
+            } else if (e.target.id === "dark-mode-switch" && $(this).prop("checked")) {
                 $("#light-mode-switch").prop("checked", false);
                 $("#rtl-mode-switch").prop("checked", false);
                 updateThemeSetting(true, false, true);
                 sessionStorage.setItem("is_visited", e.target.id);
-            } else if(e.target.id === "rtl-mode-switch" && $(this).prop("checked")) {
+            } else if (e.target.id === "rtl-mode-switch" && $(this).prop("checked")) {
                 $("#dark-mode-switch").prop("checked", false);
                 $("#light-mode-switch").prop("checked", false);
                 updateThemeSetting(false, true, false);

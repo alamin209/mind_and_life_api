@@ -4,7 +4,7 @@
 
 @section('css')
     <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
@@ -47,7 +47,7 @@
         <div class="col-md-12 col-lg-12 ">
             <div class="card">
                 <button type="button" class="btn btn-success waves-effect waves-light " style="height:10%;width:10%"
-                    data-toggle="modal" data-target="#addnewipaddress">
+                        data-toggle="modal" data-target="#addnewipaddress">
                     <i class="bx bx-fa-plus font-size-16 align-right"> Add new </i>
                     {{-- <i class='fas fa-plus'>fa-plus</i> --}}
                 </button>
@@ -55,13 +55,13 @@
                 <div class="card-body" style="height:630px;  overflow-y: auto;">
                     <table class="table yajra-dt">
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Name</th>
-                                <th>Ip Address</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Ip Address</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
                         </tbody>
@@ -73,7 +73,7 @@
     </div>
 
     <div id="addnewipaddress" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -89,7 +89,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form action="{{ route('ip-addresslist.store') }}" method="Post"
-                                        class="custom-validation">
+                                          class="custom-validation">
                                         @csrf
                                         <div class="form-group">
                                             <label class="control-label"> User List</label>
@@ -103,7 +103,7 @@
                                             <label>Ip Address</label>
                                             <div>
                                                 <input type="text" name="ip_address" class="form-control"
-                                                    placeholder="Give IP address">
+                                                       placeholder="Give IP address">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -135,7 +135,7 @@
 
 
     <div id="updatenewipaddress" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="txtHint">
@@ -152,16 +152,16 @@
     {{-- <script src="{{ URL::asset('public/js/pages/table-responsive.init.js')}}"></script> --}}
 
     <script type="text/javascript">
-        $(function() {
+        $(function () {
             var table = $('.yajra-dt').DataTable({
                 processing: true,
                 serverSide: true,
 
                 ajax: "{{ route('ip-addresslist.index') }}",
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
                     {
                         data: 'name',
                         name: 'name'
@@ -198,7 +198,7 @@
                 url: "{{ url('ip-addresslist') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
-                success: function(data) {
+                success: function (data) {
                     $('#txtHint').html(data);
                 }
             });

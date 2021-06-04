@@ -22,6 +22,6 @@ class ArticleUser extends Model
     }
     public function video(){
 
-        return $this->belongsTo(Article::class ,'article_id','id');
+        return $this->belongsTo(Article::class ,'video_id','id');
     }
 }

@@ -1,29 +1,29 @@
-(function() {
+(function () {
 
     var laravel = {
-        initialize: function() {
+        initialize: function () {
             this.registerEvents();
         },
 
-        registerEvents: function() {
+        registerEvents: function () {
             $('body').on('click', 'a[data-method]', this.handleMethod);
         },
 
-        handleMethod: function(e) {
+        handleMethod: function (e) {
             var link = $(this);
             var httpMethod = link.data('method').toUpperCase();
             var form;
 
             // If the data-method attribute is not PUT or DELETE,
             // then we don't know what to do. Just ignore.
-            if ( $.inArray(httpMethod, ['PUT', 'DELETE']) === - 1 ) {
+            if ($.inArray(httpMethod, ['PUT', 'DELETE']) === -1) {
                 return;
             }
 
             // Allow user to optionally provide data-confirm="Are you sure?"
-            if ( link.data('confirm-text') ) {
+            if (link.data('confirm-text')) {
                 laravel.verifyConfirm(link, function (t) {
-                    if (! t) return false;
+                    if (!t) return false;
 
                     form = laravel.createForm(link);
                     form.submit();
@@ -33,7 +33,7 @@
             e.preventDefault();
         },
 
-        verifyConfirm: function(link, callback) {
+        verifyConfirm: function (link, callback) {
             swal({
                 title: link.data('confirm-title'),
                 text: link.data('confirm-text'),
@@ -48,7 +48,7 @@
             return $('meta[name="csrf-token"]').attr('content');
         },
 
-        createForm: function(link) {
+        createForm: function (link) {
             var form =
                 $('<form>', {
                     'method': 'POST',

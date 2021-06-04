@@ -1,4 +1,4 @@
-// 
+//
 // bootstrap-rtl.scss
 //
 
@@ -17,11 +17,11 @@
 .dropdown-menu-right {
     right: auto !important;
     left: 0 !important;
+
     &.show {
         left: 0 !important;
     }
 }
-
 
 
 // List
@@ -53,21 +53,22 @@ ul {
 
 // pagination
 
-.pagination{
+.pagination {
     .page-item {
         &:first-child {
             .page-link {
-                margin-right: 0;//rtl
+                margin-right: 0; //rtl
                 border-top-left-radius: 0px;
                 border-bottom-left-radius: 0px;
-                @include border-right-radius($border-radius);//rtl
+                @include border-right-radius($border-radius); //rtl
             }
         }
+
         &:last-child {
             .page-link {
                 border-top-right-radius: 0px;
                 border-bottom-right-radius: 0px;
-                @include border-left-radius($border-radius);//rtl
+                @include border-left-radius($border-radius); //rtl
             }
         }
     }
@@ -76,7 +77,7 @@ ul {
 
 // blockquote
 
-.blockquote-reverse{
+.blockquote-reverse {
     text-align: left !important;
 }
 
@@ -89,7 +90,7 @@ dd {
 // Modal
 
 
-.custom-modal-title{
+.custom-modal-title {
     text-align: right;
 }
 
@@ -101,7 +102,7 @@ dd {
 }
 
 .modal-demo {
-    .close{
+    .close {
         left: 25px;
         right: auto;
     }
@@ -137,9 +138,10 @@ dd {
 // Breadcrumb item arrow
 
 .breadcrumb-item {
-    +.breadcrumb-item {
+    + .breadcrumb-item {
         padding-right: $breadcrumb-item-padding;
         padding-left: 0px;
+
         &::before {
             padding-left: $breadcrumb-item-padding;
             content: "\F141";
@@ -148,19 +150,19 @@ dd {
     }
 }
 
-// Custom Checkbox-Radio 
+// Custom Checkbox-Radio
 
-.form-check{
+.form-check {
     padding-left: 0;
     padding-right: $form-check-input-gutter;
 }
 
-.form-check-input{
+.form-check-input {
     margin-left: 0;
     margin-right: -$form-check-input-gutter;
 }
 
-.form-check-inline{
+.form-check-inline {
     margin-left: .75rem;
     margin-right: 0;
 }
@@ -170,7 +172,7 @@ dd {
     padding-left: 0;
 }
 
-.custom-control-inline{
+.custom-control-inline {
     margin-right: 0;
     margin-left: $custom-control-spacer-x;
 }
@@ -204,7 +206,7 @@ dd {
         }
     }
 
-    .custom-control-input:checked~.custom-control-label {
+    .custom-control-input:checked ~ .custom-control-label {
         &::after {
             transform: translateX(#{-($custom-switch-width - $custom-control-indicator-size)});
         }
@@ -220,7 +222,6 @@ dd {
 }
 
 
-
 // Input Group
 
 .input-group-prepend {
@@ -233,28 +234,28 @@ dd {
     margin-left: 0;
 }
 
-.input-group>.input-group-prepend>.btn,
-.input-group>.input-group-prepend>.input-group-text,
-.input-group>.input-group-append:not(:last-child)>.btn,
-.input-group>.input-group-append:not(:last-child)>.input-group-text,
-.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
-.input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
-.input-group>.custom-select:not(:last-child),
-.input-group>.form-control:not(:last-child) {
+.input-group > .input-group-prepend > .btn,
+.input-group > .input-group-prepend > .input-group-text,
+.input-group > .input-group-append:not(:last-child) > .btn,
+.input-group > .input-group-append:not(:last-child) > .input-group-text,
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+.input-group > .input-group-append:last-child > .input-group-text:not(:last-child),
+.input-group > .custom-select:not(:last-child),
+.input-group > .form-control:not(:last-child) {
     border-top-right-radius: $input-border-radius;
     border-bottom-right-radius: $input-border-radius;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.input-group>.input-group-append>.btn,
-.input-group>.input-group-append>.input-group-text,
-.input-group>.input-group-prepend:not(:first-child)>.btn,
-.input-group>.input-group-prepend:not(:first-child)>.input-group-text,
-.input-group>.input-group-prepend:first-child>.btn:not(:first-child),
-.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),
-.input-group>.custom-select:not(:first-child),
-.input-group>.form-control:not(:first-child) {
+.input-group > .input-group-append > .btn,
+.input-group > .input-group-append > .input-group-text,
+.input-group > .input-group-prepend:not(:first-child) > .btn,
+.input-group > .input-group-prepend:not(:first-child) > .input-group-text,
+.input-group > .input-group-prepend:first-child > .btn:not(:first-child),
+.input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child),
+.input-group > .custom-select:not(:first-child),
+.input-group > .form-control:not(:first-child) {
     border-top-left-radius: $input-border-radius;
     border-bottom-left-radius: $input-border-radius;
     border-top-right-radius: 0;

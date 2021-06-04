@@ -4,7 +4,7 @@
 
 @section('css')
     <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -54,7 +54,8 @@
                         <div class="table-responsive mb-0" data-pattern="priority-columns">
 
                             <button type="button" class="btn btn-success waves-effect waves-light "
-                                style=" margin-top:10px !important" data-toggle="modal" data-target="#addnewipaddress">
+                                    style=" margin-top:10px !important" data-toggle="modal"
+                                    data-target="#addnewipaddress">
                                 <i class="bx bx-fa-plus font-size-16 align-right"> Add new </i>
                                 <i class='fas fa-plus'>fa-plus</i>
                             </button>
@@ -62,49 +63,49 @@
 
                             <table id="tech-companies-1" class="table table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>SL</th>
-                                        <th data-priority="1">Client name </th>
-                                        <th data-priority="2">Client Email Address</th>
-                                        <th data-priority="3">address</th>
-                                        <th data-priority="4">status</th>
-                                        <th data-priority="5">action </th>
-                                    </tr>
+                                <tr>
+                                    <th>SL</th>
+                                    <th data-priority="1">Client name</th>
+                                    <th data-priority="2">Client Email Address</th>
+                                    <th data-priority="3">address</th>
+                                    <th data-priority="4">status</th>
+                                    <th data-priority="5">action</th>
+                                </tr>
                                 </thead>
                                 <tbody>
 
 
-                                    @php $i=1 ; @endphp
-                                    @foreach ($allipaddress as $ipadd)
-                                        <tr>
-                                            <td> <span class="co-name">{{ $i }}</span></td>
-                                            <td>{{ $ipadd->user->name ?? '' }}</td>
-                                            <td>{{ $ipadd->ip_address }}</td>
-                                            <td>{{ $ipadd->status == 1 ? 'active' : 'disable' }}</td>
-                                            <td>
-                                                @if ($ipadd->status == 0)
+                                @php $i=1 ; @endphp
+                                @foreach ($allipaddress as $ipadd)
+                                    <tr>
+                                        <td><span class="co-name">{{ $i }}</span></td>
+                                        <td>{{ $ipadd->user->name ?? '' }}</td>
+                                        <td>{{ $ipadd->ip_address }}</td>
+                                        <td>{{ $ipadd->status == 1 ? 'active' : 'disable' }}</td>
+                                        <td>
+                                            @if ($ipadd->status == 0)
 
-                                                    <button type="button" onclick="selectid2({{ $ipadd->id }} )"
+                                                <button type="button" onclick="selectid2({{ $ipadd->id }} )"
                                                         class="btn btn-danger waves-effect waves-light"
                                                         style="margin-right:20px" onclick="selectid2({{ $ipadd->id }} )"
                                                         data-toggle="modal" data-target="#updatenewipaddress">
-                                                        <i class="bx bx-pencil  font-size-16 align-right "></i> Disable
-                                                    </button>
-                                                @elseif( $ipadd->status==1)
+                                                    <i class="bx bx-pencil  font-size-16 align-right "></i> Disable
+                                                </button>
+                                            @elseif( $ipadd->status==1)
 
-                                                    <button type="button" onclick="selectid2({{ $ipadd->id }} )"
+                                                <button type="button" onclick="selectid2({{ $ipadd->id }} )"
                                                         class="btn btn-success waves-effect waves-light"
                                                         style="margin-right:20px" onclick="selectid2({{ $ipadd->id }} )"
                                                         data-toggle="modal" data-target="#updatenewipaddress">
-                                                        <i class="bx bx-pencil  font-size-16 align-right "></i> Enable
-                                                    </button>
-                                                @endif
+                                                    <i class="bx bx-pencil  font-size-16 align-right "></i> Enable
+                                                </button>
+                                            @endif
 
-                                            </td>
-                                        </tr>
+                                        </td>
+                                    </tr>
 
-                                        @php $i++ @endphp
-                                    @endforeach
+                                    @php $i++ @endphp
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -119,7 +120,7 @@
     <!-- end row -->
 
     <div id="addnewipaddress" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -137,7 +138,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form action="{{ route('ip-addresslist.store') }}" method="Post"
-                                        class="custom-validation">
+                                          class="custom-validation">
                                         @csrf
                                         <div class="form-group">
                                             <label class="control-label"> User List</label>
@@ -151,7 +152,7 @@
                                             <label>Ip Address</label>
                                             <div>
                                                 <input type="text" name="ip_address" required class="form-control"
-                                                    required="" placeholder="Give IP address">
+                                                       required="" placeholder="Give IP address">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -188,7 +189,7 @@
 
 
     <div id="updatenewipaddress" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="txtHint">
@@ -215,7 +216,7 @@
                 url: "{{ url('ip-addresslist') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
-                success: function(data) {
+                success: function (data) {
 
                     $('#txtHint').html(data);
 

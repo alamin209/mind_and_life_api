@@ -4,23 +4,24 @@
 
 @section('content')
 
-     @component('common-components.breadcrumb')
-         @slot('title') Grid  @endslot
-         @slot('li_1') UI Elements  @endslot
-     @endcomponent
+    @component('common-components.breadcrumb')
+        @slot('title') Grid  @endslot
+        @slot('li_1') UI Elements  @endslot
+    @endcomponent
 
 
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
 
-                <h4 class="card-title">Grid options</h4>
-                <p class="card-title-desc">See how aspects of the Bootstrap grid system work across multiple devices with a handy table.</p>
+                    <h4 class="card-title">Grid options</h4>
+                    <p class="card-title-desc">See how aspects of the Bootstrap grid system work across multiple devices
+                        with a handy table.</p>
 
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-nowrap mb-0">
-                        <thead>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-nowrap mb-0">
+                            <thead>
                             <tr>
                                 <th></th>
                                 <th class="text-center">
@@ -49,8 +50,8 @@
                                     <small>≥1200px</small>
                                 </th>
                             </tr>
-                        </thead>
-                        <tbody>
+                            </thead>
+                            <tbody>
                             <tr>
                                 <th class="text-nowrap" scope="row">Grid behavior</th>
                                 <td>Horizontal at all times</td>
@@ -92,14 +93,14 @@
                                 <th class="text-nowrap" scope="row">Column ordering</th>
                                 <td colspan="5">Yes</td>
                             </tr>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- end col -->
+        <!-- end col -->
 
-</div>
-<!-- end row -->
+    </div>
+    <!-- end row -->
 @endsection

@@ -26,7 +26,7 @@ class VideoController extends Controller
 
         if ($request->ajax()) {
 
-            $data = Video::with('author', 'category')->get();
+            $data = Video::with('author', 'category')->where('is_published',1)->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -47,13 +47,15 @@ class VideoController extends Controller
                         return $row->youtube_link;
                     }
                 })
-                ->addColumn('status', function ($row) {
-                    if ($row->status == 1) {
-                        return 'Active';
+                ->addColumn('is_published', function ($row) {
+                    if ($row->is_published == 1) {
+                        return 'published';
                     } else {
-                        return 'Inactive';
+                        return 'unpublished';
                     }
                 })
+
+
                 ->addColumn('action', function ($row) {
                     $btn = '<button type="button"  class="btn btn-success waves-effect waves-light"style="margin-right:20px">
                     <a href="videos/' . $row->id . '/edit"> Edit </a>
@@ -69,10 +71,96 @@ class VideoController extends Controller
                    Delete
                    </button>';
 
-                    return $btn . '' . $btn3 . '' . $btn2;
+                    if($row->is_published == 1){
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                                Unpublish
+                            </a>';
+                   }else{
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                                Publish
+                            </a>';
+                   }
 
-                    // <i class="bx bx-pencil  font-size-16 align-right "   ></i>
+                    return  $btn . '' . $btn3 . '' . $btn4 . '' . $btn2;
+
                 })
+
+
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+
+        return view('admin/video/videos', compact('title'));
+    }
+
+
+    public function pending(Request $request)
+    {
+        $title = 'Videos List';
+
+        $data = Video::with('author', 'category')->where('is_published',0)->get();
+        if ($request->ajax()) {
+
+
+
+            return Datatables::of($data)
+                ->addIndexColumn()
+                ->addColumn('category_name', function ($row) {
+                    return $row->category->name ?? '';
+                })
+                ->addColumn('author_name', function ($row) {
+                    return $row->author->username ?? '';
+                })
+                ->addColumn('video_type', function ($row) {
+                    return $row->type ?? '';
+                })
+                ->addColumn('video', function ($row) {
+                    if ($row->type == 'directly') {
+                        $url = asset($row->video_path);
+                        return $url;
+                    } else {
+                        return $row->youtube_link;
+                    }
+                })
+                ->addColumn('is_published', function ($row) {
+                    if ($row->is_published == 1) {
+                        return 'published';
+                    } else {
+                        return 'unpublished';
+                    }
+                })
+
+
+                ->addColumn('action', function ($row) {
+                    $btn = '<button type="button"  class="btn btn-success waves-effect waves-light"style="margin-right:20px">
+                    <a href="videos/' . $row->id . '/edit"> Edit </a>
+                   </button> ';
+
+                    $btn3 = '<button type="button"   onclick="selectid2(' . $row->id . ')"
+                   class="btn btn-primary waves-effect waves-light"style="margin-right:20px"   data-toggle="modal" data-target="#updatecategory">
+                    View
+                   </button>';
+
+                    $btn2 = '<button type="button" data-panel-id="' . $row->id . '"   onclick="delete_ad(' . $row->id . ')"
+                   class="btn btn-danger waves-effect waves-light"   data-toggle="modal" data-target="#">
+                   Delete
+                   </button>';
+
+                    if($row->is_published == 1){
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                                Unpublish
+                            </a>';
+                   }else{
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                                Publish
+                            </a>';
+                   }
+
+                    return  $btn . '' . $btn3 . '' . $btn4 . '' . $btn2;
+
+                })
+
+
                 ->rawColumns(['action'])
                 ->make(true);
         }

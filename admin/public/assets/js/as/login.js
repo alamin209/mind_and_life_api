@@ -3,7 +3,7 @@ var valid = false;
 $("#login-form").submit(function (e) {
     var $form = $(this);
 
-    if (! $form.valid()) {
+    if (!$form.valid()) {
         return false;
     }
 

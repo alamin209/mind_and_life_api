@@ -1,23 +1,23 @@
-// 
+//
 // _badge.scss
-// 
+//
 
 // Soft badge
 @mixin badge-variant-soft($bg) {
-  color: $bg;
-  background-color: rgba($bg, 0.18);
+    color: $bg;
+    background-color: rgba($bg, 0.18);
 
-  &[href] {
-    @include hover-focus {
-      color: $bg;
-      text-decoration: none;
-      background-color: rgba($bg, 0.4);
+    &[href] {
+        @include hover-focus {
+            color: $bg;
+            text-decoration: none;
+            background-color: rgba($bg, 0.4);
+        }
     }
-  }
 }
 
 @each $color, $value in $theme-colors {
-  .badge-soft-#{$color} {
-      @include badge-variant-soft($value);
-  }
+    .badge-soft-#{$color} {
+        @include badge-variant-soft($value);
+    }
 }

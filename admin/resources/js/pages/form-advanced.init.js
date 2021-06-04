@@ -1,17 +1,10 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Form Advance
-*/
-
-!function($) {
+!function ($) {
     "use strict";
 
-    var AdvancedForm = function() {};
-    
-    AdvancedForm.prototype.init = function() {
+    var AdvancedForm = function () {
+    };
+
+    AdvancedForm.prototype.init = function () {
 
         // Select2
         $(".select2").select2();
@@ -40,8 +33,7 @@ File: Form Advance
 
 
         //Bootstrap-TouchSpin
-        var defaultOptions = {
-        };
+        var defaultOptions = {};
 
         // touchspin
         $('[data-toggle="touchspin"]').each(function (idx, obj) {
@@ -107,12 +99,12 @@ File: Form Advance
 
 
     },
-    //init
-    $.AdvancedForm = new AdvancedForm, $.AdvancedForm.Constructor = AdvancedForm
+        //init
+        $.AdvancedForm = new AdvancedForm, $.AdvancedForm.Constructor = AdvancedForm
 }(window.jQuery),
 
 //initializing
-function ($) {
-    "use strict";
-    $.AdvancedForm.init();
-}(window.jQuery);
+    function ($) {
+        "use strict";
+        $.AdvancedForm.init();
+    }(window.jQuery);

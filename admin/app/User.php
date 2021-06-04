@@ -13,7 +13,7 @@ class User extends Authenticatable
 
     protected static $logUnguarded = true;
      protected static $logFillable = true;
-    protected static $logName = 'History';
+    protected static $logName = 'User Log';
     protected $guarded=[];
 
 
@@ -28,7 +28,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','username','profile_pic','phone','occupation_id'
     ];
 
     /**

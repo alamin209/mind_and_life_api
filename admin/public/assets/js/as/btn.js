@@ -1,6 +1,6 @@
 as.btn = {};
 
-as.btn.loading = function(button, text) {
+as.btn.loading = function (button, text) {
     var oldText = button.text();
     var newText = typeof text == "undefined" ? '' : text;
 

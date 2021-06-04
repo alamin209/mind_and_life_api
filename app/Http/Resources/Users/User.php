@@ -28,7 +28,8 @@ class User extends JsonResource
             'email_verified_at' =>$this->email_verified_at,
             'created_at'       => $this->created_at,
             'updated_at'       => $this->updated_at,
-            'user_type'        => $this->user_type
+            'user_type'        => $this->user_type,
+            'is_api'           => $this->is_api
         ];
     }
 }
