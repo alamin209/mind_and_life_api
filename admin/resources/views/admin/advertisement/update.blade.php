@@ -1,5 +1,5 @@
 <form action="{{ url('advertisement/' . $advertisement->id) }}" method="Post" class="custom-validation"
-    enctype="multipart/form-data">
+      enctype="multipart/form-data">
     <div class="modal-header">
         <h5 class="modal-title mt-0" id="myModalLabel">Add New Advirtisement</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -15,8 +15,10 @@
                         @method("PUT")
 
                         <div class="custom-control custom-checkbox" style="margin-bottom:15px">
-                            <input type="checkbox" name="is_google" class="custom-control-input" value="1" @if (old('is_google', $advertisement->is_google)) checked @endif style="height:10px;width:10px"
-                                id="invalidCheck_update">
+                            <input type="checkbox" name="is_google" class="custom-control-input" value="1"
+                                   @if (old('is_google', $advertisement->is_google)) checked
+                                   @endif style="height:10px;width:10px"
+                                   id="invalidCheck_update">
                             <label class="custom-control-label" for="invalidCheck_update">Is Google
                                 Advirtisement</label>
                             <div class="invalid-feedback">
@@ -28,8 +30,8 @@
                             <label> Google script link </label>
                             <div>
                                 <input type="text" name="add_sense_link" class="form-control"
-                                    value="{{ $advertisement->add_sense_link ?? '' }}"
-                                    placeholder="Please  Google Advirtisement  script  link">
+                                       value="{{ $advertisement->add_sense_link ?? '' }}"
+                                       placeholder="Please  Google Advirtisement  script  link">
                             </div>
                         </div>
 
@@ -40,8 +42,8 @@
                                 <label> Advertisement Photo </label>
                                 <div>
                                     <input type="file" name="ad_image_path" accept="image/*"
-                                        onchange="preview_company_advertisement_update(event)" class="form-control">
-                                    <img id="ad_image_path_update" />
+                                           onchange="preview_company_advertisement_update(event)" class="form-control">
+                                    <img id="ad_image_path_update"/>
                                 </div>
                             </div>
 
@@ -49,19 +51,18 @@
                             @if (file_exists($advertisement->ad_image_path))
                                 Prevous Photo
                                 <img src="{{ asset($advertisement->ad_image_path) }}" height="70px" width=70px
-                                    style="margin-bottom: 10px">
+                                     style="margin-bottom: 10px">
                             @else
 
                             @endif
-
 
 
                             <div class="form-group ">
                                 <label>website link </label>
                                 <div>
                                     <input type="text" name="website_link"
-                                        value="{{ $advertisement->website_link ?? '' }}" class="form-control"
-                                        placeholder="Give Website link">
+                                           value="{{ $advertisement->website_link ?? '' }}" class="form-control"
+                                           placeholder="Give Website link">
                                 </div>
                             </div>
 
@@ -80,7 +81,7 @@
 <script type="text/javascript">
     function preview_company_advertisement_update(event) {
         var reader = new FileReader();
-        reader.onload = function() {
+        reader.onload = function () {
             var output = document.getElementById('ad_image_path_update');
             output.style.width = "200px";
             output.style.height = "200px";
@@ -98,7 +99,7 @@
         $("#show_website_add_update").hide();
     }
 
-    $('#invalidCheck_update').click(function() {
+    $('#invalidCheck_update').click(function () {
         if ($(this).is(':checked')) {
             $("#autoUpdate_update").show();
             $("#show_website_add_update").hide();

@@ -24,8 +24,9 @@ class CreateArticlesTable extends Migration
             $table->integer('total_share')->nullable();
             $table->integer('total_view')->nullable();
             $table->date('post_date');
-            $table->text('image_path');
+            $table->text('image_path')->nullable();
             $table->string('status')->comment('draft,pending,approved');
+            $table->string('is_published')->default(0)->nullable();
             $table->tinyInteger('published')->default(1);
             $table->timestamps();
         });

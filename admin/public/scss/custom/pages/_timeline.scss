@@ -1,4 +1,4 @@
-// 
+//
 // timeline.scss
 //
 
@@ -7,6 +7,7 @@
 .timeline-box {
     padding: 0px !important;
     position: relative;
+
     .item-lable {
         width: 100px;
         height: 30px;
@@ -17,9 +18,11 @@
         top: -20px;
         z-index: 1;
     }
+
     .timeline-spacing {
         margin-bottom: 70px;
     }
+
     .dot {
         width: 10px;
         height: 10px;
@@ -29,15 +32,18 @@
         top: -6px;
         z-index: 1;
     }
+
     .timeline-line {
         width: 100%;
         position: relative;
         height: 3px;
         border-top: 3px solid $gray-200;
     }
+
     .vertical-line {
         position: relative;
         width: 100%;
+
         .wrapper-line {
             width: 2px;
             height: 50px;

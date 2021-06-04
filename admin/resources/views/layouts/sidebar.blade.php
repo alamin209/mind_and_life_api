@@ -5,16 +5,16 @@
 <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.css"
-    rel="stylesheet">
+      rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.css"
-    rel="stylesheet">
+      rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/css/materialdesignicons.min.css.map"
-    rel="stylesheet">
+      rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/fonts/materialdesignicons-webfont.eot"
-    rel="stylesheet">
+      rel="stylesheet">
 <link href="" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/fonts/materialdesignicons-webfont.ttf"
-    rel="stylesheet">
+      rel="stylesheet">
 <link
     href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.9.55/fonts/materialdesignicons-webfont.woff2"
     rel="stylesheet">
@@ -25,12 +25,16 @@
 
         <div class="user-wid text-center py-4">
             <div class="user-img">
-                <img src="images/users/avatar-2.jpg" alt="" class="avatar-md mx-auto rounded-circle">
+                @php
+                    $userData = Auth::guard()->user();
+                @endphp
+                <img src="{{ ($userData['profile_pic'])?asset($userData['profile_pic']):URL::asset('public/images/users/avatar-2.png') }}" alt=""
+                     class="avatar-md mx-auto rounded-circle">
             </div>
 
             <div class="mt-3">
-                <a href="#" class="text-dark font-weight-medium font-size-16">Patrick Becker</a>
-                <p class="text-body mt-1 mb-0 font-size-13">UI/UX Designer</p>
+                <a href="#" class="text-dark font-weight-medium font-size-16">{{$userData['username']}}</a>
+                <p class="text-body mt-1 mb-0 font-size-13 text-capitalize">{{$userData['user_type']}}</p>
             </div>
         </div>
 
@@ -41,23 +45,30 @@
                 <li class="menu-title">Menu</li>
 
                 <li>
-                    <a href="javascript: void(0);" class="waves-effect">
+                    <a href="{{ url('/') }}" class="waves-effect">
                         <i class="mdi mdi-airplay"></i><span class="badge badge-pill badge-info float-right">2</span>
                         <span>Dashboard</span>
                     </a>
-                    {{-- <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="index">Dashboard 1</a></li>
-                        <li><a href="index-2">Dashboard 2</a></li>
-                    </ul> --}}
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-check"></i>
-                        <span>User System </span>
+                        <i class="mdi mdi-account-check" style="height:auto;width:20px"></i>
+                        <span>User Access </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('ip-addresslist.index') }}">IP Address List </a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span class="iconify" data-icon="mdi:cctv"  style="height:auto;width:20px"data-inline="false"></span>
+                        <span>Role Managemnt </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('roles.index') }}">Role  </a></li>
+                        <li><a href="{{ route('permission.index') }}">Permission management </a></li>
                     </ul>
                 </li>
 
@@ -67,256 +78,117 @@
                         <span>User Managemnt </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('userlist.index') }}">User List </a></li>
+                        <li><a href="{{ route('userlist.index') }}">User List (CMS) </a></li>
+                        <li><a href="{{ route('userlist.appuser') }}">User List (APP) </a></li>
                     </ul>
-
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('roles.index') }}">Role management </a></li>
-                        <li><a href="{{ route('permission.index') }}">Permission management </a></li>
-                    </ul>
-
                 </li>
-
 
                 <li>
                     <a href="{{ route('advertisement.index') }}" class="has-arrow waves-effect">
-                        <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
+                        <span class="iconify" data-icon="mdi:file-video-outline" style="height:auto;width:20px" data-inline="false"></span>
                         <span>Advirtisement</span>
                     </a>
 
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span class="iconify" data-icon="mdi:newspaper-variant" style="height:auto;width:20px" data-inline="false"></span>
+                        <span>Article </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('article-category.index') }}">Categroy </a></li>
+                        <li><a href="{{ route('article.create') }} "> Create Article </a></li>
+                        <li><a href="{{ route('article.pending') }} "> Pending Article </a></li>
+                        <li><a href="{{ route('article.index') }} ">Published Article</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span class="iconify" data-icon="mdi:youtube" data-inline="false" style="height:auto;width:20px"></span>
+                        <span>Video </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('video-category.index') }}">Categroy </a></li>
+                        <li><a href="{{ route('videos.create') }} "> Create Video </a></li>
+                        <li><a href="{{ route('videos.pending') }} "> Pending Video </a></li>
+                        <li><a href="{{ route('videos.index') }} ">Published Video</a></li>
+                    </ul>
+                </li>
 
-                  <li>
-                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                         <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
-                        <span>Magazin </span>
-                     </a>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Notification  </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('userlist.index') }}">push Notification  </a></li>
+                        <li><a href="{{ route('userlist.appuser') }}">Email Notification</a></li>
+                    </ul>
+                </li>
 
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span class="iconify" data-icon="mdi:reload" data-inline="false" style="width:23px;height:auto"></span>
+                        <span>Coupon </span>
+                    </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('category.index') }}">Categroy </a></li>
-                    </ul>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('article.index') }} ">Article</a></li>
+                        <li><a href="{{ route('coupon.index') }} ">Coupon</a></li>
                     </ul>
                 </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
-                       <span>Video </span>
+                        <span class="iconify" data-icon="mdi:script-text-key" style="width:23px;height:auto"  data-inline="false"></span>
+                        <span>Quiz </span>
                     </a>
-                   <ul class="sub-menu" aria-expanded="false">
-                       <li><a href="{{ route('video-category.index') }}">Categroy </a></li>
-                   </ul>
-                   <ul class="sub-menu" aria-expanded="false">
-                       <li><a href="{{ route('videos.index') }} ">Video</a></li>
-                   </ul>
-               </li>
-
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('quiz-type.index') }} ">Quiz Type </a></li>
+                        <li><a href="{{ route('quiz.index') }} ">Quiz </a></li>
+                        <li><a href="{{ route('quiz-question.index') }} ">Question </a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-lock-open font-size-16 align-middle mr-1"></i>
-                        <span>Security </span>
+                        <span class="iconify" data-icon="mdi:script-text-key" style="width:23px;height:auto"  data-inline="false"></span>
+                        <span>Point Setting </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('point.index')}}">Point Setting </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="mdi mdi-settings-outline align-middle mr-1"></i>
+                        <span>Setting </span>
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('activity-history') }} ">Activity Login History </a></li>
+                        <li><a href="#">Salary list(App)</a></li>
+                        <li><a href="#">Industry list(App) </a></li>
+                        <li><a href="#"> Occuapation list(App) </a></li>
+                        <li><a href="#">Language</a></li>
+                        <li><a href="# ">Contact us term conditions </a></li>
+                        <li><a href="#">About us </a></li>
+                        <li><a href="# ">Feedback </a></li>
                     </ul>
 
                 </li>
 
-
-{{--
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-file-tree"></i>
-                        <span>Multi Level</span>
+                        <span class="iconify" data-icon="mdi:tab" style="width:20px;height:auto" data-inline="false"></span>
+                        <span>Report </span>
                     </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);">Level 1.1</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Level 1.2</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                <li><a href="javascript: void(0);">Level 2.2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> --}}
 
-
-
-
-
-
-{{--
-                <li>
-                    <a href="calendar" class=" waves-effect">
-                        <i class="mdi mdi-calendar-text"></i>
-                        <span>Calendar</span>
-                    </a>
-                </li> --}}
-
-                {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-inbox-full"></i>
-                        <span>Email</span>
-                    </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox">Inbox</a></li>
-                        <li><a href="email-read">Read Email</a></li>
+                        <li><a href="{{ route('activity-history') }} ">Activity Login Report </a></li>
+                        <li><a href="{{ route('userlist.appuser') }}">Email Notification histry</a></li>
+                        <li><a href="{{ route('userlist.appuser') }}">Push Notificion Histry</a></li>
                     </ul>
-                </li> --}}
-                {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
-                        <span>Tasks</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="tasks-list">Task List</a></li>
-                        <li><a href="tasks-kanban">Kanban Board</a></li>
-                        <li><a href="tasks-create">Create Task</a></li>
-                    </ul>
-                </li> --}}
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-account-circle-outline"></i>
-                        <span>Pages</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="pages-login">Login</a></li>
-                        <li><a href="pages-register">Register</a></li>
-                        <li><a href="pages-recoverpw">Recover Password</a></li>
-                        <li><a href="pages-lock-screen">Lock Screen</a></li>
-                        <li><a href="pages-starter">Starter Page</a></li>
-                        <li><a href="pages-invoice">Invoice</a></li>
-                        <li><a href="pages-profile">Profile</a></li>
-                        <li><a href="pages-maintenance">Maintenance</a></li>
-                        <li><a href="pages-comingsoon">Coming Soon</a></li>
-                        <li><a href="pages-timeline">Timeline</a></li>
-                        <li><a href="pages-faqs">FAQs</a></li>
-                        <li><a href="pages-pricing">Pricing</a></li>
-                        <li><a href="pages-404">Error 404</a></li>
-                        <li><a href="pages-500">Error 500</a></li>
-                    </ul>
                 </li>
-
-                {{-- <li class="menu-title">Components</li> --}}
-
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-checkbox-multiple-blank-outline"></i>
-                        <span>UI Elements</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="ui-alerts">Alerts</a></li>
-                        <li><a href="ui-buttons">Buttons</a></li>
-                        <li><a href="ui-cards">Cards</a></li>
-                        <li><a href="ui-carousel">Carousel</a></li>
-                        <li><a href="ui-dropdowns">Dropdowns</a></li>
-                        <li><a href="ui-grid">Grid</a></li>
-                        <li><a href="ui-images">Images</a></li>
-                        <li><a href="ui-lightbox">Lightbox</a></li>
-                        <li><a href="ui-modals">Modals</a></li>
-                        <li><a href="ui-rangeslider">Range Slider</a></li>
-                        <li><a href="ui-session-timeout">Session Timeout</a></li>
-                        <li><a href="ui-progressbars">Progress Bars</a></li>
-                        <li><a href="ui-sweet-alert">Sweet-Alert</a></li>
-                        <li><a href="ui-tabs-accordions">Tabs & Accordions</a></li>
-                        <li><a href="ui-typography">Typography</a></li>
-                        <li></li><a href="ui-video">Video</a>
-                </li>
-                <li><a href="ui-general">General</a></li>
-                <li><a href="ui-colors">Colors</a></li>
-                <li><a href="ui-rating">Rating</a></li>
-            </ul>
-            </li>
-
-            <li>
-                    <a href="javascript: void(0);" class="waves-effect">
-                        <i class="mdi mdi-newspaper"></i>
-                        <span class="badge badge-pill badge-danger float-right">6</span>
-                        <span>Forms</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="form-elements">Form Elements</a></li>
-                        <li><a href="form-validation">Form Validation</a></li>
-                        <li><a href="form-advanced">Form Advanced</a></li>
-                        <li><a href="form-editors">Form Editors</a></li>
-                        <li><a href="form-uploads">Form File Upload</a></li>
-                        <li><a href="form-xeditable">Form Xeditable</a></li>
-                        <li><a href="form-repeater">Form Repeater</a></li>
-                        <li><a href="form-wizard">Form Wizard</a></li>
-                        <li><a href="form-mask">Form Mask</a></li>
-                    </ul>
-                </li>
-            {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-clipboard-list-outline"></i>
-                        <span>Tables</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="tables-basic">Basic Tables</a></li>
-                        <li><a href="tables-datatable">Data Tables</a></li>
-                        <li><a href="tables-responsive">Responsive Table</a></li>
-                        <li><a href="tables-editable">Editable Table</a></li>
-                    </ul>
-                </li> --}}
-
-            {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-chart-donut"></i>
-                        <span>Charts</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="charts-apex">Apex charts</a></li>
-                        <li><a href="charts-chartjs">Chartjs Chart</a></li>
-                        <li><a href="charts-flot">Flot Chart</a></li>
-                        <li><a href="charts-knob">Jquery Knob Chart</a></li>
-                        <li><a href="charts-sparkline">Sparkline Chart</a></li>
-                    </ul>
-                </li> --}}
-
-            {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-emoticon-happy-outline"></i>
-                        <span>Icons</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="icons-boxicons">Boxicons</a></li>
-                        <li><a href="icons-materialdesign">Material Design</a></li>
-                        <li><a href="icons-dripicons">Dripicons</a></li>
-                        <li><a href="icons-fontawesome">Font awesome</a></li>
-                    </ul>
-                </li> --}}
-
-            {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-map-marker-outline"></i>
-                        <span>Maps</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="maps-google">Google Maps</a></li>
-                        <li><a href="maps-vector">Vector Maps</a></li>
-                    </ul>
-                </li> --}}
-
-            {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="mdi mdi-file-tree"></i>
-                        <span>Multi Level</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);">Level 1.1</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Level 1.2</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                <li><a href="javascript: void(0);">Level 2.2</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li> --}}
 
             </ul>
         </div>

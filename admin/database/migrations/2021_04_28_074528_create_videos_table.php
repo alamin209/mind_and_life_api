@@ -30,6 +30,7 @@ class CreateVideosTable extends Migration
             $table->integer('total_view')->nullable();
             $table->date('post_date')->nullable();
             $table->tinyInteger('status')->default(1);
+            $table->string('is_published')->default(0)->nullable();
             $table->timestamps();
         });
     }

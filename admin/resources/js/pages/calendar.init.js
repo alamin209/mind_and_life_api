@@ -1,22 +1,15 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Calendar
-*/
-
-!function($) {
+!function ($) {
     "use strict";
 
-    var CalendarPage = function() {};
+    var CalendarPage = function () {
+    };
 
-    CalendarPage.prototype.init = function() {
+    CalendarPage.prototype.init = function () {
 
         //checking if plugin is available
         if ($.isFunction($.fn.fullCalendar)) {
             /* initialize the external events */
-            $('#external-events .fc-event').each(function() {
+            $('#external-events .fc-event').each(function () {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
                 var eventObject = {
@@ -34,7 +27,7 @@ File: Calendar
                 });
 
             });
-            
+
             /* initialize the calendar */
 
             var date = new Date();
@@ -51,7 +44,7 @@ File: Calendar
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 droppable: true, // this allows things to be dropped onto the calendar !!!
-                drop: function(date, allDay) { // this function is called when something is dropped
+                drop: function (date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -77,22 +70,22 @@ File: Calendar
                 events: [{
                     title: 'All Day Event',
                     start: new Date(y, m, 1)
-                    },
+                },
                     {
                         title: 'Long Event',
-                        start: new Date(y, m, d-5),
-                        end: new Date(y, m, d-2)
+                        start: new Date(y, m, d - 5),
+                        end: new Date(y, m, d - 2)
                     },
                     {
                         id: 999,
                         title: 'Repeating Event',
-                        start: new Date(y, m, d-3, 16, 0),
+                        start: new Date(y, m, d - 3, 16, 0),
                         allDay: false
                     },
                     {
                         id: 999,
                         title: 'Repeating Event',
-                        start: new Date(y, m, d+4, 16, 0),
+                        start: new Date(y, m, d + 4, 16, 0),
                         allDay: false
                     },
                     {
@@ -108,8 +101,8 @@ File: Calendar
                     },
                     {
                         title: 'Birthday Party',
-                        start: new Date(y, m, d+1, 19, 0),
-                        end: new Date(y, m, d+1, 22, 30),
+                        start: new Date(y, m, d + 1, 19, 0),
+                        end: new Date(y, m, d + 1, 22, 30),
                         allDay: false
                     },
                     {
@@ -119,11 +112,11 @@ File: Calendar
                         url: 'http://google.com/'
                     }]
             });
-            
-             /*Add new event*/
+
+            /*Add new event*/
             // Form to add new event
 
-            $("#add_event_form").on('submit', function(ev) {
+            $("#add_event_form").on('submit', function (ev) {
                 ev.preventDefault();
 
                 var $event = $(this).find('.new-event-form'),
@@ -159,17 +152,16 @@ File: Calendar
                 }
             });
 
-        }
-        else {
+        } else {
             alert("Calendar plugin is not installed");
         }
     },
-    //init
-    $.CalendarPage = new CalendarPage, $.CalendarPage.Constructor = CalendarPage
+        //init
+        $.CalendarPage = new CalendarPage, $.CalendarPage.Constructor = CalendarPage
 }(window.jQuery),
 
-//initializing 
-function($) {
-    "use strict";
-    $.CalendarPage.init()
-}(window.jQuery);
+//initializing
+    function ($) {
+        "use strict";
+        $.CalendarPage.init()
+    }(window.jQuery);

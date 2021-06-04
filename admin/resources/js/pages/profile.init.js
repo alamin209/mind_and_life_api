@@ -1,11 +1,3 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Profile 
-*/
-
 var options = {
     chart: {
         height: 300,
@@ -29,12 +21,12 @@ var options = {
         width: 2,
         colors: ['transparent']
     },
-    series: [ {
+    series: [{
         name: 'Revenue',
         data: [50, 55, 126, 86, 47, 68, 106, 74, 65, 57, 86, 68]
     }],
     xaxis: {
-        categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     },
     yaxis: {
         title: {

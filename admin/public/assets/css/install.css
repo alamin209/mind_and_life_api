@@ -1,14 +1,17 @@
 body {
-    margin-top:40px;
+    margin-top: 40px;
 }
+
 .badge-success {
     padding: 3px 3px;
     background-color: #5cb85c;
 }
+
 .badge-danger {
     padding: 3px 5px;
     background-color: #d9534f;
 }
+
 .label {
     font-size: 13px;
     margin-left: 10px;
@@ -18,7 +21,7 @@ body {
     margin-top: 40px;
 }
 
-.steps>ul {
+.steps > ul {
     display: table;
     list-style: none;
     margin: 0 0 40px;
@@ -28,15 +31,18 @@ body {
     background: #f7f7f8;
     border-radius: 5px;
 }
-.steps>ul li {
+
+.steps > ul li {
     display: table-cell;
     text-align: center;
     width: 1%;
 }
+
 .steps a {
     color: #337ab7;
 }
-.steps>ul li>a:before {
+
+.steps > ul li > a:before {
     border-top: 4px solid #c8c7cc;
     content: "";
     display: block;
@@ -48,20 +54,22 @@ body {
     width: 100%;
     z-index: 1;
 }
-.steps li>a.done:before, .steps>ul li>a.selected:before {
+
+.steps li > a.done:before, .steps > ul li > a.selected:before {
     border-color: #1e9a73;
 }
 
-.steps>ul li>a.selected.error:before {
+.steps > ul li > a.selected.error:before {
     border-color: #d43f3a;
 }
 
-.steps>ul li>a.selected .stepNumber {
+.steps > ul li > a.selected .stepNumber {
     border-color: #1e9a73;
     background-color: #1e9a73;
     color: #fff;
 }
-.steps>ul .stepNumber {
+
+.steps > ul .stepNumber {
     background-color: #fff;
     border: 5px solid #c8c7cc;
     border-radius: 100%;
@@ -75,14 +83,17 @@ body {
     width: 40px;
     z-index: 2;
 }
-.steps li>a.done .stepDesc, .steps>ul li>a.selected .stepDesc {
+
+.steps li > a.done .stepDesc, .steps > ul li > a.selected .stepDesc {
     color: #2B3D53;
 }
-.steps>ul li:first-child>a:before {
+
+.steps > ul li:first-child > a:before {
     left: 50%;
     max-width: 51%;
 }
-.steps>ul li .stepDesc {
+
+.steps > ul li .stepDesc {
     color: #8e8e93;
     display: block;
     font-size: 14px;
@@ -94,8 +105,8 @@ body {
     z-index: 104;
 }
 
-.steps ul li>a.done .stepNumber:before,
-.steps>ul li:last-child>a.selected .stepNumber:before {
+.steps ul li > a.done .stepNumber:before,
+.steps > ul li:last-child > a.selected .stepNumber:before {
     content: "\f00c";
     display: inline;
     float: right;
@@ -107,25 +118,26 @@ body {
     text-indent: 0;
 }
 
-.steps ul li>a.done .stepNumber,
-.steps>ul li:last-child>a.selected .stepNumber {
+.steps ul li > a.done .stepNumber,
+.steps > ul li:last-child > a.selected .stepNumber {
     border-color: #1e9a73;
     background-color: #1e9a73;
     color: #fff;
     text-indent: -9999px;
 }
 
-.steps>ul li:last-child>a.selected.error .stepNumber:before {
+.steps > ul li:last-child > a.selected.error .stepNumber:before {
     content: "\f00d";
     margin-right: 8px;
 }
-.steps>ul li:last-child>a.selected.error .stepNumber {
+
+.steps > ul li:last-child > a.selected.error .stepNumber {
     color: #fff;
     background-color: #d43f3a;
     border-color: #d43f3a;
 }
 
-.steps>ul li:last-child>a:before {
+.steps > ul li:last-child > a:before {
     max-width: 50%;
     width: 50%;
 }

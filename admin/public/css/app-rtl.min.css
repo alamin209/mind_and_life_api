@@ -1,14 +1,5 @@
 @import url(https://fonts.cdnfonts.com/css/sf-ui-text-2);@charset "UTF-8";
 
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Version: 1.0.0
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Main RTL Css File
-*/
-
 #page-topbar {
   position: fixed;
   top: 0;
@@ -1290,7 +1281,7 @@ body[data-layout=detached] #layout-wrapper::before {
 }
 
 body[data-layout=detached] #layout-wrapper::after {
-  background: url("/images/bg-effect.png") center;
+  background: url("../images/bg-effect.png") center;
   content: "";
   position: absolute;
   top: 0px;
@@ -1355,10 +1346,10 @@ body[data-layout=detached] .page-title-box .breadcrumb-item + .breadcrumb-item::
 
 /*!
  * Waves v0.7.6
- * http://fian.my.id/Waves 
- * 
- * Copyright 2014-2018 Alfiana E. Sibuea and other contributors 
- * Released under the MIT license 
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014-2018 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
  * https://github.com/fians/Waves/blob/master/LICENSE */
 
 .waves-effect {
@@ -2732,8 +2723,8 @@ input[switch=dark]:checked + label {
   font-family: "summernote";
   font-style: normal;
   font-weight: normal;
-  src: url("/fonts/summernote.eot");
-  src: url("/fonts/summernote.eot?#iefix") format("embedded-opentype"), url("/fonts/summernote.woff?") format("woff"), url("/fonts/summernote.ttf?") format("truetype");
+  src: url("fonts/summernote.eot");
+  src: url("fonts/summernote.eot?#iefix") format("embedded-opentype"), url("fonts/summernote.woff?") format("woff"), url("fonts/summernote.ttf?") format("truetype");
 }
 
 .note-editor.note-frame {

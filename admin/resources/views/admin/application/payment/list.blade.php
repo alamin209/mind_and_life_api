@@ -4,20 +4,20 @@
 
 @section('css')
     <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css"/>
 
-<link href="{{ URL::asset('public/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css" />
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    <link href="{{ URL::asset('public/libs/select2/select2.min.css') }}" rel="stylesheet" type="text/css"/>
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
 
-{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> --}}
-<style type="text/css">
-    .select2-container {
+    {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> --}}
+    <style type="text/css">
+        .select2-container {
 
-        width: 520px !important;
-        /* display: inline !important; */
-    }
+            width: 520px !important;
+            /* display: inline !important; */
+        }
 
-</style>
+    </style>
 
 @endsection
 
@@ -57,23 +57,23 @@
         <div class="col-md-12 col-lg-12 ">
             <div class="card">
                 <button type="button" class="btn btn-success waves-effect waves-light " style="height:10%;width:10%"
-                    data-toggle="modal" data-target="#addPayment">
+                        data-toggle="modal" data-target="#addPayment">
                     <i class="bx bx-fa-plus font-size-16 align-right"> Add new </i>
                 </button>
 
                 <div class="card-body" style="height:630px;  overflow-y: auto;">
                     <table class="table payment-dt">
                         <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Invoice NO</th>
-                                <th>Project </th>
-                                <th>Payment NO</th>
-                                <th>CLient</th>
-                                <th>Amount </th>
-                                {{-- <th>Payment Status</th> --}}
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Invoice NO</th>
+                            <th>Project</th>
+                            <th>Payment NO</th>
+                            <th>CLient</th>
+                            <th>Amount</th>
+                            {{-- <th>Payment Status</th> --}}
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
                         </tbody>
@@ -84,11 +84,13 @@
         <!-- end col -->
     </div>
 
-    <div id="addPayment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="addPayment" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title mt-0" id="myModalLabel">{{ $application->project->name ?? '' }} Add Payment  </h5>
+                    <h5 class="modal-title mt-0" id="myModalLabel">{{ $application->project->name ?? '' }} Add
+                        Payment </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -99,12 +101,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form action="{{ route('application-invoices.store') }}" method="Post"
-                                        class="custom-validation">
+                                          class="custom-validation">
                                         @csrf
                                         <div class="form-group">
                                             <label class="control-label">Select Invoice </label>
                                             <select name="invoice_id" class="form-control select2" required
-                                                onchange="selected_invoice( this.value )">
+                                                    onchange="selected_invoice( this.value )">
                                                 <option value="">Select Invoice</option>
                                                 @foreach ($invoices as $invoice)
                                                     <option value="{{ $invoice->id }}">{{ $invoice->invoice_no }}
@@ -116,9 +118,11 @@
                                             <div class="form-group">
                                                 <label>Issue date</label>
                                                 <div>
-                                                    <input type="date" name="issue_date" @if (old('issue_date')) value="{{ old('issue_date') }}" @else value="" @endif required class="form-control">
+                                                    <input type="date" name="issue_date"
+                                                           @if (old('issue_date')) value="{{ old('issue_date') }}"
+                                                           @else value="" @endif required class="form-control">
                                                     <input type="hidden" name="application_id"
-                                                        value="{{ $application->id }}" required class="form-control">
+                                                           value="{{ $application->id }}" required class="form-control">
                                                 </div>
                                             </div>
 
@@ -126,14 +130,18 @@
 
                                                 <label>Due date</label>
                                                 <div>
-                                                    <input type="date" name="due_date" @if (old('due_date')) value="{{ old('due_date') }}" @else value="" @endif required class="form-control">
+                                                    <input type="date" name="due_date"
+                                                           @if (old('due_date')) value="{{ old('due_date') }}"
+                                                           @else value="" @endif required class="form-control">
                                                 </div>
                                             </div>
                                             <div class="form-group">
 
                                                 <label>percetnage(%)</label>
                                                 <div>
-                                                    <input type="text" name="percentage" id="percetnage" @if (old('percentage')) value="{{ old('percentage') }}" @else value="" @endif required class="form-control">
+                                                    <input type="text" name="percentage" id="percetnage"
+                                                           @if (old('percentage')) value="{{ old('percentage') }}"
+                                                           @else value="" @endif required class="form-control">
                                                 </div>
                                             </div>
 
@@ -143,8 +151,8 @@
                                                 <label>Amount</label>
                                                 <div>
                                                     <input type="number" step="any" disabled id="amount2" readonly
-                                                        value="{{ $application->sub_total }}" required
-                                                        class="form-control">
+                                                           value="{{ $application->sub_total }}" required
+                                                           class="form-control">
                                                 </div>
                                             </div>
 
@@ -154,13 +162,14 @@
                                                 <label style="font-size:20px">Recived Form (Self) </label>
                                                 <div>
                                                     <input type="checkbox" id="switch3" switch="default">
-                                                    <label for="switch3" id="switchText" style="background-color: #45cb85;"
-                                                        data-on-label="Yes" data-off-label="No"></label>
+                                                    <label for="switch3" id="switchText"
+                                                           style="background-color: #45cb85;"
+                                                           data-on-label="Yes" data-off-label="No"></label>
                                                 </div>
 
                                                 <div style="display:none" id="client_other">
                                                     <input type="text" name="attention_name" value=""
-                                                        placeholder="Give attention  name" class="form-control">
+                                                           placeholder="Give attention  name" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -168,15 +177,17 @@
                                         <div class="form-group">
                                             <label>Description </label>
                                             <div>
-                                                <textarea class="form-control" name="description" id="description" rows="3"
-                                                    cols="3"> @if (old('description')) {{ old('description') }} @endif
+                                                <textarea class="form-control" name="description" id="description"
+                                                          rows="3"
+                                                          cols="3"> @if (old('description')) {{ old('description') }} @endif
                                                  </textarea>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Note </label>
                                             <div>
-                                                <textarea class="form-control" name="payment_note" id="payment_note"> @if (old('payment_note')) {{ old('payment_note') }}  @endif </textarea>
+                                                <textarea class="form-control" name="payment_note"
+                                                          id="payment_note"> @if (old('payment_note')) {{ old('payment_note') }}  @endif </textarea>
                                             </div>
                                         </div>
                                 </div>
@@ -198,7 +209,8 @@
 
 
 
-    <div id="updateClinet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div id="updateClinet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="txtHint">
@@ -217,7 +229,7 @@
 
     <script type="text/javascript">
 
-        $(function() {
+        $(function () {
 
             var table = $('.payment-dt').DataTable({
                 processing: true,
@@ -225,9 +237,9 @@
 
                 ajax: "{{ route('application-payments.index', ".$application->id.") }}",
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
                     {
                         data: 'Invoice_no',
                         name: 'Invoice_no'
@@ -287,7 +299,7 @@
                 url: "{{ url('clients') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
-                success: function(data) {
+                success: function (data) {
                     $('#txtHint').html(data);
                 }
             });
@@ -296,7 +308,7 @@
         function selected_invoice(x) {
 
 
-            if(x){
+            if (x) {
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
@@ -304,10 +316,10 @@
                 });
                 $.ajax({
                     type: 'get',
-                    url: "{{ url('get_invoice_details') }}/"+x,
+                    url: "{{ url('get_invoice_details') }}/" + x,
                     //  data:{id:btn},
                     cache: false,
-                    success: function(data) {
+                    success: function (data) {
                         $('#invoice_details').html(data);
                     }
                 });

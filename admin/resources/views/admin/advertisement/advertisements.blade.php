@@ -4,7 +4,7 @@
 
 @section('css')
     <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css') }}" rel="stylesheet" type="text/css"/>
 @endsection
 
 {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
@@ -50,7 +50,7 @@
 
             <div class="card">
                 <button type="button" class="btn btn-success waves-effect waves-light " style="height:10%;width:10%"
-                    data-toggle="modal" data-target="#addnewad">
+                        data-toggle="modal" data-target="#addnewad">
                     <i class="bx bx-fa-plus font-size-16 align-right"> Add new </i>
                     {{-- <i class='fas fa-plus'>fa-plus</i> --}}
                 </button>
@@ -58,15 +58,15 @@
                 <div class="card-body" style="height:630px;  overflow-y: auto;">
                     <table class="table advertisemnt-dt">
                         <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>photo</th>
-                                <th>Website Link</th>
-                                <th>Google advertisement </th>
-                                <th>Total Clicks </th>
-                                <th>Status </th>
-                                <th>Action</th>
-                            </tr>
+                        <tr>
+                            <th>Id</th>
+                            <th>photo</th>
+                            <th>Website Link</th>
+                            <th>Google advertisement</th>
+                            <th>Total Clicks</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
                         </thead>
                         <tbody>
                         </tbody>
@@ -81,7 +81,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="{{ route('advertisement.store') }}" method="Post" class="custom-validation"
-                    enctype="multipart/form-data">
+                      enctype="multipart/form-data">
                     <div class="modal-header">
                         <h5 class="modal-title mt-0" id="myModalLabel">Add New Advirtisement</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -96,7 +96,8 @@
                                         @csrf
 
                                         <div class="custom-control custom-checkbox" style="margin-bottom:15px">
-                                            <input type="checkbox" name= 'is_google' class="custom-control-input" value="1" id="invalidCheck">
+                                            <input type="checkbox" name='is_google' class="custom-control-input"
+                                                   value="1" id="invalidCheck">
                                             <label class="custom-control-label" for="invalidCheck">Is Google
                                                 Advirtisement</label>
                                             <div class="invalid-feedback">
@@ -107,7 +108,7 @@
                                             <label> Google script link </label>
                                             <div>
                                                 <input type="text" name="add_sense_link" class="form-control"
-                                                    placeholder="Please  Google Advirtisement  script  link">
+                                                       placeholder="Please  Google Advirtisement  script  link">
                                             </div>
                                         </div>
 
@@ -117,21 +118,20 @@
                                                 <label> Advertisement Photo </label>
                                                 <div>
                                                     <input type="file" name="ad_image_path" accept="image/*"
-                                                        onchange="preview_company_advertisement(event)"
-                                                        class="form-control">
-                                                    <img id="ad_image_path" />
+                                                           onchange="preview_company_advertisement(event)"
+                                                           class="form-control">
+                                                    <img id="ad_image_path"/>
                                                 </div>
                                             </div>
                                             <div class="form-group ">
                                                 <label>website link </label>
                                                 <div>
                                                     <input type="text" name="website_link" class="form-control"
-                                                        placeholder="Give Website link">
+                                                           placeholder="Give Website link">
                                                 </div>
                                             </div>
 
                                         </div>
-
 
 
                                     </div>
@@ -152,7 +152,7 @@
 
 
     <div id="update_advertisement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div id="txtHint">
@@ -171,7 +171,7 @@
     <script type="text/javascript">
         function preview_company_advertisement(event) {
             var reader = new FileReader();
-            reader.onload = function() {
+            reader.onload = function () {
                 var output = document.getElementById('ad_image_path');
                 output.style.width = "200px";
                 output.style.height = "200px";
@@ -181,7 +181,7 @@
         }
 
 
-        $('#invalidCheck').click(function() {
+        $('#invalidCheck').click(function () {
             if ($(this).is(':checked')) {
                 $("#autoUpdate").show();
                 $("#show_website_add").hide();
@@ -193,23 +193,21 @@
         });
 
 
-
-
-        $(function() {
+        $(function () {
             var table = $('.advertisemnt-dt').DataTable({
                 processing: true,
                 serverSide: true,
 
                 ajax: "{{ route('advertisement.index') }}",
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex'
-                    },
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex'
+                },
 
                     {
                         data: 'advertisement_photo',
                         name: 'advertisement_photo',
-                        render: function(data, type, full, meta) {
+                        render: function (data, type, full, meta) {
                             return "<img src=\"" + data + "\"  alt=\"Google add \"/ height=\"100px\"/ width=\"100px\"/>";
                         }
                     },
@@ -253,41 +251,39 @@
                 url: "{{ url('advertisement') }}/" + x,
                 //  data:{id:btn},
                 cache: false,
-                success: function(data) {
+                success: function (data) {
                     $('#txtHint').html(data);
                 }
             });
         }
 
 
-        function delete_ad(x)
-    {
-        if (confirm("are you sure to delete this Advirtisement?"))
-        {
+        function delete_ad(x) {
+            if (confirm("are you sure to delete this Advirtisement?")) {
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
-                }
-            });
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name=csrf-token]').attr('content')
+                    }
+                });
 
-            btn = $(x).data('panel-id');
+                btn = $(x).data('panel-id');
 
-            $.ajax({
-                type: 'DELETE',
-                url: "{{ url('advertisement') }}/" + x,
-                data: {id: btn},
-                cache: false,
-                success: function (data) {
-                    alert(' Selected  advertisement  deleted Successfully');
-                    location.reload();
+                $.ajax({
+                    type: 'DELETE',
+                    url: "{{ url('advertisement') }}/" + x,
+                    data: {id: btn},
+                    cache: false,
+                    success: function (data) {
+                        alert(' Selected  advertisement  deleted Successfully');
+                        location.reload();
 
-                }
-            });
+                    }
+                });
+            }
+
+
         }
-
-
-    }
 
     </script>
 

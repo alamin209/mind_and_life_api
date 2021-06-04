@@ -47,6 +47,7 @@
     .right-bar {
         right: 0;
     }
+
     .rightbar-overlay {
         display: block;
     }
@@ -55,6 +56,7 @@
 @include media-breakpoint-down(sm) {
     .right-bar {
         overflow: auto;
+
         .slimscroll-menu {
             height: auto !important;
         }

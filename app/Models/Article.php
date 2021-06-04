@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\ArticleTag;
 use App\Models\ArticleUser;
+use App\Models\ArticleImage;
 class Article extends Model
 {
     use HasFactory;
@@ -37,6 +38,11 @@ class Article extends Model
     public function video_tags(){
 
         return $this->hasMany(ArticleTag::class,'video_id','id');
+
+    }
+    public function article_images(){
+
+        return $this->hasMany(ArticleImage::class,'article_id','id');
 
     }
 

@@ -191,7 +191,7 @@ class VideUserLogController extends Controller
         $user_id = Auth::user()->id ;
         $query->where('user_id' ,$user_id);
         try {
-            $article = $query->with('user', 'video')->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($queryParams['limit'])->toArray();
+            $article = $query->with('user', 'video')->whereNull('article_id')->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($queryParams['limit'])->toArray();
             return WebApiResponse::success(200, $article, trans('messages.success_show_all'));
         } catch (\Throwable $th) {
             return WebApiResponse::error(404, $errors = [], trans('messages.faild_show_all'));

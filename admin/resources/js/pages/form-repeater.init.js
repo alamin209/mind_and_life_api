@@ -1,11 +1,3 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Form repeater
-*/
-
 $(document).ready(function () {
     'use strict';
 
@@ -21,7 +13,7 @@ $(document).ready(function () {
             $(this).slideDown();
         },
         hide: function (deleteElement) {
-            if(confirm('Are you sure you want to delete this element?')) {
+            if (confirm('Are you sure you want to delete this element?')) {
                 $(this).slideUp(deleteElement);
             }
         },
@@ -31,7 +23,7 @@ $(document).ready(function () {
     });
 
     window.outerRepeater = $('.outer-repeater').repeater({
-        defaultValues: { 'text-input': 'outer-default' },
+        defaultValues: {'text-input': 'outer-default'},
         show: function () {
             console.log('outer show');
             $(this).slideDown();
@@ -42,7 +34,7 @@ $(document).ready(function () {
         },
         repeaters: [{
             selector: '.inner-repeater',
-            defaultValues: { 'inner-text-input': 'inner-default' },
+            defaultValues: {'inner-text-input': 'inner-default'},
             show: function () {
                 console.log('inner show');
                 $(this).slideDown();

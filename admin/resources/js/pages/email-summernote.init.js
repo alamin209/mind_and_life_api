@@ -1,12 +1,4 @@
-/*
-Template Name: Qovex - Responsive Bootstrap 4 Admin Dashboard
-Author: Themesbrand
-Website: https://themesbrand.com/
-Contact: themesbrand@gmail.com
-File: Email summernote
-*/
-
-$(document).ready(function(){
+$(document).ready(function () {
 
     $('.summernote').summernote({
         height: 200,                 // set editor height

@@ -1,6 +1,6 @@
-// 
+//
 // _horizontal.scss
-// 
+//
 
 
 body[data-layout="horizontal"] {
@@ -12,13 +12,13 @@ body[data-layout="horizontal"] {
     .page-content {
         margin-top: $header-height;
         padding: 0 $grid-gutter-width $footer-height $grid-gutter-width;
-    }   
+    }
 
-    .page-title-box{
+    .page-title-box {
         padding-bottom: 0;
     }
 
-    #page-topbar { 
+    #page-topbar {
         background-color: $white;
     }
 
@@ -36,46 +36,49 @@ body[data-layout="horizontal"] {
         background: $topnav-bg;
         box-shadow: $box-shadow;
     }
-    
-    
+
+
     .topnav-menu {
         margin: 0;
         padding: 0;
     }
 
     .navbar-nav {
-        
+
         .nav-link {
             font-size: 14px;
             position: relative;
             color: $sidebar-menu-item-color;
             line-height: 70px;
-            i{
+
+            i {
                 font-size: 15px;
             }
-            &:focus, &:hover{
+
+            &:focus, &:hover {
                 color: $sidebar-menu-item-active-color;
                 background-color: transparent;
             }
         }
-        
-        .dropdown-item{
+
+        .dropdown-item {
             color: $sidebar-menu-item-color;
-            &.active, &:hover{
+
+            &.active, &:hover {
                 color: $sidebar-menu-item-active-color;
                 background-color: transparent;
             }
         }
-        
-        .nav-item{
-            .nav-link.active{
+
+        .nav-item {
+            .nav-link.active {
                 color: $sidebar-menu-item-active-color;
             }
         }
 
-        .dropdown{
-            &.active{
-              >a {
+        .dropdown {
+            &.active {
+                > a {
                     color: $sidebar-menu-item-active-color;
                     background-color: transparent;
                 }
@@ -96,19 +99,18 @@ body[data-layout="horizontal"] {
     }
 
     .topnav {
-    
+
         .navbar-nav {
-            
+
             .nav-link {
                 padding: 0 1.1rem;
             }
-        
+
         }
     }
 }
 
 @media (min-width: 992px) {
-
 
 
     .topnav {
@@ -119,12 +121,13 @@ body[data-layout="horizontal"] {
         }
 
         .dropdown {
-            &.mega-dropdown{
-                .mega-dropdown-menu{
+            &.mega-dropdown {
+                .mega-dropdown-menu {
                     left: 0px;
                     right: auto;
                 }
             }
+
             .dropdown-menu {
                 margin-top: 0;
                 border-radius: 0 0 $dropdown-border-radius $dropdown-border-radius;
@@ -148,13 +151,13 @@ body[data-layout="horizontal"] {
             }
 
             &:hover {
-                >.dropdown-menu {
+                > .dropdown-menu {
                     display: block;
                 }
             }
         }
 
-        .dropdown:hover>.dropdown-menu>.dropdown:hover>.dropdown-menu {
+        .dropdown:hover > .dropdown-menu > .dropdown:hover > .dropdown-menu {
             display: block
         }
     }
@@ -203,11 +206,12 @@ body[data-layout="horizontal"] {
 }
 
 @media (max-width: 991.98px) {
-    
+
     .topnav {
         max-height: 360px;
         overflow-y: auto;
         padding: 0;
+
         .navbar-nav {
             .nav-link {
                 padding: 0.75rem 1.1rem;
@@ -224,10 +228,10 @@ body[data-layout="horizontal"] {
             }
 
             .dropdown-mega-menu-xl,
-                .dropdown-mega-menu-lg{
+            .dropdown-mega-menu-lg {
                 width: auto;
 
-                .row{
+                .row {
                     margin: 0px;
                 }
             }
@@ -256,21 +260,22 @@ body[data-layout="horizontal"] {
 @media (min-width: 992px) {
 
     body[data-layout="horizontal"][data-topbar="light"] {
-        .topnav{
+        .topnav {
             background-color: $primary;
+
             .navbar-nav {
-        
+
                 .nav-link {
                     color: rgba($white, 0.5);
-                    
-                    &:focus, &:hover{
+
+                    &:focus, &:hover {
                         color: rgba($white, 0.9);
                     }
                 }
-        
-                > .dropdown{
-                    &.active{
-                    >a {
+
+                > .dropdown {
+                    &.active {
+                        > a {
                             color: rgba($white, 0.9) !important;
                         }
                     }
@@ -280,11 +285,11 @@ body[data-layout="horizontal"] {
     }
 }
 
-// Colored Topbar 
+// Colored Topbar
 
 body[data-layout="horizontal"][data-topbar="colored"],
 body[data-layout="horizontal"][data-topbar="dark"] {
-    #page-topbar{
+    #page-topbar {
         background-color: $primary;
         box-shadow: none;
     }
@@ -298,19 +303,21 @@ body[data-layout="horizontal"][data-topbar="dark"] {
     }
 
     .app-search {
-    
+
         .form-control {
-            background-color: rgba($topbar-search-bg,0.07);
+            background-color: rgba($topbar-search-bg, 0.07);
             color: $white;
         }
+
         span,
         input.form-control::-webkit-input-placeholder {
-            color: rgba($white,0.5);
+            color: rgba($white, 0.5);
         }
     }
+
     .header-item {
         color: $header-dark-item-color;
-    
+
         &:hover {
             color: $header-dark-item-color;
         }
@@ -318,8 +325,8 @@ body[data-layout="horizontal"][data-topbar="dark"] {
 
     .navbar-header {
         .dropdown.show {
-            .header-item{
-                background-color: rgba($white,0.1);
+            .header-item {
+                background-color: rgba($white, 0.1);
             }
         }
 
@@ -335,20 +342,20 @@ body[data-layout="horizontal"][data-topbar="dark"] {
     }
 
     @media (min-width: 992px) {
-        .topnav{
+        .topnav {
             .navbar-nav {
-        
+
                 .nav-link {
                     color: rgba($white, 0.5);
-                    
-                    &:focus, &:hover{
+
+                    &:focus, &:hover {
                         color: rgba($white, 0.9);
                     }
                 }
-        
-                > .dropdown{
-                    &.active{
-                      >a {
+
+                > .dropdown {
+                    &.active {
+                        > a {
                             color: rgba($white, 0.9) !important;
                         }
                     }
@@ -358,15 +365,14 @@ body[data-layout="horizontal"][data-topbar="dark"] {
     }
 }
 
-body[data-layout="horizontal"][data-topbar="dark"]  {
-    #page-topbar { 
+body[data-layout="horizontal"][data-topbar="dark"] {
+    #page-topbar {
         background-color: $header-dark-bg;
     }
 }
 
 
-
-// light Topbar 
+// light Topbar
 
 body[data-layout="horizontal"] {
 
@@ -376,6 +382,6 @@ body[data-layout="horizontal"] {
 
     .logo-dark {
         display: $display-block;
-    }  
+    }
 }
 

@@ -33,7 +33,11 @@ as.dashboard.initChart = function () {
                     },
                     ticks: {
                         beginAtZero: true,
-                        callback: function(value) {if (value % 1 === 0) {return value;}}
+                        callback: function (value) {
+                            if (value % 1 === 0) {
+                                return value;
+                            }
+                        }
                     }
                 }]
             },
@@ -45,7 +49,7 @@ as.dashboard.initChart = function () {
             tooltips: {
                 titleMarginBottom: 15,
                 callbacks: {
-                    label: function(tooltipItem, data) {
+                    label: function (tooltipItem, data) {
                         var value = tooltipItem.yLabel,
                             suffix = value == 1 ? trans.action : trans.actions;
 
