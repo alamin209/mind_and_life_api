@@ -229,7 +229,7 @@ class UserController extends Controller
      * Create New Occupation Store
      * @group  User Occupation
      * @bodyParam user_id  Integer required User Id. Example: 1
-     * @bodyParam industry_id  Integer required industry means occupation   Id. Example: 1
+     * @bodyParam occupation_id  Integer required industry means occupation   Id. Example: 1
      * @return \Illuminate\Http\Response
      * @response 200
      *{"status":"Success","message":"messages.success_created","code":200,"data":{"user_id":"1","categories":[1,2,3],"updated_at":"2021-06-04T10:49:52.000000Z","created_at":"2021-06-04T10:49:52.000000Z","id":4}}
@@ -239,8 +239,8 @@ class UserController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'user_id'             =>    'required|integer',
-            'industry_id'         =>    'required|integer',
+            'user_id'               =>    'required|integer',
+            'occupation_id'         =>    'required|integer',
 
         ]);
         if ($validator->fails()) {

@@ -67,8 +67,8 @@ class ArticleUserlogController extends Controller
             $new_article_user->save();
             $update_article_user  = $new_article_user->id;
 
-        
-        }        
+
+        }
 
         if (isset($article_user)) {
             if ($request->filled('user_like')) {
@@ -147,7 +147,7 @@ class ArticleUserlogController extends Controller
                 $article_user =  $article_user1;
              }
 
-    
+
 
             if ($request->filled('user_share')) {
                 $article_user = $article_link;
@@ -162,9 +162,9 @@ class ArticleUserlogController extends Controller
                 $article_user =  $article_user1;
             }
         }
-        
+
         return WebApiResponse::success(201, $article_user, 'Article log ');
-        
+
     }
 
     /**

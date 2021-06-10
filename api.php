@@ -18,13 +18,7 @@ use App\Http\Controllers\UserManagement\IndustryController;
 use App\Http\Controllers\Api\VideController;
 use App\Http\Controllers\Api\ArticleTagController;
 use App\Http\Controllers\Api\OccupationController;
-use App\Http\Controllers\Api\CouponCategoryController;
 use App\Http\Controllers\Api\CouponController;
-use App\Http\Controllers\Api\QuizTypeController;
-use App\Http\Controllers\Api\QuizController;
-use App\Http\Controllers\Api\PointController;
-use App\Http\Controllers\Api\CouponUserlogController;
-
 
 
 /*
@@ -57,7 +51,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // ================ Category list =======================/
     Route::post('user-category-log', [CategoryController::class, 'user_category_log']);
-
+    Route::get('category/list', [CategoryController::class, 'list']);
 
    // ================ Article list =======================/
     Route::get('article-user-log/list', [ArticleUserlogController::class, 'list']);
@@ -68,14 +62,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('video-user-log/store', [VideUserLogController::class, 'store']);
 
     // =================== Advertisement  route =====================//
-     Route::get('advertisement/list', [AdvertisementController::class, 'list']);
-    Route::apiResource('advertisement-log', AdvertisementLogController::class);
-
-    // =================== Coupon User log  route =====================//
-    Route::apiResource('coupon-user-log', CouponUserlogController::class);
-
-
-
+    Route::get('advertisement/list', [AdvertisementController::class, 'list']);
+    Route::apiResource('advertisement-log', AdvertisementLogController::class,);
 
 
 });
@@ -97,12 +85,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('industry/list', [IndustryController::class, 'list']);
     Route::apiResource('industry', IndustryController::class);
 
-
-    Route::get('coupon-category/list', [CouponCategory::class, 'list']);
-
      // =================== Category  route =====================//
 
-    Route::get('all-category/list', [CategoryController::class, 'article_video_category']);
+    Route::get('all-category/list', [CategoryController::class, 'list']);
 
     // =================== article  route =====================//
     Route::get('article/list', [ArticleController::class, 'list']);
@@ -120,31 +105,10 @@ Route::group(['middleware' => 'api'], function () {
 
 
     //======================= Occupation ======================//
-    Route::get('coupon-category/list', [CouponCategoryController::class, 'list']);
-
-    //======================= Occupation ======================//
     Route::get('occupation/list', [OccupationController::class, 'list']);
-
-
-    //======================= coupon ======================//
-
+    
+     //======================= Occupation ======================//
     Route::get('coupon/list', [CouponController::class, 'list']);
-
-
-    //======================= quiz ======================//
-    Route::get('quiz-type/list', [QuizTypeController::class, 'list']);
-
-    Route::get('quiz/list', [QuizController::class, 'list']);
-
-    Route::get('questions/list', [QuizController::class, 'list']);
-
-    Route::get('questions/list/{id}', [QuizController::class, 'quiz_questions']);
-
-    Route::get('point/list', [PointController::class, 'list']);
-
-
-
-
 });
 
 

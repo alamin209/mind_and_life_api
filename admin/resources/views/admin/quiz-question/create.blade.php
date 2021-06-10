@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Responsive Table @endsection
+@section('title') {{$title}}  @endsection
 
 @section('css')
     <!-- Responsive Table css -->

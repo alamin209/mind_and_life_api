@@ -105,7 +105,9 @@ class ArticleTagController extends Controller
 
         $article_tag =  ArticleTag::query();
 
-        $all_article_tag = $article_tag->where('video_id',null)->with('article','article.author', 'article.article_category', 'article.user_log_details')->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->article_limit ?? 6)->toArray();
+        $all_article_tag = $article_tag->where('video_id',null)
+        ->with('article','article.author', 'article.article_category', 'article.user_log_details')
+        ->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($request->article_limit ?? 6)->toArray();
 
 
         dd($all_article_tag);
