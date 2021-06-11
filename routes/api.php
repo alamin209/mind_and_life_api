@@ -24,6 +24,8 @@ use App\Http\Controllers\Api\QuizTypeController;
 use App\Http\Controllers\Api\QuizController;
 use App\Http\Controllers\Api\PointController;
 use App\Http\Controllers\Api\CouponUserlogController;
+use App\Http\Controllers\Api\CommentController;
+use App\Http\Controllers\Api\DeviceController;
 
 
 
@@ -74,6 +76,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // =================== Coupon User log  route =====================//
     Route::apiResource('coupon-user-log', CouponUserlogController::class);
 
+     // =================== article  Comment =====================//
+     Route::apiResource('comments', CommentController::class);
 
 
 
@@ -109,6 +113,9 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('all_article/list', [ArticleController::class, 'video_article_list']);
     Route::apiResource('article', ArticleController::class);
 
+
+
+
     // =================== video  route =====================//
     Route::get('videos/list', [VideController::class, 'list']);
     Route::apiResource('videos', VideController::class);
@@ -119,7 +126,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('article-video-tag/list', [ArticleTagController::class, 'video_article_tag_list']);
 
 
-    //======================= Occupation ======================//
+    //======================= Coupon ======================//
     Route::get('coupon-category/list', [CouponCategoryController::class, 'list']);
 
     //======================= Occupation ======================//
@@ -142,6 +149,9 @@ Route::group(['middleware' => 'api'], function () {
 
     Route::get('point/list', [PointController::class, 'list']);
 
+   //..............divide token.........................//
+
+   Route::post('device', [DeviceController::class, 'store']);
 
 
 

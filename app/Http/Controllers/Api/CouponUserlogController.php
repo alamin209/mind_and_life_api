@@ -118,8 +118,6 @@ class CouponUserlogController extends Controller
         $coupon_user1 = '';
         $update_coupon_user = 0;
 
-        //  dd(date('Y-m-d'));
-        //  dd(strtotime($coupon->expire_date,date('Y-m-d')));
 
         if (date('Y-m-d',strtotime($coupon->expire_date)) <= date('Y-m-d')) {
 
