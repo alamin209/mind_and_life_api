@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') Responsive Table @endsection
+@section('title') Quiz Question Table @endsection
 
 @section('css')
     <!-- Responsive Table css -->
@@ -49,7 +49,14 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div class="card">
+
+
+
                 <div class="card-body">
+                    <button type="button" class="btn btn-success waves-effect waves-light float-right" style="margin-bottom: 10px; !important">
+                        <a href="{{ url('/quiz-question') }}"> Back To Question </a>
+                    </button>
+
                     <form id="save-all-question" action="{{ url('quiz-question/'.$questions[0]['quiz_id'] ) }}"
                           method="Post" class="custom-validation" enctype="multipart/form-data">
                         @csrf
@@ -72,19 +79,30 @@
                             @if(count($questions) > 0)
                                 @foreach($questions as $key => $qquestion)
                                     <div class="quiz-question-item">
-                                        <input type="hidden" name="question_id[]" value="{{$qquestion->id}}">
+                                        <input type="hidden" name="question_id[]" autocomplete="off"  value="{{$qquestion->id}}">
                                         {{-- <div class="btn btn-secondary remove-more-question-btn float-right"><i class="fas fa-trash"></i></div> --}}
                                         <div class="form-group mt-5">
                                             <label>Question </label>
                                             <div>
-                                                <input type="text" required name="name[]" class="form-control"
+                                                <input type="text" required name="name[]"  autocomplete="off" autocomplete="off" class="form-control"
                                                        placeholder="Question" value="{{$qquestion->name}}">
                                             </div>
                                         </div>
+
+                                        <div class="form-group mt-5">
+                                            <label>Question Point </label>
+                                            <div>
+                                                <input type="text" required name="quiz_point[]" autocomplete="off"  autocomplete="off" class="form-control"
+                                                       placeholder="Quiz point" value="{{ $qquestion->quiz_point }}">
+                                            </div>
+                                        </div>
+
+
+
                                         <div class="form-group">
                                             <label>Question Type</label>
                                             <div class="multiple-single-dropdown">
-                                                <select required name="type[]" class="form-control">
+                                                <select required name="type[]" autocomplete="off"   autocomplete="off" class="form-control">
                                                     <option
                                                         value="multiple" {{($qquestion->type=='multiple')?'selected':''}}>
                                                         Multiple
@@ -98,37 +116,37 @@
                                         </div>
                                         <div class="dropdown-options multiple-options">
                                             @if($qquestion->type=='multiple')
-                                                <input type="hidden" name="option_id[]"
+                                                <input type="hidden" name="option_id[]" autocomplete="off"
                                                        value="{{$qquestion->quizOption['id']}}">
                                                 <div class="row">
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 1</label>
                                                         <div>
-                                                            <input type="text" required name="option_1[]"
-                                                                   class="form-control" placeholder="Option 1"
+                                                            <input type="text" required name="option_1[]" autocomplete="off"
+                                                                   class="form-control" placeholder="Option 1" autocomplete="off"
                                                                    value="{{$qquestion->quizOption['option_1']}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 2</label>
                                                         <div>
-                                                            <input type="text" required name="option_2[]"
-                                                                   class="form-control" placeholder="Option 2"
+                                                            <input type="text" required name="option_2[]" autocomplete="off"
+                                                                   class="form-control" placeholder="Option 2" autocomplete="off"
                                                                    value="{{$qquestion->quizOption['option_2']}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 3</label>
                                                         <div>
-                                                            <input type="text" required name="option_3[]"
-                                                                   class="form-control" placeholder="Option 3"
+                                                            <input type="text" required name="option_3[]" autocomplete="off"
+                                                                   class="form-control" placeholder="Option 3" autocomplete="off"
                                                                    value="{{$qquestion->quizOption['option_3']}}">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 4</label>
                                                         <div>
-                                                            <input type="text" required name="option_4[]"
+                                                            <input type="text" required name="option_4[]" autocomplete="off" autocomplete="off"
                                                                    class="form-control" placeholder="Option 4"
                                                                    value="{{$qquestion->quizOption['option_4']}}">
                                                         </div>
@@ -144,7 +162,7 @@
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 1</label>
                                                         <div>
-                                                            <input type="text" required name="option_1[]"
+                                                            <input type="text" required name="option_1[]"  autocomplete="off" autocomplete="off"
                                                                    class="form-control" placeholder="Option 1"
                                                                    value="{{$qquestion->quizOption['option_1']}}">
                                                         </div>
@@ -152,7 +170,7 @@
                                                     <div class="col-md-6 form-group">
                                                         <label>Option 2</label>
                                                         <div>
-                                                            <input type="text" required name="option_2[]"
+                                                            <input type="text" required name="option_2[]" autocomplete="off"  autocomplete="off"
                                                                    class="form-control" placeholder="Option 2"
                                                                    value="{{$qquestion->quizOption['option_2']}}">
                                                         </div>
@@ -170,8 +188,8 @@
                                                         padding-left: 15px;
                                                     }
                                                 </style>
-                                                <select class="select-qcorrect-answer form-control"
-                                                        name="correct_answer_{{$key+1}}[]" multiple="multiple"
+                                                <select class="select-qcorrect-answer form-control" autocomplete="off"
+                                                        name="correct_answer_{{$key+1}}[]" multiple="multiple" autocomplete="off"
                                                         required="">
                                                     {{-- @if($qquestion->type=='single')
                                                     @endif --}}
@@ -259,6 +277,12 @@
                 <label>Question </label>\
                 <div>\
                     <input type="text" required name="name[]"    class="form-control"   placeholder="Question">\
+                </div>\
+            </div>\
+            <div class="form-group mt-5">\
+                <label>Question point </label>\
+                <div>\
+                    <input type="text" required name="quiz_point[]"    class="form-control"   placeholder="Question point">\
                 </div>\
             </div>\
             <div class="form-group">\

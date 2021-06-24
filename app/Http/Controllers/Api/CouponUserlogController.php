@@ -124,7 +124,6 @@ class CouponUserlogController extends Controller
             return WebApiResponse::error(404, $errors = [], 'Coupon date has been Expired');
         }
 
-
         if (!$coupon_user) {
 
             $new_total_download           = $coupon->total_download + $request->is_download;

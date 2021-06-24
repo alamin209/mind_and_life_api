@@ -84,43 +84,6 @@
                                     <div class="card-body">
                                         @csrf
 
-                                        <div class="custom-control custom-checkbox" style="margin-bottom:15px">
-                                            <input type="checkbox" name='is_google' class="custom-control-input"
-                                                   value="1" id="invalidCheck">
-                                            <label class="custom-control-label" for="invalidCheck">Is Google
-                                                Advirtisement</label>
-                                            <div class="invalid-feedback">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group autoUpdate" id="autoUpdate" style="display:none;">
-                                            <label> Google script link </label>
-                                            <div>
-                                                <input type="text" name="add_sense_link" class="form-control"
-                                                       placeholder="Please  Google Advirtisement  script  link">
-                                            </div>
-                                        </div>
-
-                                        <div class="show_website_add" id="show_website_add">
-
-                                            <div class="form-group">
-                                                <label> Advertisement Photo </label>
-                                                <div>
-                                                    <input type="file" name="ad_image_path" accept="image/*"
-                                                           onchange="preview_company_advertisement(event)"
-                                                           class="form-control">
-                                                    <img id="ad_image_path"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                <label>website link </label>
-                                                <div>
-                                                    <input type="text" name="website_link" class="form-control"
-                                                           placeholder="Give Website link">
-                                                </div>
-                                            </div>
-
-                                        </div>
 
 
                                     </div>
@@ -175,7 +138,7 @@
                         data: 'profile_pic',
                         name: 'profile_pic',
                         render: function (data, type, full, meta) {
-                            return "<img src=\"" + data + "\"  alt=\"Google add \"/ height=\"100px\"/ width=\"100px\"/>";
+                            return "<img src=\"" + data + "\"  alt=\"Profile photo not found \"/ height=\"100px\"/ width=\"100px\"/>";
                         }
                     },
 

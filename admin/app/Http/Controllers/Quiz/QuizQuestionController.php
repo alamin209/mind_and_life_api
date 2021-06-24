@@ -87,6 +87,8 @@ class QuizQuestionController extends Controller
     {
         $data = $request->all();
 
+        // dd($data);
+
         // $request->validate([
         //     'name'               => 'required',
         //     'type'               => 'required',
@@ -103,6 +105,7 @@ class QuizQuestionController extends Controller
         foreach($request->name as $key => $qdata){
             $quizQuestion = QuizQuestion::create([
                 'quiz_id' => $data['quiz_id'],
+                'quiz_point' => $data['quiz_point'][$key],
                 'name' => $data['name'][$key],
                 'type' => $data['type'][$key],
             ]);
@@ -176,15 +179,17 @@ class QuizQuestionController extends Controller
                 if($questionExist){
                     $questionExist->update([
                         'quiz_id' => $data['quiz_id'],
+                        'quiz_point' => $data['quiz_point'][$key],
                         'name' => $data['name'][$key],
                         'type' => $data['type'][$key],
                     ]);
                 }
             }else{
                 $quizQuestion = QuizQuestion::create([
-                    'quiz_id' => $data['quiz_id'],
-                    'name' => $data['name'][$key],
-                    'type' => $data['type'][$key],
+                    'quiz_id'    => $data['quiz_id'],
+                    'quiz_point' => $data['quiz_point'][$key],
+                    'name'      => $data['name'][$key],
+                    'type'      => $data['type'][$key],
                 ]);
             }
 
@@ -192,8 +197,9 @@ class QuizQuestionController extends Controller
                 $optionExist = QuizOption::find($request->option_id[$key]);
                 if($optionExist){
                     $optionExist->update([
-                        'quiz_id' => $data['quiz_id'],
-                        'option_1' => $data['option_1'][$key],
+                        'quiz_id'    => $data['quiz_id'],
+                       // 'quiz_point' => $data['quiz_point'],
+                        'option_1'    => $data['option_1'][$key],
                         'option_2' => $data['option_2'][$key],
                         'option_3' => $data['option_3'][$key],
                         'option_4' => $data['option_4'][$key],

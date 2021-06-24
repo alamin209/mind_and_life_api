@@ -75,7 +75,7 @@ class VideoCategoryController extends Controller
     public function store(Request $request)
     {
 
-        return  $request->all();
+
         $data = $request->validate([
             'name'               => 'required|max:255 |unique:categories',
             'type'               => 'required|string',

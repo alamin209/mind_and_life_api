@@ -49,9 +49,16 @@
     <div class="row">
         <div class="col-md-12 col-lg-12">
             <div class="card">
+
                 <div class="px-5 py-5 quiz-q-items-container card-body">
+                    <button type="button" class="btn btn-success waves-effect waves-light float-right" style="margin-bottom: 10px;">
+                        <a href="{{ url('/quiz-question') }}"> Back To Question </a>
+                    </button>
+
                     <h2 class="quiz_heading">{{$quiz['heading']}}</h2>
                     <div class="quiz-q-items-wrapper">
+
+
                         @if(count($questions))
                             @foreach($questions as $key => $qquestion)
                                 <div class="quiz-q-item">

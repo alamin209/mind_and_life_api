@@ -26,7 +26,7 @@ class VideoController extends Controller
 
         if ($request->ajax()) {
 
-            $data = Video::with('author', 'category')->where('is_published',1)->get();
+            $data = Video::with('author', 'category')->get();
 
             return Datatables::of($data)
                 ->addIndexColumn()
@@ -72,11 +72,11 @@ class VideoController extends Controller
                    </button>';
 
                     if($row->is_published == 1){
-                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('video.status',$row->id) .'">
                                 Unpublish
                             </a>';
                    }else{
-                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('video.status',$row->id) .'">
                                 Publish
                             </a>';
                    }
@@ -96,13 +96,10 @@ class VideoController extends Controller
 
     public function pending(Request $request)
     {
-        $title = 'Videos List';
+        $title = 'Pending Videos List';
 
         $data = Video::with('author', 'category')->where('is_published',0)->get();
         if ($request->ajax()) {
-
-
-
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('category_name', function ($row) {
@@ -147,11 +144,11 @@ class VideoController extends Controller
                    </button>';
 
                     if($row->is_published == 1){
-                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('video.status',$row->id) .'">
                                 Unpublish
                             </a>';
                    }else{
-                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
+                        $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('video.status',$row->id) .'">
                                 Publish
                             </a>';
                    }
@@ -165,7 +162,8 @@ class VideoController extends Controller
                 ->make(true);
         }
 
-        return view('admin/video/videos', compact('title'));
+        // return view('admin/video/videos_pending', compact('title'));
+        return view('admin/video/videos_pending', compact('title'));
     }
 
     public function create()
@@ -176,6 +174,23 @@ class VideoController extends Controller
         $users = User::whereNotNull('user_type')->get();
         return view('admin/video/create', compact('categories', 'users', 'title'));
     }
+
+
+    public function status($id){
+        $article   =  Video::find($id);
+
+        $article->update([
+            'is_published' => ($article['is_published'] == 1)?0:1,
+        ]);
+        try {
+            $this->successfullymessage('Article Publish Status Changed ');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            $this->failmessage($e->getMessage());
+            return redirect()->back();
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.

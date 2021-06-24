@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title') {{ $title }}  @endsection
+@section('title') {{$title}} @endsection
 
 @section('css')
     <!-- Responsive Table css -->
@@ -140,35 +140,6 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Total View </label>
-                                            <div>
-                                                <input type="number" name="total_view" class="form-control"
-                                                       placeholder="Total View">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Total Share </label>
-                                            <div>
-                                                <input type="text" name="tota_share" class="form-control"
-                                                       placeholder="Total Share">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Total Download </label>
-                                            <div>
-                                                <input type="number" name="total_download" class="form-control"
-                                                       placeholder="Total Download">
-                                            </div>
-                                            <input type="hidden" name="type" value="video">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Total Point </label>
-                                            <div>
-                                                <input type="number" name="total_point" class="form-control"
-                                                       placeholder="Total Point">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
                                             <label>Total Question </label>
                                             <div>
                                                 <input type="number" name="total_question" class="form-control"
@@ -176,10 +147,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Total Min </label>
+                                            <label> Quiz Points </label>
                                             <div>
-                                                <input type="number" name="total_min" class="form-control"
-                                                       placeholder="Total Min">
+                                                <input type="number" name="total_point" class="form-control"
+                                                       value="" placeholder="Quiz Point">
                                             </div>
                                         </div>
                                 </div>

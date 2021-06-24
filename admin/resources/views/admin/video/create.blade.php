@@ -70,7 +70,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="control-label">Select Author </label>
                             <select name="user_id" class="form-control select2" required>
                                 <option value="">Select Author</option>
@@ -78,7 +78,9 @@
                                     <option value="{{ $user->id }}"> {{ $user->username }}</option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
+
+                        <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
 
                         <div class="form-group">
                             <label class="control-label">Title</label>

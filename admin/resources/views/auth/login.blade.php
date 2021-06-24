@@ -14,8 +14,6 @@
         <div class="account-pages my-5 pt-sm-5">
             <div class="container">
                 <div class="row justify-content-center">
-
-
                     <div class="col-md-8 col-lg-6 col-xl-5">
                         <div class="card overflow-hidden">
                             <div class="bg-login text-center">
@@ -93,16 +91,7 @@
                             </div>
                         </div>
                         <div class="mt-5 text-center">
-                              {{-- <p>Don't have an account ?
-                                <a href="register" class="font-weight-medium text-primary">
-                                    Signup now </a>
-                                </p> --}}
-                            <p>©
-                                <script>
-                                    document.write(new Date().getFullYear())
-                                </script>
-                                Mind & Life
-                            </p>
+                            <p>©   <script> document.write(new Date().getFullYear()) </script>  Mind & Life </p>
                         </div>
 
                     </div>
@@ -111,11 +100,11 @@
         </div>
 
         <!-- JAVASCRIPT -->
-        <script src="{{ URL::asset('dddddddddddpublic/libs/jquery/jquery.min.js')}}"></script>
+        <script src="{{ URL::asset('public/libs/jquery/jquery.min.js')}}"></script>
         <script src="{{ URL::asset('public/libs/bootstrap/bootstrap.min.js')}}"></script>
-        <script src="{{ URL::asset('dddddddddddddddddpublic/libs/metismenu/metismenu.min.js')}}"></script>
-        <script src="{{ URL::asset('dddddddddddddddddpublic/libs/simplebar/simplebar.min.js')}}"></script>
-        <script src="{{ URL::asset('dddddddddddpublic/libs/node-waves/node-waves.min.js')}}"></script>
+        <script src="{{ URL::asset('public/libs/metismenu/metismenu.min.js')}}"></script>
+        <script src="{{ URL::asset('public/libs/simplebar/simplebar.min.js')}}"></script>
+        <script src="{{ URL::asset('public/libs/node-waves/node-waves.min.js')}}"></script>
 
-        <script src="{{ URL::asset('ddddddddddddpublic/js/app.min.js')}}"></script>
+        <script src="{{ URL::asset('public/js/app.min.js')}}"></script>
 @endsection

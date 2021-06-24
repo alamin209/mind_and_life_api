@@ -1,16 +1,6 @@
 @extends('layouts.master')
 
-@section('title') {{$title}}  @endsection
-
-@section('css')
-    <!-- Responsive Table css -->
-    <link href="{{ URL::asset('admin/public/libs/rwd-table/rwd-table.min.css')}}" rel="stylesheet" type="text/css"/>
-@endsection
-
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
-
-{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> --}}
-
+@section('title') Responsive Table @endsection
 
 @section('content')
     @component('common-components.breadcrumb')
@@ -50,6 +40,10 @@
         <div class="col-md-12 col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <button type="button" class="btn btn-success waves-effect waves-light float-right" style="margin-bottom: 10px;">
+                        <a href="{{ url('/quiz-question') }}"> Back To Question </a>
+                    </button>
+
                     <form id="save-all-question" action="{{  route('quiz-question.store') }}" method="Post"
                           class="custom-validation" enctype="multipart/form-data">
                         @csrf
@@ -83,7 +77,6 @@
 
 
 
-    {{-- <script src="{{ URL::asset('public/js/pages/table-responsive.init.js')}}"></script> --}}
     <script type="text/javascript">
 
         $('#save-all-question').on('submit', function (e) {
@@ -108,6 +101,12 @@
                 <label>Question </label>\
                 <div>\
                     <input type="text" required name="name[]"    class="form-control"   placeholder="Question">\
+                </div>\
+            </div>\
+            <div class="form-group mt-5">\
+                <label> Question Ponts </label>\
+                <div>\
+                    <input type="text" required name="quiz_point[]"    class="form-control"   placeholder="Question Ponts">\
                 </div>\
             </div>\
             <div class="form-group">\
@@ -146,7 +145,7 @@
                 <div class="form-group">\
                     <label>Question </label>\
                     <div>\
-                        <input type="text" required name="name[]"    class="form-control"   placeholder="Question">\
+                        <input type="text" required name="name[]"  autocomplete="off"   class="form-control"   placeholder="Question">\
                     </div>\
                 </div>\
                 <div class="form-group">\
@@ -193,25 +192,25 @@
                     <div class="col-md-6 form-group">\
                         <label>Option 1</label>\
                         <div>\
-                            <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                            <input type="text" required name="option_1[]"  autocomplete="off"   class="form-control"   placeholder="Option 1">\
                         </div>\
                     </div>\
                     <div class="col-md-6 form-group">\
                         <label>Option 2</label>\
                         <div>\
-                            <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                            <input type="text" required name="option_2[]"  autocomplete="off"   class="form-control"   placeholder="Option 2">\
                         </div>\
                     </div>\
                     <div class="col-md-6 form-group">\
                         <label>Option 3</label>\
                         <div>\
-                            <input type="text" required name="option_3[]"    class="form-control"   placeholder="Option 3">\
+                            <input type="text" required name="option_3[]" autocomplete="off"    class="form-control"   placeholder="Option 3">\
                         </div>\
                     </div>\
                     <div class="col-md-6 form-group">\
                         <label>Option 4</label>\
                         <div>\
-                            <input type="text" required name="option_4[]"    class="form-control"   placeholder="Option 4">\
+                            <input type="text" required name="option_4[]"   autocomplete="off"  class="form-control"   placeholder="Option 4">\
                         </div>\
                     </div>\
                 </div>');
@@ -223,13 +222,13 @@
                     <div class="col-md-6 form-group">\
                         <label>Option 1</label>\
                         <div>\
-                            <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                            <input type="text" required name="option_1[]"   autocomplete="off"  class="form-control"   placeholder="Option 1">\
                         </div>\
                     </div>\
                     <div class="col-md-6 form-group">\
                         <label>Option 2</label>\
                         <div>\
-                            <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                            <input type="text" required name="option_2[]"   autocomplete="off"   class="form-control"   placeholder="Option 2">\
                         </div>\
                     </div>\
                 </div>');
@@ -247,7 +246,13 @@
             <div class="form-group mt-5">\
                 <label>Question </label>\
                 <div>\
-                    <input type="text" required name="name[]"    class="form-control"   placeholder="Question">\
+                    <input type="text" required name="name[]"  autocomplete="off"   class="form-control"   placeholder="Question">\
+                </div>\
+            </div>\
+            <div class="form-group mt-5">\
+                <label>Question Ponts </label>\
+                <div>\
+                    <input type="text" required name="quiz_point[]"   autocomplete="off"  class="form-control"   placeholder="Question quiz_point">\
                 </div>\
             </div>\
             <div class="form-group">\
@@ -284,25 +289,25 @@
             <div class="col-md-6 form-group">\
                 <label>Option 1</label>\
                 <div>\
-                    <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                    <input type="text" required name="option_1[]"  autocomplete="off"   class="form-control"   placeholder="Option 1">\
                 </div>\
             </div>\
             <div class="col-md-6 form-group">\
                 <label>Option 2</label>\
                 <div>\
-                    <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                    <input type="text" required name="option_2[]"  autocomplete="off"   class="form-control"   placeholder="Option 2">\
                 </div>\
             </div>\
             <div class="col-md-6 form-group">\
                 <label>Option 3</label>\
                 <div>\
-                    <input type="text" required name="option_3[]"    class="form-control"   placeholder="Option 3">\
+                    <input type="text" required name="option_3[]"  autocomplete="off"   class="form-control"   placeholder="Option 3">\
                 </div>\
             </div>\
             <div class="col-md-6 form-group">\
                 <label>Option 4</label>\
                 <div>\
-                    <input type="text" required name="option_4[]"    class="form-control"   placeholder="Option 4">\
+                    <input type="text" required name="option_4[]"  autocomplete="off"   class="form-control"   placeholder="Option 4">\
                 </div>\
             </div>\
         </div>');
@@ -335,25 +340,25 @@
                 <div class="col-md-6 form-group">\
                     <label>Option 1</label>\
                     <div>\
-                        <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                        <input type="text" required name="option_1[]"  autocomplete="off"    class="form-control"   placeholder="Option 1">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 2</label>\
                     <div>\
-                        <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                        <input type="text" required name="option_2[]"  autocomplete="off"   class="form-control"   placeholder="Option 2">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 3</label>\
                     <div>\
-                        <input type="text" required name="option_3[]"    class="form-control"   placeholder="Option 3">\
+                        <input type="text" required name="option_3[]" autocomplete="off"    class="form-control"   placeholder="Option 3">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 4</label>\
                     <div>\
-                        <input type="text" required name="option_4[]"    class="form-control"   placeholder="Option 4">\
+                        <input type="text" required name="option_4[]"   autocomplete="off"  class="form-control"   placeholder="Option 4">\
                     </div>\
                 </div>\
             </div>');
@@ -365,13 +370,13 @@
                 <div class="col-md-6 form-group">\
                     <label>Option 1</label>\
                     <div>\
-                        <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                        <input type="text" required name="option_1[]"  autocomplete="off"   class="form-control"   placeholder="Option 1">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 2</label>\
                     <div>\
-                        <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                        <input type="text" required name="option_2[]"  autocomplete="off"   class="form-control"   placeholder="Option 2">\
                     </div>\
                     <input type="hidden" value="null" name="option_3[]">\
                     <input type="hidden" value="null" name="option_4[]">\
@@ -389,13 +394,13 @@
                 <div class="col-md-6 form-group">\
                     <label>Option 1</label>\
                     <div>\
-                        <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                        <input type="text" required name="option_1[]"   autocomplete="off"   class="form-control"   placeholder="Option 1">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 2</label>\
                     <div>\
-                        <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                        <input type="text" required name="option_2[]" autocomplete="off"    class="form-control"   placeholder="Option 2">\
                     </div>\
                     <input type="hidden" value="null" name="option_3[]">\
                     <input type="hidden" value="null" name="option_4[]">\
@@ -403,13 +408,13 @@
                 <div class="col-md-6 form-group">\
                     <label>Option 3</label>\
                     <div>\
-                        <input type="text" required name="option_3[]"    class="form-control"   placeholder="Option 3">\
+                        <input type="text" required name="option_3[]"  autocomplete="off"   class="form-control"   placeholder="Option 3">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 4</label>\
                     <div>\
-                        <input type="text" required name="option_4[]"    class="form-control"   placeholder="Option 4">\
+                        <input type="text" required name="option_4[]"  autocomplete="off"   class="form-control"   placeholder="Option 4">\
                     </div>\
                 </div>\
             </div>');
@@ -421,13 +426,13 @@
                 <div class="col-md-6 form-group">\
                     <label>Option 1</label>\
                     <div>\
-                        <input type="text" required name="option_1[]"    class="form-control"   placeholder="Option 1">\
+                        <input type="text" required name="option_1[]"  autocomplete="off"   class="form-control"   placeholder="Option 1">\
                     </div>\
                 </div>\
                 <div class="col-md-6 form-group">\
                     <label>Option 2</label>\
                     <div>\
-                        <input type="text" required name="option_2[]"    class="form-control"   placeholder="Option 2">\
+                        <input type="text" required name="option_2[]"   autocomplete="off"  class="form-control"   placeholder="Option 2">\
                     </div>\
                     <input type="hidden" value="null" name="option_3[]">\
                     <input type="hidden" value="null" name="option_4[]">\

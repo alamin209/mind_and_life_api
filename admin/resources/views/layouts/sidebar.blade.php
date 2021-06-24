@@ -115,16 +115,6 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-box"></i>
-                        <span>Notification  </span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('userlist.index') }}">push Notification  </a></li>
-                        <li><a href="{{ route('userlist.appuser') }}">Email Notification</a></li>
-                    </ul>
-                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -132,8 +122,18 @@
                         <span>Coupon </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('category.index') }}">Categroy </a></li>
+                        <li><a href="{{ route('coupon-category.index') }}">Categroy </a></li>
                         <li><a href="{{ route('coupon.index') }} ">Coupon</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <span class="iconify" data-icon="mdi:reload" data-inline="false" style="width:23px;height:auto"></span>
+                        <span>Event </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('event.index') }}">Eevnt </a></li>
                     </ul>
                 </li>
 
@@ -143,7 +143,7 @@
                         <span>Quiz </span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="{{ route('quiz-type.index') }} ">Quiz Type </a></li>
+                        <li><a href="{{ route('quiz-type.index') }} ">Quiz Category </a></li>
                         <li><a href="{{ route('quiz.index') }} ">Quiz </a></li>
                         <li><a href="{{ route('quiz-question.index') }} ">Question </a></li>
                     </ul>
@@ -165,16 +165,29 @@
                     </a>
 
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="#">Salary list(App)</a></li>
+                        <li><a href="{{ route('occupation.index') }}">Salary list(App)</a></li>
                         <li><a href="#">Industry list(App) </a></li>
                         <li><a href="#"> Occuapation list(App) </a></li>
                         <li><a href="#">Language</a></li>
-                        <li><a href="# ">Contact us term conditions </a></li>
-                        <li><a href="#">About us </a></li>
+                        <li><a href="{{ route('about-us') }}">About us </a></li>
+                        <li><a href=" {{ route('contact-us') }} ">Contact Us </a></li>
+                        <li><a href=" {{ route('contact-us') }} ">Contact Us User Enquery </a></li>
                         <li><a href="# ">Feedback </a></li>
                     </ul>
 
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-box"></i>
+                        <span>Notification  </span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('push-notifications.index') }}">push Notification  </a></li>
+                        <li><a href="#">Email Notification</a></li>
+                        <li><a href="#">Email Notification</a></li>
+                    </ul>
+                </li>
+
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">

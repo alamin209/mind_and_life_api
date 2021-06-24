@@ -84,6 +84,12 @@
                             <input class="form-control" name="heading" type="text" placeholder="Heading" required>
                         </div>
 
+
+                        <div class="form-group">
+                            <label class="control-label">Start Date</label>
+                            <input class="form-control" name="start_date" type="date" required>
+                        </div>
+
                         <div class="form-group">
                             <label class="control-label">Expire Date</label>
                             <input class="form-control" name="expire_date" type="date" required>
@@ -105,18 +111,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label">Total Download</label>
-                            <input class="form-control" name="total_download" type="number" required>
-                        </div>
-
-                        <div class="form-group">
                             <label class="control-label">Description </label>
-                            <textarea name="description" id="project_details" rows="5" class="form-control"></textarea>
+                            <textarea name="description" id="project_details" rows="15" cols="15" class="form-control"></textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Terms and Condition </label>
-                            <textarea name="term_condition" id="project_details" rows="5"
+                            <textarea name="term_condition" id="term_condition" rows="15" cols="15"
                                       class="form-control"></textarea>
                         </div>
 
@@ -168,6 +169,25 @@
                 toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ",
                 toolbar2: "print preview media | forecolor backcolor emoticons",
                 image_advtab: true
+
+
+
+            });
+
+            tinymce.init({
+                selector: '#term_condition',
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "emoticons template paste textcolor colorpicker textpattern imagetools"
+                ],
+                toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ",
+                toolbar2: "print preview media | forecolor backcolor emoticons",
+                image_advtab: true
+
+
+
             });
         })
     </script>

@@ -176,7 +176,7 @@ class ArticleController extends Controller
                    class="btn btn-danger waves-effect waves-light"   data-toggle="modal" data-target="#">
                    Delete
                    </button>';
-                   
+
                     if($row->is_published == 1){
                         $btn4 = '<a class="btn btn-info waves-effect waves-light mr-3" href="'. route('article.status',$row->id) .'">
                                 Unpublish
@@ -217,8 +217,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
-        //return $userData = Auth::guard()->user();
-        // dd($request->all());
+
         $data = $request->validate([
             // 'image_path'            => 'required | image |  mimes:jpeg,png,jpg,gif,JPEG | max:40248',
             'user_id'               => 'required | integer',

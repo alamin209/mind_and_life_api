@@ -20,9 +20,12 @@ class CreateCouponsTable extends Migration
             $table->longText('image_path');
             $table->longText('description');
             $table->string('offer_brand');
+            $table->string('start_date');
             $table->date('expire_date');
-            $table->integer('download_limit');
+            $table->integer('download_limit')->nullable();;
             $table->integer('total_download')->nullable();
+            $table->integer('total_shared')->nullable();
+            $table->integer('total_view')->nullable();
             $table->float('price');
             $table->longText('term_condition');
             $table->timestamps();

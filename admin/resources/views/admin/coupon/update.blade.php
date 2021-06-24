@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="card-body" style="overflow-y: auto;">
-                    <form method="POST" action="{{ route('coupon/'.$coupon->id) }}" enctype="multipart/form-data">
+                     <form method="POST" action="{{ url('coupon/'.$coupon->id) }}" enctype="multipart/form-data">
                         @csrf
                         @method("PUT")
                         <div class="form-group">
@@ -70,7 +70,7 @@
                             @endif
                             <label> Image </label>
                             <div>
-                                <input type="file" required name="image_path" accept="image/*"
+                                <input type="file"  name="image_path" accept="image/*"
                                        onchange="preview_coupon_image(event)" class="form-control">
                                 <img id="image_path"/>
                             </div>
@@ -81,7 +81,7 @@
                             <select name="category_id" class="form-control select2" required>
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
-                                    <option @if($article->category_id == $category->id) selected="selected"
+                                    <option @if($coupon->category_id == $category->id) selected="selected"
                                             @endif value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
@@ -90,6 +90,12 @@
                         <div class="form-group">
                             <label class="control-label">Heading</label>
                             <input class="form-control" name="heading" type="text" value="{{$coupon->heading}}"
+                                   required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">Start Date</label>
+                            <input class="form-control" name="start_date" value="{{$coupon->start_date}}" type="date"
                                    required>
                         </div>
 
@@ -117,21 +123,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label">Total Download</label>
-                            <input class="form-control" name="total_download" value="{{$coupon->total_download}}"
-                                   type="number" required>
-                        </div>
-
-                        <div class="form-group">
                             <label class="control-label">Description </label>
-                            <textarea name="description" id="project_details" rows="10" class="form-control">
+                            <textarea name="description" id="project_details" rows="15" cols="15" class="form-control">
                                 {{$coupon->description ?? ''}}
                             </textarea>
                         </div>
 
                         <div class="form-group">
                             <label class="control-label">Terms and Condition </label>
-                            <textarea name="term_condition" id="project_details" rows="5" class="form-control">
+                            <textarea name="term_condition" id="term_condition" rows="15" cols="15" class="form-control">
                                 {{$coupon->term_condition ?? ''}}
                             </textarea>
                         </div>
@@ -173,8 +173,7 @@
 
     <script>
         $(function () {
-            if ($(".select2").length > 0)
-                $('.select2').select2();
+            $('.select2').select2();
             tinymce.init({
                 selector: '#project_details',
                 plugins: [
@@ -186,8 +185,26 @@
                 toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ",
                 toolbar2: "print preview media | forecolor backcolor emoticons",
                 image_advtab: true
+
+
+
             });
-        }
+
+            tinymce.init({
+                selector: '#term_condition',
+                plugins: [
+                    "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                    "searchreplace wordcount visualblocks visualchars code fullscreen",
+                    "insertdatetime media nonbreaking save table contextmenu directionality",
+                    "emoticons template paste textcolor colorpicker textpattern imagetools"
+                ],
+                toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent ",
+                toolbar2: "print preview media | forecolor backcolor emoticons",
+                image_advtab: true
+
+
+
+            });
         })
     </script>
 @endsection

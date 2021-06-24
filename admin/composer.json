@@ -21,6 +21,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "laravelcollective/html": "^6.2",
+        "milon/barcode": "7.*",
         "spatie/laravel-activitylog": "^3.17",
         "spatie/laravel-permission": "^4.0",
         "yajra/laravel-datatables": "^1.5",
@@ -45,6 +46,11 @@
         }
     },
     "autoload": {
+
+        "files": [
+            "app/helper.php"
+        ],
+
         "psr-4": {
             "App\\": "app/"
         },

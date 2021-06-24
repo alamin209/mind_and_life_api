@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Coupon;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+
 use App\Models\Coupon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\CouponsCategory;
 use Intervention\Image\ImageManagerStatic as Image;
 use DataTables;
 
@@ -32,14 +33,14 @@ class CouponController extends Controller
                     return $row->category->name ?? '';
                 })
                 ->addColumn('heading', function ($row) {
-                    return $row->description ?? '';
+                    return $row->heading ?? '';
                 })
                 ->addColumn('image', function ($row) {
                     $url = asset($row->image_path);
                     return $url;
                 })
                 ->addColumn('description', function ($row) {
-                    return $row->description ?? '';
+                    return substr($row->description, 0, 200)."Click details for more"  ?? '';
                 })
                 ->addColumn('expiry_date', function ($row) {
                     return $row->expiry_date ?? '';
@@ -57,21 +58,18 @@ class CouponController extends Controller
                     return $row->total_download ?? '';
                 })
                 ->addColumn('action', function ($row) {
-                    $btn = '<button type="button"  class="btn btn-success waves-effect waves-light"style="margin-right:20px">
-                    <a href="coupon/' . $row->id . '/edit"> Edit </a>
-                   </button> ';
+                    $btn = '<a class="btn btn-primary waves-effect waves-light"style="margin-right:20px" href="'.url('coupon/'.$row->id ).'">
+                            Details
+                        </a> ';
+                    $btn1 = '<a class="btn btn-success waves-effect waves-light"style="margin-right:20px" href="'.url('coupon/'.$row->id.'/edit' ).'">
+                            Edit
+                        </a> ';
+                    $btn2 = '<button type="button" data-panel-id="'.$row->id.'"   onclick="delete_quiz_type(' . $row->id . ')"
+                        class="btn btn-danger waves-effect waves-light"   data-toggle="modal" data-target="#">
+                        Delete
+                        </button>';
 
-                    $btn3 = '<button type="button"   onclick="show_coupon(' . $row->id . ')"
-                   class="btn btn-primary waves-effect waves-light"style="margin-right:20px"   data-toggle="modal" data-target="#updatecoupon">
-                    View
-                   </button>';
-
-                    $btn2 = '<button type="button" data-panel-id="' . $row->id . '"   onclick="delete_coupon(' . $row->id . ')"
-                   class="btn btn-danger waves-effect waves-light"   data-toggle="modal" data-target="#">
-                   Delete
-                   </button>';
-
-                    return $btn . '' . $btn3 . '' . $btn2;
+                    return $btn . '' . $btn1 . '' . $btn2;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -87,7 +85,7 @@ class CouponController extends Controller
     public function create()
     {
         $title = 'New Coupon';
-        $categories = Category::where('status', 1)->get();
+        $categories = CouponsCategory::where('status', 1)->get();
         return view('admin/coupon/create', compact('categories', 'title'));
     }
 
@@ -100,15 +98,16 @@ class CouponController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'image_path' => 'required | image |  mimes:jpeg,png,jpg,gif,JPEG | max:40248',
-            'category_id' => 'required | integer',
-            'heading' => 'required | string',
-            'expire_date' => 'required | date',
-            'description' => 'nullable | string',
-            'offer_brand' => 'required | string',
+            'image_path'     => 'required | image |  mimes:jpeg,png,jpg,gif,JPEG | max:40248',
+            'category_id'    => 'required | integer',
+            'heading'        => 'required | string',
+            'expire_date'    => 'required | date',
+            'start_date'     => 'required | date',
+            'description'    => 'nullable | string',
+            'offer_brand'    => 'required | string',
             'download_limit' => 'required | integer',
-            'total_download' => 'required | integer',
-            'price' => 'required | numeric',
+            'total_download' => 'nullable | integer',
+            'price'          => 'required | numeric',
             'term_condition' => 'required | string',
         ]);
 
@@ -145,8 +144,8 @@ class CouponController extends Controller
      */
     public function show($id)
     {
-        $title = ' Coupon';
-        $categories = Category::where('status', 1)->get();
+        $title = 'Coupon';
+        $categories = CouponsCategory::where('status', 1)->get();
         $coupon = Coupon::with('category')->find($id);
         return view('admin/coupon/view', compact('categories', 'title', 'coupon'));
     }
@@ -159,9 +158,9 @@ class CouponController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Edit Coupon';
-        $categories = Category::where('status', 1)->get();
-        $coupon = Coupon::with('category')->find($id);
+        $title      = 'Edit Coupon';
+        $categories = CouponsCategory::where('status', 1)->get();
+        $coupon     = Coupon::with('category')->find($id);
         return view('admin/coupon/update', compact('categories', 'title', 'coupon'));
     }
 
@@ -175,15 +174,16 @@ class CouponController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->validate([
-            'image_path' => 'required | image |  mimes:jpeg,png,jpg,gif,JPEG | max:40248',
-            'category_id' => 'required | integer',
-            'heading' => 'required | string',
-            'expire_date' => 'required | date',
-            'description' => 'nullable | string',
-            'offer_brand' => 'required | string',
+            'image_path'     => 'required | image |  mimes:jpeg,png,jpg,gif,JPEG | max:40248',
+            'category_id'    => 'required | integer',
+            'heading'        => 'required | string',
+            'start_date'     => 'required | date',
+            'expire_date'    => 'required | date',
+            'description'    => 'nullable | string',
+            'offer_brand'    => 'required | string',
             'download_limit' => 'required | integer',
-            'total_download' => 'required | integer',
-            'price' => 'required | numeric',
+            'total_download' => 'nullable | integer',
+            'price'          => 'required | numeric',
             'term_condition' => 'required | string',
         ]);
 

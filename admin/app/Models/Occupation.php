@@ -15,8 +15,6 @@ class Occupation extends Model
     protected static $logAttributes  =true;
     protected $guarded = [];
 
-    protected $table="occupations";
-
     protected static $logName = 'Occupation';
 
     public function getDescriptionForEvent(string $eventName): string

@@ -21,7 +21,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "admin-resources": "git+https://github.com/themesbrand/admin-resources#master",
+        "admin-resources": "git+https://github.com/mind and life/admin-resources#master",
         "@curiosityx/bootstrap-session-timeout": "^1.0.0",
         "apexcharts": "^3.11.1",
         "bootstrap": "4.4.1",

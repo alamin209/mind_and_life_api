@@ -51,33 +51,13 @@
                                      src="{{asset($quiz->image_path)}}"/>
                             </div>
                         </div>
+
+
                         <div class="form-group">
-                            <label>Total View </label>
-                            <div>
-                                <input type="number" name="total_view" class="form-control"
-                                       value="{{$quiz->total_view}}" placeholder="Total View">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Total Share </label>
-                            <div>
-                                <input type="text" name="tota_share" class="form-control" value="{{$quiz->tota_share}}"
-                                       placeholder="Total Share">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Total Download </label>
-                            <div>
-                                <input type="number" name="total_download" class="form-control"
-                                       value="{{$quiz->total_download}}" placeholder="Total Download">
-                            </div>
-                            <input type="hidden" name="type" value="video">
-                        </div>
-                        <div class="form-group">
-                            <label>Total Point </label>
+                            <label> Quiz Point </label>
                             <div>
                                 <input type="number" name="total_point" class="form-control"
-                                       value="{{$quiz->total_point}}" placeholder="Total Point">
+                                       value="{{$quiz->total_point}}" placeholder="Quiz Point">
                             </div>
                         </div>
                         <div class="form-group">
@@ -87,13 +67,7 @@
                                        value="{{$quiz->total_question}}" placeholder="Total Question">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Total Min </label>
-                            <div>
-                                <input type="number" name="total_min" class="form-control" value="{{$quiz->total_min}}"
-                                       placeholder="Total Min">
-                            </div>
-                        </div>
+
                         <div class="form-group">
                             <label class="control-label">Select Status</label>
                             <select class="form-control select2" name="status" required>

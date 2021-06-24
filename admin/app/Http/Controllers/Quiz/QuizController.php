@@ -23,7 +23,7 @@ class QuizController extends Controller
      */
     public function index(Request $request)
     {
-        $title = 'Quiz Type List';
+        $title = 'Quiz  List';
         $quizTypes = QuizType::get();
 
         if ($request->ajax()) {
@@ -113,16 +113,16 @@ class QuizController extends Controller
 
         $data = $request->validate([
             'quiz_type_id'               => 'required|numeric',
-            'heading'               => 'required | unique:quizzes',
-            'description'               => 'required',
-            'image_path'               => 'nullable | image |  mimes:jpeg,png,jpg,gif | max:8240',
-            'total_view'               => 'required|numeric',
-            'tota_share'               => 'required|numeric',
-            'total_download'               => 'required|numeric',
-            'total_point'               => 'required|numeric',
-            'total_question'               => 'required|numeric',
-            'total_min'               => 'required|numeric',
-            'status'             => 'nullable|integer',
+            'heading'                    => 'required | unique:quizzes',
+            'description'                => 'nullable |string',
+            'image_path'                 => 'nullable | image |  mimes:jpeg,png,jpg,gif | max:8240',
+            // 'total_view'               => 'required|numeric',
+            // 'tota_share'               => 'required|numeric',
+            // 'total_download'            => 'required|numeric',
+              'total_point'              => 'required|numeric',
+            'total_question'              => 'required|numeric',
+            // 'total_min'                => 'required|numeric',
+            // 'status'                  => 'nullable|integer',
         ]);
 
         if ($request->hasFile('image_path') != '') {
@@ -181,17 +181,17 @@ class QuizController extends Controller
     {
 
         $data = $request->validate([
-            'quiz_type_id'               => 'required|numeric',
-            'heading'               => 'required|unique:quizzes,heading,'.$id,
-            'description'               => 'required',
+            'quiz_type_id'             => 'required|numeric',
+            'heading'                  => 'required|unique:quizzes,heading,'.$id,
+            'description'              => 'required',
             'image_path'               => 'nullable | image |  mimes:jpeg,png,jpg,gif | max:8240',
-            'total_view'               => 'required|numeric',
-            'tota_share'               => 'required|numeric',
-            'total_download'               => 'required|numeric',
-            'total_point'               => 'required|numeric',
-            'total_question'               => 'required|numeric',
-            'total_min'               => 'required|numeric',
-            'status'             => 'nullable|integer',
+            // 'total_view'               => 'required|numeric',
+            // 'tota_share'               => 'required|numeric',
+            // 'total_download'           => 'required|numeric',
+            'total_point'              => 'required|numeric',
+            'total_question'           => 'required|numeric',
+            // 'total_min'               => 'required|numeric',
+             'status'                  => 'required|integer',
         ]);
 
 
@@ -227,7 +227,7 @@ class QuizController extends Controller
 
 
        try {
-            $this->successfullymessage('Quiz Type  Updated  successfully ');
+            $this->successfullymessage('Quiz   Updated  successfully ');
             return redirect()->back();
         } catch (\Exception $e) {
             $this->failmessage($e->getMessage());

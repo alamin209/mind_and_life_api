@@ -17,11 +17,9 @@ class CreateUserCouponRelationsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('coupon_id');
-            $table->bigInteger('is_shared')->nullable();
-            $table->bigInteger('is_download')->nullable();
-            $table->bigInteger('is_redeemed')->nullable();
-            $table->bigInteger('is_view')->nullable();
-            $table->bigInteger('coupon_id');
+            $table->tinyInteger('is_download')->nullable();
+            $table->tinyInteger('is_view')->nullable();
+            $table->boolean('is_redeemed')->default(0);
             $table->timestamps();
         });
     }

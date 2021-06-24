@@ -24,6 +24,8 @@ Route::get('/clear-cache', function() {
 });
 
 
+Route::get('notify-user','Usermanagement\UserController@notifyUser')->name('notify-user');
+
 Route::get('/clear-permission-cache', function() {
     $exitCode = Artisan::call('permission:cache-reset');
     return 'Permission Cache Clear';
@@ -72,6 +74,8 @@ Route::post('login-status', 'QovexController@checkStatus');
     Route::group(['middleware' => 'auth'], function () {
 
 
+
+
         Route::get('app-user','Usermanagement\UserController@appuser')->name('userlist.appuser');
         Route::resource('userlist','Usermanagement\UserController');
 
@@ -81,7 +85,7 @@ Route::post('login-status', 'QovexController@checkStatus');
 
         Route::resource('ip-addresslist','Ipaddress\IpAddressController');
 
-        Route::resource('category','Category\CategoryController');
+        Route::resource('coupon-category','Category\CouponCategoryController');
         Route::resource('article-category','Category\ArticleCategoryController');
         Route::resource('video-category','Category\VideoCategoryController');
 
@@ -94,15 +98,47 @@ Route::post('login-status', 'QovexController@checkStatus');
 
         Route::resource('advertisement','Advertisement\AdvertisementController');
 
+        Route::get('video/status/{id}','Video\VideoController@status')->name('video.status');
         Route::get('video-pending','Video\VideoController@pending')->name('videos.pending');
         Route::resource('videos','Video\VideoController');
 
         Route::resource('coupon','Coupon\CouponController');
         Route::resource('point','Point\PointController');
 
+        //=================occupation===========================//
+        Route::resource('occupation','Occupation\OccupationController');
+
+
+        ////////////////=================About US====================//////////
+        Route::get('/about-us', 'Setting\SettingController@aboutus')->name('about-us');
+        Route::get('/create-about-us', 'Setting\SettingController@createAboutUs')->name('createaboutus');
+        Route::post('/store-about-us', 'Setting\SettingController@storeAboutUs')->name('store-about-us');
+        Route::get('/show-about-us/{id}', 'Setting\SettingController@edit_about_us')->name('show-about-us');
+        Route::post('/upadte-about-us/{id}', 'Setting\SettingController@updateAboutUs')->name('upadte-about-us');
+
+
+           ////////////////=================Contact  US====================//////////
+           Route::get('/contact-us', 'Setting\SettingController@contactUs')->name('contact-us');
+           Route::get('/create-about-us', 'Setting\SettingController@createAboutUs')->name('createaboutus');
+           Route::post('/store-about-us', 'Setting\SettingController@storeAboutUs')->name('store-about-us');
+           Route::get('/show-about-us/{id}', 'Setting\SettingController@edit_about_us')->name('show-about-us');
+           Route::post('/upadte-about-us/{id}', 'Setting\SettingController@updateAboutUs')->name('upadte-about-us');
+
+        /////////////////=====================Event=======================///////////
+
+
+
+
+        Route::resource('event','Event\EventController');
+
+
+
+        //////////////////////////===============Notification ==================////////////////////////
+
+        Route::resource('push-notifications',"Notification\NotificationController");
 
         Route::resource('permission','Permission\PermissionController');
-        Route::resource('roles', 'Permission\\RoleController');
+        Route::resource('roles', 'Permission\RoleController');
         Route::resource('login-history','Usermanagement\LoginHistoryController');
         Route::get('/activity-history', 'Usermanagement\LoginHistoryController@allActivity')->name('activity-history');
         Route::get('{any}', 'QovexController@index');

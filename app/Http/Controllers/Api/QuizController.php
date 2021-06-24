@@ -31,7 +31,7 @@ class QuizController extends Controller
     }
 
     /**
-     * Display question  List
+     * Display Quiz wise question  List
      * @group     Quiz
      * @queryParam quiz_id integer  quiz id   to Filter. Example: 1
      * @return \Illuminate\Http\Response

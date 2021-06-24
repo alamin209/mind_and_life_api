@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Article;
+use App\Models\Video;
 class ArticleUser extends Model
 {
 
@@ -22,6 +23,6 @@ class ArticleUser extends Model
     }
     public function video(){
 
-        return $this->belongsTo(Article::class ,'video_id','id');
+        return $this->belongsTo(Video::class ,'video_id','id');
     }
 }

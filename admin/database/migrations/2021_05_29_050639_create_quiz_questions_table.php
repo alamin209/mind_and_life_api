@@ -18,6 +18,7 @@ class CreateQuizQuestionsTable extends Migration
             $table->bigInteger('quiz_id');
             $table->longText('name')->nullable();
             $table->longText('type')->nullable()->comment('multiple,true/false');
+            $table->bigInteger('quiz_point')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
