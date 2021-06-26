@@ -131,23 +131,21 @@ class CouponUserlogController extends Controller
             $total_shared                 = $coupon->total_shared + $request->is_shared;
 
             $coupon->total_download        = $new_total_download;
-            $coupon->total_view           =  $total_view;
-            $coupon->total_shared         =  $total_shared;
+            $coupon->total_view            =  $total_view;
+            $coupon->total_shared          =  $total_shared;
             $coupon->save();
 
 
-            $new_coupon_user                      = new UserCouponRelation();
-            $new_coupon_user->user_id             = $request->user_id;
-            $new_coupon_user->coupon_id           = $request->coupon_id;
-            $new_coupon_user->is_download         = $request->is_download;
-            $new_coupon_user->is_shared           = $request->is_shared;
-            $new_coupon_user->is_view             = $request->is_view;
+            $new_coupon_user                = new UserCouponRelation();
+            $new_coupon_user->user_id       = $request->user_id;
+            $new_coupon_user->coupon_id     = $request->coupon_id;
+            $new_coupon_user->is_download   = $request->is_download;
+            $new_coupon_user->is_shared     = $request->is_shared;
+            $new_coupon_user->is_view       = $request->is_view;
             $new_coupon_user->save();
 
             $update_coupon_user  = $new_coupon_user->id;
         }
-
-
 
 
         if ($request->filled('is_redeemed')) {
