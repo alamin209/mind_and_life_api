@@ -38,14 +38,12 @@ class VideUserLogController extends Controller
         ]);
 
 
-
-
-
         $article_user = ArticleUser::with('article','user')->where('user_id', $request->user_id)->where('video_id', $request->video_id)->first();
 
         $article = Video::find($request->video_id);
 
         $article_user1='';
+
         $update_article_user=0;
 
         if (!$article_user) {
@@ -128,7 +126,13 @@ class VideUserLogController extends Controller
                 $article->total_share = $new_user_share;
                 $article->save();
 
-                $article_link ="https://app.tvpfundhk.com/api/article/".$request->video_id;
+                if( $article->youtube_link !=null ){
+
+                $article_link =$article->youtube_link;
+                }else{
+
+                $article_link =$article->video_path;
+                }
             }
 
             if ($request->filled('user_view')) {
@@ -192,6 +196,43 @@ class VideUserLogController extends Controller
         $query->where('user_id' ,$user_id);
         try {
             $article = $query->with('user', 'video')->whereNull('article_id')->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)->paginate($queryParams['limit'])->toArray();
+            return WebApiResponse::success(200, $article, trans('messages.success_show_all'));
+        } catch (\Throwable $th) {
+            return WebApiResponse::error(404, $errors = [], trans('messages.faild_show_all'));
+        }
+    }
+
+     /**
+     * Display List User Video Log
+     * @group User Video bookmark Log
+     * @authenticated
+     * @queryParam limit  integer  optional  per page limit   to Filter Example:10 .
+     * @queryParam orderBy  String  optional  Order    to Filter Example:DESC .
+     * @queryParam sortBy  String  optional  Order    to Filter  Example:id .
+     * @return \Illuminate\Http\Response
+     * @response 200
+	     * {"status":"success","message":"messages.success_show_all","code":200,"data":{"current_page":1,"data":[{"id":34,"user_id":2,"article_id":1,"user_like":1,"user_bookmark":null,"created_at":"2021-05-06t11:00:53.000000z","updated_at":"2021-05-07t09:08:01.000000z","user":{"id":2,"username":"pennyyau88","email":"penny@gmail.com","profile_pic":"upload\/6080fd0fcdd1b_work_alamin_vai.png","sex":"Male","industry_id":1,"salary_range_id":1,"referral_code":null,"email_verified_at":null,"status":1,"created_at":"2021-04-22T04:35:27.000000Z","updated_at":"2021-04-22T04:35:27.000000Z","user_type":"admin"},"article":{"id":1,"user_id":1,"category_id":1,"title":"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum","total_like":1,"total_bookmark":0,"total_share":61,"total_view":9,"post_date":"2021-04-08","image_path":"public\/article\/ar_608fc9f6bded5fj6jNTpH9l.jpeg","status":1,"created_at":null,"updated_at":"2021-05-07T09:08:01.000000Z"}}],"first_page_url":"https:\/\/localhost\/dss_api\/api\/article-user-log\/list?page=1","from":1,"last_page":1,"last_page_url":"https:\/\/localhost\/dss_api\/api\/article-user-log\/list?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"https:\/\/localhost\/dss_api\/api\/article-user-log\/list?page=1","label":1,"active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"https:\/\/localhost\/dss_api\/api\/article-user-log\/list","per_page":10,"prev_page_url":null,"to":1,"total":1}}
+ */
+
+    public function book_mark_list(Request $request)
+    {
+        $queryParams = [
+            'limit'         =>  $request->limit ?? 10,
+            'sortBy'        =>  $request->sortBy ?? 'id',
+            'orderBy'       =>  in_array($request->orderBy, ['ASC', 'DESC']) ? $request->orderBy : 'DESC',
+        ];
+        $whereClause = $request->whereClause ?? [];
+
+        $query =  ArticleUser::query();
+
+
+        $user_id = Auth::user()->id ;
+        $query->where('user_id' ,$user_id);
+
+
+
+        try {
+            $article = $query->with('user', 'video')->whereNull('article_id')->where($whereClause)->get();
             return WebApiResponse::success(200, $article, trans('messages.success_show_all'));
         } catch (\Throwable $th) {
             return WebApiResponse::error(404, $errors = [], trans('messages.faild_show_all'));

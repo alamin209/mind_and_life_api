@@ -31,7 +31,7 @@ use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\AllCategoryController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\EventCategoryController;
-
+use App\Http\Controllers\Api\EventController;
 
 
 /*
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('video-user-log/store', [VideUserLogController::class, 'store']);
 
     // =================== Advertisement  route =====================//
-    Route::get('advertisement/list', [AdvertisementController::class, 'list']);
+
     Route::apiResource('advertisement-log', AdvertisementLogController::class);
 
     // =================== Coupon User log  route =====================//
@@ -121,7 +121,7 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('industry/list', [IndustryController::class, 'list']);
     Route::apiResource('industry', IndustryController::class);
 
-
+    Route::get('advertisement/list', [AdvertisementController::class, 'list']);
     Route::get('coupon-category/list', [CouponCategory::class, 'list']);
 
     // =================== Category  route =====================//
@@ -153,11 +153,7 @@ Route::group(['middleware' => 'api'], function () {
     //======================= Occupation ======================//
     Route::get('occupation/list', [OccupationController::class, 'list']);
 
-
     //======================= coupon ======================//
-
-
-
     Route::get('coupon/list', [CouponController::class, 'list']);
 
 
@@ -165,11 +161,12 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('quiz-type/list', [QuizTypeController::class, 'list']);
 
     Route::get('quiz/list', [QuizController::class, 'list']);
+    Route::get('category_wise_quiz/{category_id}', [QuizController::class, 'category_wise_quiz']);
 
     Route::get('questions/list', [QuizController::class, 'list']);
 
     Route::get('questions/list/{id}', [QuizController::class, 'quiz_questions']);
-
+    Route::get('category-wise-single-quiz/{id}', [QuizController::class, 'show']);
     Route::get('point/list', [PointController::class, 'list']);
 
     //..............divide token.........................//
@@ -180,6 +177,9 @@ Route::group(['middleware' => 'api'], function () {
 
 
     //////////.................about Us................//////////
+
+    Route::get('all_about_us/list', [SettingController::class, 'all_about_us']);
+
     Route::get('about-us', [SettingController::class, 'aboutUs']);
 
     ///////////////////................all Category=>coupon,Event,Quiz............//////////
@@ -189,9 +189,11 @@ Route::group(['middleware' => 'api'], function () {
     Route::get('event-category/list', [EventCategoryController::class, 'list']);
 
      ////////////..............User Coupon download ..............////////////////////////
-
      Route::get('user-coupon_download/{id}', [CouponController::class, 'download_coupon']);
 
+     ///////////////////event //////////////////////////
+
+     Route::get('event-list', [EventController::class, 'list']);
 
 });
 

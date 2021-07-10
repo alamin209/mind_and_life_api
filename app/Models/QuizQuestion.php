@@ -13,6 +13,6 @@ class QuizQuestion extends Model
 
     public function question_options(){
 
-        return $this->hasMany(QuizOption::class ,'quiz_question_id','id');
+        return $this->hasOne(QuizOption::class ,'quiz_question_id','id');
     }
 }

@@ -10,7 +10,7 @@ use App\Models\Quiz;;
 
 use App\Models\QuizQuestion;
 use App\Models\QuizOption;
-
+use Illuminate\Support\Facades\Log;
 class UserQuizLogController extends Controller
 {
     /**
@@ -68,6 +68,9 @@ class UserQuizLogController extends Controller
     public function store(Request $request)
     {
 
+
+ \Log::info($request->answers);
+
         $data = $request->validate([
             'user_id'           => 'required|integer',
             'quiz_id'           => 'required|integer',
@@ -78,11 +81,18 @@ class UserQuizLogController extends Controller
         $total_answered   = 1;
         $i                = 0;
         $total_point      = 0;
+
+
+
+
+
         foreach ($answers as  $key => $answer) {
 
             $answer['quiz_question_id'];
             $option               = ($answer["option"]);
             $correct_answered     = QuizOption::where('quiz_question_id', $answer['quiz_question_id'])->first();
+
+
             $real_answer          = (str_replace(['["', '"]'], "", $correct_answered->correct_answer));
 
             if ($option == $real_answer) {

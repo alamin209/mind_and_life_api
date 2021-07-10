@@ -238,6 +238,8 @@ class UserController extends Controller
     public function user_occupation(Request $request)
     {
 
+
+
         $validator = Validator::make($request->all(), [
             'user_id'               =>    'required|integer',
             'occupation_id'         =>    'required|integer',
@@ -249,7 +251,7 @@ class UserController extends Controller
         try {
 
             $user = User::find($request->user_id);
-            $user->industry_id = $request->industry_id;
+            $user->occupation_id = $request->occupation_id;
             $user->save();
 
             return WebApiResponse::success(200, $user->toArray(), trans('messages.success_created'));

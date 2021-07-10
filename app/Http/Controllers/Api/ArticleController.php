@@ -34,12 +34,15 @@ class ArticleController extends Controller
                 'sortBy'        =>  $request->sortBy ?? 'id',
                 'orderBy'       =>  in_array($request->orderBy, ['ASC', 'DESC']) ? $request->orderBy : 'DESC',
             ];
+
+            $query=Article::query();
             $whereClause = $request->whereClause ?? [];
 
-            //$user =auth()->guard('api')->user();
+            if ($request->filled('category_id')) {
+                $query->where('category_id',  $request->category_id);
+            }
 
-            $articles = Article::query()
-            ->with('author', 'article_category', 'article_tags','article_images','user_log_details')
+            $articles =  $query->with('author', 'article_category', 'article_tags','article_images','user_log_details','user_log_details.user')
             ->where('status', 1)
             ->orderBy($queryParams['sortBy'], $queryParams['orderBy'])
             ->where($whereClause)
@@ -84,7 +87,7 @@ class ArticleController extends Controller
     public function video_article_list(Request $request)
     {
         $queryParams = [
-            // 'limit'         =>  $request->limit ?? 10,
+             'limit'         =>  $request->limit ?? 10,
             'sortBy'        =>  $request->sortBy ?? 'id',
             'orderBy'       =>  in_array($request->orderBy, ['ASC', 'DESC']) ? $request->orderBy : 'DESC',
         ];
@@ -109,7 +112,7 @@ class ArticleController extends Controller
             $query->where('title', 'like', '%' . $request->title . '%');
         }
 
-        $article = $query->with('author', 'article_category', 'article_tags', 'article_images','user_log_details')
+        $article = $query->with('author', 'article_category', 'article_tags', 'article_images','user_log_details','user_log_details.user')
         ->where('status', 1)
         ->orderBy($queryParams['sortBy'], $queryParams['orderBy'])->where($whereClause)
         ->paginate($request->article_limit ?? 10)
@@ -134,7 +137,7 @@ class ArticleController extends Controller
 
         $return_video = [];
 
-        $video = $query2->with('author', 'video_category','video_tags','user_log_details')
+        $video = $query2->with('author', 'video_category','video_tags','user_log_details','user_log_details.user')
         ->where('status', 1)->orderBy($queryParams['sortBy'], $queryParams['orderBy'])
         ->where($whereClause)->paginate($request->video_limit ?? 10)
         ->toArray();
@@ -154,7 +157,7 @@ class ArticleController extends Controller
 
         $data = [
             'articles'        => $article,
-            'videos'        => $video,
+            'videos'         => $video,
         ];
 
         try {
@@ -176,7 +179,7 @@ class ArticleController extends Controller
     public function show($id)
     {
         try {
-            $article = Article::with('author', 'article_category', 'article_tags')->findOrFail($id);
+            $article = Article::with('author', 'article_category', 'article_images', 'article_tags','user_log_details','user_log_details.user')->findOrFail($id);
             return WebApiResponse::success(200, $article, 'Article Data Fund');
         } catch (\Throwable $th) {
             $errors = $th->getMessage();

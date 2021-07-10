@@ -13,6 +13,7 @@ class CommentController extends Controller
     /**
      * Display List Comments Of Article
      * @group Article
+     * @authenticated
      * @queryParam limit  integer  optional  per page limit   to Filter Example:10 .
      * @queryParam orderBy  String  optional  Order    to Filter Example:DESC .
      * @queryParam sortBy  String  optional  Order    to Filter  Example:id .

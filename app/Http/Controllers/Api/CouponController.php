@@ -48,8 +48,12 @@ class CouponController extends Controller
     public function download_coupon( Request $request, $coupon_id){
 
         $coupon = Coupon::find($coupon_id);
+
+        $customPaper = array(0,0,350,550);
         //return view('coupon/download', compact('coupon'));
-        $pdf = PDF::loadView('coupon/download', compact('coupon'));
+
+       // $pdf = PDF::loadView('pdf.retourlabel',compact('retour','barcode'))->setPaper($customPaper,'portrait');
+        $pdf = PDF::loadView('coupon/download', compact('coupon'))->setPaper($customPaper,'portrait');
         return $pdf->stream('coupon.pdf');
 
     }

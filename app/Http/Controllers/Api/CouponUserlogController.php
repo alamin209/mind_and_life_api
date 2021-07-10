@@ -181,7 +181,7 @@ class CouponUserlogController extends Controller
 
             if ($request->filled('is_shared')) {
 
-                $coupon_user1              = UserCouponRelation::with('coupon', 'user')->where('user_id', $request->user_id)->where('coupon_id', $request->coupon_id)->first();
+                $coupon_user1               = UserCouponRelation::with('coupon', 'user')->where('user_id', $request->user_id)->where('coupon_id', $request->coupon_id)->first();
                 $coupon1                    = Coupon::find($request->coupon_id);
 
                 $new_user_share             = $coupon_user->total_share + $request->is_shared;

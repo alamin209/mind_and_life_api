@@ -63,8 +63,14 @@ class VideController extends Controller
 
             //$user =auth()->guard('api')->user();
 
-            $articles = Video::query()
-            ->with('author', 'video_category','video_tags','user_log_details')
+            $query=Video::query();
+            $whereClause = $request->whereClause ?? [];
+            if ($request->filled('category_id')) {
+                $query->where('category_id',  $request->category_id);
+            }
+
+
+            $articles =  $query->with('author', 'video_category','video_tags','user_log_details','user_log_details.user')
             ->where('status', 1)
             ->orderBy($queryParams['sortBy'], $queryParams['orderBy'])
             ->where($whereClause)
@@ -103,7 +109,7 @@ class VideController extends Controller
     public function show($id)
     {
         try {
-            $article = Video::with('author', 'video_category','video_tags')->findOrFail($id);
+            $article = Video::with('author', 'video_category','video_tags','user_log_details','user_log_details.user')->findOrFail($id);
             return WebApiResponse::success(200, $article, 'Salary Data Fund');
         } catch (\Throwable $th) {
             $errors = $th->getMessage();

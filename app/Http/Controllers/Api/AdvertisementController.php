@@ -11,7 +11,6 @@ class AdvertisementController extends Controller
     /**
      * Display List  Advertisement list
      * @group Advertisement
-     * @authenticated
      * @return \Illuminate\Http\Response
      * @response 200
      * {"status":"Success","message":"messages.success_show_all","code":200,"data":[{"id":1,"is_google":0,"ad_image_path":"upload\/6080fd0fcdd1b_work_alamin_vai.png","website_link":"www.google.com","status":1,"created_at":null,"updated_at":null}]}

@@ -8,6 +8,7 @@ use Laravel\Socialite\Two\User as ProviderUser;
 use Carbon\Carbon as Carbon;
 use Validator;
 use Illuminate\Http\Request;
+use App\Libraries\WebApiResponse;
 class SocialAccountsService
 {
 
@@ -54,16 +55,6 @@ class SocialAccountsService
 
           if  (! $user) {
 
-            if($user->status==0){
-                 $errors = [
-                        ['field' => '',
-                        'value' => '',
-                        'message' => ['Account Has Been deductive']
-                        ]
-                 ];
-               return WebApiResponse::error(400, $errors , 'Account Has Been deductive');
-
-            }
 
             $last_user = User::latest('id')->first();
 
@@ -77,6 +68,20 @@ class SocialAccountsService
                      'profile_pic' => $providerUser->getAvatar(),
                      'email_verified_at'=>date('Y-m-d')
                 ]);
+
+
+                if($user->status==0){
+                    $errors = [
+                           ['field' => '',
+                           'value' => '',
+                           'message' => ['Account Has Been deductive']
+                           ]
+                    ];
+                  return WebApiResponse::error(400, $errors , 'Account Has Been deductive');
+
+               }
+
+
             }
 
             $user->linkedSocialAccounts()->create([
